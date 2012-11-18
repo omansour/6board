@@ -2,6 +2,9 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+DROP SCHEMA IF EXISTS `unamed_bt` ;
+CREATE SCHEMA IF NOT EXISTS `unamed_bt` DEFAULT CHARACTER SET utf8 ;
+USE `unamed_bt` ;
 
 -- -----------------------------------------------------
 -- Table `unamed_bt`.`project_group`
@@ -116,11 +119,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unamed_bt`.`notes`
+-- Table `unamed_bt`.`note`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `unamed_bt`.`notes` ;
+DROP TABLE IF EXISTS `unamed_bt`.`note` ;
 
-CREATE  TABLE IF NOT EXISTS `unamed_bt`.`notes` (
+CREATE  TABLE IF NOT EXISTS `unamed_bt`.`note` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `story_id` INT NOT NULL ,
   `user_id` INT NOT NULL ,
@@ -141,11 +144,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unamed_bt`.`files`
+-- Table `unamed_bt`.`file`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `unamed_bt`.`files` ;
+DROP TABLE IF EXISTS `unamed_bt`.`file` ;
 
-CREATE  TABLE IF NOT EXISTS `unamed_bt`.`files` (
+CREATE  TABLE IF NOT EXISTS `unamed_bt`.`file` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `notes_id` INT NOT NULL ,
   `name` VARCHAR(255) NULL ,
@@ -155,7 +158,7 @@ CREATE  TABLE IF NOT EXISTS `unamed_bt`.`files` (
   INDEX `fk_files_notes1_idx` (`notes_id` ASC) ,
   CONSTRAINT `fk_files_notes1`
     FOREIGN KEY (`notes_id` )
-    REFERENCES `unamed_bt`.`notes` (`id` )
+    REFERENCES `unamed_bt`.`note` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -174,7 +177,7 @@ CREATE  TABLE IF NOT EXISTS `unamed_bt`.`commit` (
   INDEX `fk_commits_notes1_idx` (`notes_id` ASC) ,
   CONSTRAINT `fk_commits_notes1`
     FOREIGN KEY (`notes_id` )
-    REFERENCES `unamed_bt`.`notes` (`id` )
+    REFERENCES `unamed_bt`.`note` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
