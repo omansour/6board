@@ -1,5 +1,5 @@
 {
-    "name": "unamed bt",
+    "name": "6board",
     "description": "",
     "autoload": {
         "psr-0": { "": "src/" }
