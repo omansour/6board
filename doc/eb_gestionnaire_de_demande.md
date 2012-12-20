@@ -36,6 +36,9 @@ Une demande contient:
 * n notes (optionnel)
 * une "due date" (optionnelle)
 
+
+une demande peut être liée à n autres demandes.
+
 ### milestone
 
 Une milestone contient une date de fin, un projet, un état (ouvert, fermé).
