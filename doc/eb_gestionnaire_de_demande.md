@@ -16,7 +16,7 @@ Gestionaire de demandes (anomalie, évolutions fonctionnelles …) sur des proje
 
 ### projets et groupe de projets
 
-Un projet contient des demandes (voir plus bas). Un projet appartient à zero ou 1 groupe de projets.
+Un projet contient des milestones qui contiennent des demandes/story (voir plus bas). 
 
 ### demandes
 
@@ -36,12 +36,13 @@ Une demande contient:
 * n notes (optionnel)
 * une "due date" (optionnelle)
 
-
 une demande peut être liée à n autres demandes.
 
 ### milestone
 
 Une milestone contient une date de fin, un projet, un état (ouvert, fermé).
+
+En config, on peut préciser des milestones qui sont automatiquement ajoutées lors de l'ajout de milestone à une story (l'ajout d'une milestone a une story ajoute automatiquement celle précisée en config) (ce n'est pas valable pour la supression).
 
 ### utilisateurs
 
@@ -55,44 +56,46 @@ la vérification du mot de passe se fait sur le LDAP. => FOSUserBundle
 
 ## logging
 
-Toutes les modifications sont logguées et horodatées dans les notes des demandes (qui, quand, quoi). (y compris création et chaque changement sur chaque champs, on peut imaginer typer les notes pour distinguer )
+Toutes les modifications sont logguées et horodatées dans les notes des demandes (qui, quand, quoi).
+
+Il est impossible de supprimer une note.
+
+## edition des projets et milestone
+
+crud sur les projet et les milestones
 
 ## tableaux de suivis
 
 L'interface principale est un tableau de demandes. 
 
-suivi / priorisation
 
 ### tableau de priorisation
 
-#### filtrage possible 
-* par groupe de projets
-* par projet
-* par milestone
+il faut choisir une milestone.
+
+#### filtrage possible sur le tableau de priorisation
+* par nom de milestone
+* on exclu par défaut les milestones fermées
 
 les demandes sont toutes affichées sauf celle fermées.
 
-#### tableau
+#### tableau de priorisation
 
-Selon le filtrage on peut trier les demandes entre elles. 
-
-Sur un projet, les demandes sont triées du plus au moins prioritaire puis celles qui ne sont pas priorisées (code couleur ?)
-Sur un groupe de projet, les demandes sont tries du plus au moins prioritaire dans le groupe de projet, puis au sein de chaque projet, puis celles qui ne sont pas priorisées.
-
-(il y a un système de classement différent par projet et groupe de projet)
+Une fois une milestone choisie on peut trier les demandes entre elles. 
 
 un raccourci permet de prioriser une demande en top priorité.
 
 ### tableau de suivi
 
 #### filtrage possible
-* par groupe de projets
-* par projet 
-* par milestone
+* par projet (plusieurs possibles)
+* par milestone (plusieurs possibles)
 * par statut
 * par type 
 * par rapporteur 
 * par utilisateur assigné (ceux avec personne aussi)
+* * sur numéro de demande 
+* plein texte sur le titre puis la description 
 
 On peut enregistrer un filtrage, lui donner un nom, et le rappeler d'un clic.
 
@@ -104,19 +107,19 @@ est présenté :
 
 * le numéro de la demande
 * le titre
+* la milestone 
+* le projet
 * J-x si il y a une due date (J+ possible) *code couleur*
 
 Un clic sur le numéro emmene vers l'édition de la demande.
 
 ## recherche
 
-* sur numéro de demande 
-* plein texte sur le titre puis la description 
-* filtres idem que tableau de suivi
+c'est en fait le tableau de suivi
 
 ## navigation
 
-Chaque recherche est enregistrée en session. la recherche se fait en GET (pour pouvoir partager cette recherche) - faut être malin sur l'encodage de la recherche ;) . On peut enregistrer en base n'importe quel recherche en lui donnant un nom. Cette recherche est restreinte à l'utilisateur. Il peut la passer en publique.
+Chaque recherche est enregistrée en session. la recherche se fait en GET (pour pouvoir partager cette recherche) - faut être malin sur l'encodage de la recherche ;) . On peut enregistrer en base n'importe quelle recherche en lui donnant un nom. Cette recherche est restreinte à l'utilisateur. Il peut la passer en publique.
 
 ## reporting
 
