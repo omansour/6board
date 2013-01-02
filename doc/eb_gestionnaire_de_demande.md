@@ -25,9 +25,9 @@ Une demande contient:
 * un numéro (généré)
 * un titre 
 * une description
-* un type (liste configurable par projet)
-* un statut (liste configurable par projet) avec au min : nouveau - validé - en cours - fermé)
-* un motif de fermeture (optionel, liste par projet)
+* un type : major, minor, alert, feature
+* un statut : new, valid, in progress, closed
+* un motif de fermeture (optionel, liste par projet) : resolved, invalid, wont be resolved, duplicate, unreproducible
 * une date d'ouverture
 * une date de fermeture (optionnelle)
 * un utilisateur rapporteur 
@@ -147,7 +147,6 @@ il faut choisir une semaine, un mois, une année
 choisir deux dates ?
 
 #### filtrage possible
-* par groupe de projets
 * par projet
 * par type (tous possible)
 * par utilisateur assigné
