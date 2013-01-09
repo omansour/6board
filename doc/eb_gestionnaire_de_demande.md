@@ -94,8 +94,8 @@ un raccourci permet de prioriser une demande en top priorité.
 * par type 
 * par rapporteur 
 * par utilisateur assigné (ceux avec personne aussi)
-* * sur numéro de demande 
-* plein texte sur le titre puis la description 
+* sur numéro de demande 
+* plein texte sur le titre puis la description puis un tag
 
 On peut enregistrer un filtrage, lui donner un nom, et le rappeler d'un clic.
 
