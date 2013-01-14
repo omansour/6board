@@ -1,5 +1,8 @@
 # EB gestionnaire de demandes
 
+
+
+
 (mes excuses pour mon orthographe déplorable)
 
 Gestionaire de demandes (anomalie, évolutions fonctionnelles …) sur des projets informatiques.
@@ -10,7 +13,13 @@ Gestionaire de demandes (anomalie, évolutions fonctionnelles …) sur des proje
 
 **Par rapport aux bugtrackers classiques, le point le plus dur semble être mon besoin de pouvoir prioriser les tickets entre eux.**
 
-**pas d'admin, on fait tout en config sf2**
+## priorités
+
+1/ doctrine
+2/ formulaire de filtrage (avec enregistrement en session et GET)
+3/ route de priorisation et priorisation dans la liste
+4/ trigger 
+5/ poser le routing
 
 ## menu et navigation
 
@@ -45,7 +54,7 @@ Une demande contient:
 * une description
 * un type : major, minor, alert, feature
 * un statut : new, valid, in progress, closed
-* un motif de fermeture (optionel, liste par projet) : resolved, invalid, wont be resolved, duplicate, unreproducible
+* un motif de fermeture : resolved, invalid, wont be resolved, duplicate, unreproducible
 * une date d'ouverture
 * une date de fermeture (optionnelle)
 * un utilisateur rapporteur 
@@ -109,10 +118,10 @@ un raccourci permet de prioriser une demande en top priorité.
 #### filtrage possible
 * par projet (plusieurs possibles)
 * par milestone (plusieurs possibles)
-* par statut
-* par type 
-* par rapporteur 
-* par utilisateur assigné (ceux avec personne aussi)
+* par statut (plusieurs possibles)
+* par type (plusieurs possibles) ?
+* par rapporteur (plusieurs possibles) ?
+* par utilisateur assigné (ceux avec personne aussi) (plusieurs possibles)
 * sur numéro de demande 
 * plein texte sur le titre puis la description puis un tag
 
@@ -183,9 +192,8 @@ sur une semaine, un mois, une année
 
 Les utilisateurs accèdent à tous les projets et peuvent tout faire dessus. 
 
-Un droit existe pour donner l'accès à l'interface de priorisation. C'est une liste de login en conf du projet.
-
-Un droit existe pour donner l'accès à l'interface de crud (projets/milestone). C'est une liste de login en conf du projet.
+Un droit existe pour donner l'accès à l'interface de priorisation. 
+Un droit existe pour donner l'accès à l'interface de crud (projets/milestone). 
 
 ## notification
 
@@ -193,9 +201,10 @@ trigger : à chaque modification d'une demande ou ajout d'une note
 
 Possibilité de s'abonner volontairement (mail ou jabber) (suivre) : 
 
-* à un projet et sous projet 
 * à une demande
 * à une milestone
+
+L'ajout d'une demande à un milestone entraine une notification spécifique aux utilisateurs abonnés à la milestone.
 
 Une action sur une demande auto abonne l'utilisateur. 
 

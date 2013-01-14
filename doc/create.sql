@@ -167,7 +167,7 @@ DROP TABLE IF EXISTS `6board`.`story_has_milestone` ;
 CREATE  TABLE IF NOT EXISTS `6board`.`story_has_milestone` (
   `story_id` INT NOT NULL ,
   `milestone_id` INT NOT NULL ,
-  `position` INT NOT NULL ,
+  `position` INT NULL ,
   PRIMARY KEY (`story_id`, `milestone_id`) ,
   INDEX `fk_story_has_milestone_milestone1_idx` (`milestone_id` ASC) ,
   INDEX `fk_story_has_milestone_story1_idx` (`story_id` ASC) ,
@@ -238,11 +238,72 @@ CREATE  TABLE IF NOT EXISTS `6board`.`search` (
   `search` TEXT NOT NULL ,
   `public` TINYINT(1) NOT NULL DEFAULT 0 ,
   `user_id` INT NOT NULL ,
+  `name` VARCHAR(255) NOT NULL ,
   PRIMARY KEY (`id`, `user_id`) ,
   INDEX `fk_search_user1_idx` (`user_id` ASC) ,
   CONSTRAINT `fk_search_user1`
     FOREIGN KEY (`user_id` )
     REFERENCES `6board`.`user` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `6board`.`tag`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `6board`.`tag` ;
+
+CREATE  TABLE IF NOT EXISTS `6board`.`tag` (
+  `id` INT NOT NULL ,
+  `name` VARCHAR(255) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `6board`.`story_has_tag`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `6board`.`story_has_tag` ;
+
+CREATE  TABLE IF NOT EXISTS `6board`.`story_has_tag` (
+  `story_id` INT NOT NULL ,
+  `tag_id` INT NOT NULL ,
+  PRIMARY KEY (`story_id`, `tag_id`) ,
+  INDEX `fk_story_has_tag_tag1_idx` (`tag_id` ASC) ,
+  INDEX `fk_story_has_tag_story1_idx` (`story_id` ASC) ,
+  CONSTRAINT `fk_story_has_tag_story1`
+    FOREIGN KEY (`story_id` )
+    REFERENCES `6board`.`story` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_story_has_tag_tag1`
+    FOREIGN KEY (`tag_id` )
+    REFERENCES `6board`.`tag` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `6board`.`milestone_has_autoaddmilestone`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `6board`.`milestone_has_autoaddmilestone` ;
+
+CREATE  TABLE IF NOT EXISTS `6board`.`milestone_has_autoaddmilestone` (
+  `milestone_id` INT NOT NULL ,
+  `milestone_id1` INT NOT NULL ,
+  PRIMARY KEY (`milestone_id`, `milestone_id1`) ,
+  INDEX `fk_milestone_has_milestone_milestone2_idx` (`milestone_id1` ASC) ,
+  INDEX `fk_milestone_has_milestone_milestone1_idx` (`milestone_id` ASC) ,
+  CONSTRAINT `fk_milestone_has_milestone_milestone1`
+    FOREIGN KEY (`milestone_id` )
+    REFERENCES `6board`.`milestone` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_milestone_has_milestone_milestone2`
+    FOREIGN KEY (`milestone_id1` )
+    REFERENCES `6board`.`milestone` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
