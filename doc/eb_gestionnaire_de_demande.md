@@ -12,6 +12,24 @@ Gestionaire de demandes (anomalie, évolutions fonctionnelles …) sur des proje
 
 **pas d'admin, on fait tout en config sf2**
 
+## menu et navigation
+
+###  menu 
+
+* home
+* quicklinks (les filtrages enregistrés)
+* priorisation (selon un droit)
+* calendar 
+* reporting
+* timeline
+
+### home 
+
+=> c'est l'accès aux tableaux de suivi. 
+
+par défaut, sans filtrage, on accède au ticket affecté à l'utilisateur courant.
+
+
 ## données
 
 ### projets et groupe de projets
@@ -35,6 +53,7 @@ Une demande contient:
 * n fichiers (optionnel)
 * n notes (optionnel)
 * une "due date" (optionnelle)
+* une liste de tags
 
 une demande peut être liée à n autres demandes.
 
@@ -75,7 +94,7 @@ il faut choisir une milestone.
 
 #### filtrage possible sur le tableau de priorisation
 * par nom de milestone
-* on exclu par défaut les milestones fermées
+* on exclu les milestones fermées
 
 les demandes sont toutes affichées sauf celle fermées.
 
@@ -97,7 +116,7 @@ un raccourci permet de prioriser une demande en top priorité.
 * sur numéro de demande 
 * plein texte sur le titre puis la description puis un tag
 
-On peut enregistrer un filtrage, lui donner un nom, et le rappeler d'un clic.
+On peut enregistrer un filtrage, lui donner un nom, et le rappeler d'un clic. Les recherches enregistrés sont présentes dans le menu. Ce menu contient par défaut une recherche sur les bugs ouverts par moi et une recherche sur les bug qui me sont assignés.
 
 #### tableau
 
@@ -113,13 +132,12 @@ est présenté :
 
 Un clic sur le numéro emmene vers l'édition de la demande.
 
-## recherche
+Le tableau est trié par Milestone (séparation visuelle) et priorité.
 
-c'est en fait le tableau de suivi
 
 ## navigation
 
-Chaque recherche est enregistrée en session. la recherche se fait en GET (pour pouvoir partager cette recherche) - faut être malin sur l'encodage de la recherche ;) . On peut enregistrer en base n'importe quelle recherche en lui donnant un nom. Cette recherche est restreinte à l'utilisateur. Il peut la passer en publique.
+Chaque filtrage est enregistrée en session. la recherche se fait en GET (pour pouvoir partager cette recherche) - faut être malin sur l'encodage de la recherche ;) . On peut enregistrer en base n'importe quelle recherche en lui donnant un nom. Cette recherche est restreinte à l'utilisateur. Il peut la passer en publique ; elle apparait alors dans le menu recheche de l'utilisateur.
 
 ## reporting
 
@@ -163,13 +181,17 @@ sur une semaine, un mois, une année
 
 (simpliciste)
 
-Les utilisateurs accèdent à tous les projets et peuvent tout faire dessus. Un droit existe pour donner l'accès à l'interface de priorisation. C'est une liste de login en conf du projet.
+Les utilisateurs accèdent à tous les projets et peuvent tout faire dessus. 
+
+Un droit existe pour donner l'accès à l'interface de priorisation. C'est une liste de login en conf du projet.
+
+Un droit existe pour donner l'accès à l'interface de crud (projets/milestone). C'est une liste de login en conf du projet.
 
 ## notification
 
 trigger : à chaque modification d'une demande ou ajout d'une note
 
-Possibilité de s'abonner volontairement (mail ou jabber) : 
+Possibilité de s'abonner volontairement (mail ou jabber) (suivre) : 
 
 * à un projet et sous projet 
 * à une demande
