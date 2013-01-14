@@ -2,31 +2,23 @@
 
 namespace M6\Bundle\SixBoardBundle\Entity;
 
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * M6\Bundle\SixBoardBundle\Entity\User
- *
- * @ORM\Table(name="user")
  * @ORM\Entity
+ * @ORM\Table(name="fos_user")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var integer $id
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string $login
-     *
-     * @ORM\Column(name="login", type="string", length=45, nullable=false)
-     */
-    private $login;
 
     /**
      * @var string $name
@@ -56,12 +48,18 @@ class User
      */
     private $jabberId;
 
-
+    /**
+     * The constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -77,14 +75,14 @@ class User
     public function setLogin($login)
     {
         $this->login = $login;
-    
+
         return $this;
     }
 
     /**
      * Get login
      *
-     * @return string 
+     * @return string
      */
     public function getLogin()
     {
@@ -100,14 +98,14 @@ class User
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -123,14 +121,14 @@ class User
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-    
+
         return $this;
     }
 
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -146,14 +144,14 @@ class User
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    
+
         return $this;
     }
 
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -169,14 +167,14 @@ class User
     public function setJabberId($jabberId)
     {
         $this->jabberId = $jabberId;
-    
+
         return $this;
     }
 
     /**
      * Get jabberId
      *
-     * @return string 
+     * @return string
      */
     public function getJabberId()
     {
