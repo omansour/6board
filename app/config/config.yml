@@ -53,6 +53,10 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
 
+    dbal:
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%
