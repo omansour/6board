@@ -30,7 +30,7 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
-
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new M6\Bundle\SixBoardBundle\M6SixBoardBundle(),
         );
 
