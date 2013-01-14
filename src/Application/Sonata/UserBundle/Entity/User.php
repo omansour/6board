@@ -16,35 +16,35 @@ class User extends BaseUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string $firstname
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string $phone
      *
      * @ORM\Column(name="phone", type="string", length=45, nullable=true)
      */
-    private $phone;
+    protected $phone;
 
     /**
      * @var string $jabberId
      *
      * @ORM\Column(name="jabber_id", type="string", length=255, nullable=true)
      */
-    private $jabberId;
+    protected $jabberId;
 
     /**
      * The constructor
