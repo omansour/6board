@@ -17,7 +17,7 @@ class Note
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -60,7 +60,7 @@ class Note
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -76,14 +76,14 @@ class Note
     public function setNote($note)
     {
         $this->note = $note;
-    
+
         return $this;
     }
 
     /**
      * Get note
      *
-     * @return string 
+     * @return string
      */
     public function getNote()
     {
@@ -99,14 +99,14 @@ class Note
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -122,14 +122,14 @@ class Note
     public function setStory(\M6\Bundle\SixBoardBundle\Entity\Story $story = null)
     {
         $this->story = $story;
-    
+
         return $this;
     }
 
     /**
      * Get story
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\Story 
+     * @return M6\Bundle\SixBoardBundle\Entity\Story
      */
     public function getStory()
     {
@@ -145,14 +145,14 @@ class Note
     public function setUser(\M6\Bundle\SixBoardBundle\Entity\User $user = null)
     {
         $this->user = $user;
-    
+
         return $this;
     }
 
     /**
      * Get user
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\User 
+     * @return M6\Bundle\SixBoardBundle\Entity\User
      */
     public function getUser()
     {

@@ -17,7 +17,7 @@ class Search
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -39,7 +39,7 @@ class Search
      * @var User
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\OneToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
@@ -52,7 +52,7 @@ class Search
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -68,14 +68,14 @@ class Search
     public function setSearch($search)
     {
         $this->search = $search;
-    
+
         return $this;
     }
 
     /**
      * Get search
      *
-     * @return string 
+     * @return string
      */
     public function getSearch()
     {
@@ -91,14 +91,14 @@ class Search
     public function setPublic($public)
     {
         $this->public = $public;
-    
+
         return $this;
     }
 
     /**
      * Get public
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getPublic()
     {
@@ -114,14 +114,14 @@ class Search
     public function setUser(\M6\Bundle\SixBoardBundle\Entity\User $user)
     {
         $this->user = $user;
-    
+
         return $this;
     }
 
     /**
      * Get user
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\User 
+     * @return M6\Bundle\SixBoardBundle\Entity\User
      */
     public function getUser()
     {

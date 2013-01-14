@@ -17,7 +17,7 @@ class Project
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -40,7 +40,7 @@ class Project
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,14 +56,14 @@ class Project
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -79,14 +79,14 @@ class Project
     public function setProjectGroupId($projectGroupId)
     {
         $this->projectGroupId = $projectGroupId;
-    
+
         return $this;
     }
 
     /**
      * Get projectGroupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProjectGroupId()
     {

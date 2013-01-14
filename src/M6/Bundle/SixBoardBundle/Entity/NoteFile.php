@@ -17,7 +17,7 @@ class NoteFile
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -57,7 +57,7 @@ class NoteFile
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -73,14 +73,14 @@ class NoteFile
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -96,14 +96,14 @@ class NoteFile
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -119,14 +119,14 @@ class NoteFile
     public function setPath($path)
     {
         $this->path = $path;
-    
+
         return $this;
     }
 
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -142,14 +142,14 @@ class NoteFile
     public function setNotes(\M6\Bundle\SixBoardBundle\Entity\Note $notes = null)
     {
         $this->notes = $notes;
-    
+
         return $this;
     }
 
     /**
      * Get notes
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\Note 
+     * @return M6\Bundle\SixBoardBundle\Entity\Note
      */
     public function getNotes()
     {

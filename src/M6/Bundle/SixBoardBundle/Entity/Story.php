@@ -17,7 +17,7 @@ class Story
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -135,12 +135,12 @@ class Story
         $this->milestone = new \Doctrine\Common\Collections\ArrayCollection();
         $this->storyTo = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -156,14 +156,14 @@ class Story
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -179,14 +179,14 @@ class Story
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -202,14 +202,14 @@ class Story
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
     /**
      * Get status
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {
@@ -225,14 +225,14 @@ class Story
     public function setDueDate($dueDate)
     {
         $this->dueDate = $dueDate;
-    
+
         return $this;
     }
 
     /**
      * Get dueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDueDate()
     {
@@ -248,14 +248,14 @@ class Story
     public function setComplexity($complexity)
     {
         $this->complexity = $complexity;
-    
+
         return $this;
     }
 
     /**
      * Get complexity
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getComplexity()
     {
@@ -271,14 +271,14 @@ class Story
     public function setClosedFor($closedFor)
     {
         $this->closedFor = $closedFor;
-    
+
         return $this;
     }
 
     /**
      * Get closedFor
      *
-     * @return string 
+     * @return string
      */
     public function getClosedFor()
     {
@@ -294,14 +294,14 @@ class Story
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -317,14 +317,14 @@ class Story
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -340,7 +340,7 @@ class Story
     public function addMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestone)
     {
         $this->milestone[] = $milestone;
-    
+
         return $this;
     }
 
@@ -357,7 +357,7 @@ class Story
     /**
      * Get milestone
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getMilestone()
     {
@@ -373,7 +373,7 @@ class Story
     public function addStoryTo(\M6\Bundle\SixBoardBundle\Entity\Story $storyTo)
     {
         $this->storyTo[] = $storyTo;
-    
+
         return $this;
     }
 
@@ -390,7 +390,7 @@ class Story
     /**
      * Get storyTo
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getStoryTo()
     {
@@ -406,14 +406,14 @@ class Story
     public function setOwnerUser(\M6\Bundle\SixBoardBundle\Entity\User $ownerUser = null)
     {
         $this->ownerUser = $ownerUser;
-    
+
         return $this;
     }
 
     /**
      * Get ownerUser
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\User 
+     * @return M6\Bundle\SixBoardBundle\Entity\User
      */
     public function getOwnerUser()
     {
@@ -429,14 +429,14 @@ class Story
     public function setDevUser(\M6\Bundle\SixBoardBundle\Entity\User $devUser = null)
     {
         $this->devUser = $devUser;
-    
+
         return $this;
     }
 
     /**
      * Get devUser
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\User 
+     * @return M6\Bundle\SixBoardBundle\Entity\User
      */
     public function getDevUser()
     {

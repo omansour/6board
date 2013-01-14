@@ -17,7 +17,7 @@ class Milestone
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -73,12 +73,12 @@ class Milestone
     {
         $this->story = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -94,14 +94,14 @@ class Milestone
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -117,14 +117,14 @@ class Milestone
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -140,14 +140,14 @@ class Milestone
     public function setDueDate($dueDate)
     {
         $this->dueDate = $dueDate;
-    
+
         return $this;
     }
 
     /**
      * Get dueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDueDate()
     {
@@ -163,14 +163,14 @@ class Milestone
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
     /**
      * Get status
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {
@@ -186,7 +186,7 @@ class Milestone
     public function addStory(\M6\Bundle\SixBoardBundle\Entity\Story $story)
     {
         $this->story[] = $story;
-    
+
         return $this;
     }
 
@@ -203,7 +203,7 @@ class Milestone
     /**
      * Get story
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getStory()
     {
@@ -219,14 +219,14 @@ class Milestone
     public function setProject(\M6\Bundle\SixBoardBundle\Entity\Project $project = null)
     {
         $this->project = $project;
-    
+
         return $this;
     }
 
     /**
      * Get project
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\Project 
+     * @return M6\Bundle\SixBoardBundle\Entity\Project
      */
     public function getProject()
     {

@@ -17,7 +17,7 @@ class NoteCommit
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -43,7 +43,7 @@ class NoteCommit
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -59,14 +59,14 @@ class NoteCommit
     public function setUrl($url)
     {
         $this->url = $url;
-    
+
         return $this;
     }
 
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -82,14 +82,14 @@ class NoteCommit
     public function setNotes(\M6\Bundle\SixBoardBundle\Entity\Note $notes = null)
     {
         $this->notes = $notes;
-    
+
         return $this;
     }
 
     /**
      * Get notes
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\Note 
+     * @return M6\Bundle\SixBoardBundle\Entity\Note
      */
     public function getNotes()
     {
