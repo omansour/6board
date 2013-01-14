@@ -110,7 +110,7 @@ class Story
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="owner_user_id", referencedColumnName="id")
      * })
@@ -120,7 +120,7 @@ class Story
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="dev_user_id", referencedColumnName="id")
      * })
@@ -133,7 +133,7 @@ class Story
     public function __construct()
     {
         $this->milestone = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->storyTo = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->storyTo   = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 

@@ -38,9 +38,7 @@ class Search
     /**
      * @var User
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })

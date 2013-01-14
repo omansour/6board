@@ -48,14 +48,12 @@ class Note
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
      */
     private $user;
-
-
 
     /**
      * Get id
