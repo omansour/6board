@@ -1,6 +1,6 @@
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DROP SCHEMA IF EXISTS `6board` ;
 CREATE SCHEMA IF NOT EXISTS `6board` DEFAULT CHARACTER SET utf8 ;
@@ -47,13 +47,13 @@ CREATE  TABLE IF NOT EXISTS `6board`.`story` (
   `description` TEXT NULL ,
   `owner_user_id` INT NOT NULL ,
   `dev_user_id` INT NULL ,
-  `status` ENUM('new', 'valid', 'in progress', 'closed') NOT NULL ,
+  `status` VARCHAR(255) NOT NULL ,
   `due_date` DATETIME NULL ,
   `complexity` TINYINT NULL ,
-  `closed_for` ENUM('resolved', 'invalid', 'wont be resolved', 'duplicate', 'unreproducible') NOT NULL ,
+  `closed_for` VARCHAR(255) NOT NULL ,
   `created_at` DATETIME NOT NULL ,
   `updated_at` DATETIME NOT NULL ,
-  `type` ENUM('major', 'minor', 'alert', 'feature') NOT NULL ,
+  `type` VARCHAR(255) NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_story_user1_idx` (`owner_user_id` ASC) ,
   INDEX `fk_story_user2_idx` (`dev_user_id` ASC) ,
@@ -129,7 +129,7 @@ CREATE  TABLE IF NOT EXISTS `6board`.`milestone` (
   `name` VARCHAR(255) NOT NULL ,
   `description` TEXT NULL ,
   `due_date` DATETIME NULL ,
-  `status` ENUM('open', 'closed') NOT NULL ,
+  `status` VARCHAR(255) NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_milestone_project1_idx` (`project_id` ASC) ,
   CONSTRAINT `fk_milestone_project1`
@@ -234,9 +234,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `6board`.`search` ;
 
 CREATE  TABLE IF NOT EXISTS `6board`.`search` (
-  `id` INT NOT NULL COMMENT '		' ,
+  `id` INT NOT NULL COMMENT '   ' ,
   `search` TEXT NOT NULL ,
-  `public` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `public` TINYINT(1)  NOT NULL DEFAULT 0 ,
   `user_id` INT NOT NULL ,
   `name` VARCHAR(255) NOT NULL ,
   PRIMARY KEY (`id`, `user_id`) ,
