@@ -1,5 +1,5 @@
 {
-    "hash": "33dd6967831d47b0683694f9e0f7fdee",
+    "hash": "1f376f830b0ad77730a9e4c4a9152df8",
     "packages": [
         {
             "name": "doctrine/common",
@@ -801,12 +801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/metadata",
-                "reference": "92d949a8d6dfef83f4b5f68c0e8e294f22029653"
+                "reference": "f2ab7883f6f915d40bfc38a70e0ead5f130610dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/schmittjoh/metadata/archive/92d949a8d6dfef83f4b5f68c0e8e294f22029653.zip",
-                "reference": "92d949a8d6dfef83f4b5f68c0e8e294f22029653",
+                "url": "https://github.com/schmittjoh/metadata/archive/f2ab7883f6f915d40bfc38a70e0ead5f130610dc.zip",
+                "reference": "f2ab7883f6f915d40bfc38a70e0ead5f130610dc",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +818,7 @@
             "suggest": {
                 "doctrine/common": ">=2.0"
             },
-            "time": "2012-12-18 08:18:33",
+            "time": "2013-01-22 12:51:18",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -957,6 +957,59 @@
             ]
         },
         {
+            "name": "knplabs/knp-components",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/knp-components",
+                "reference": "163308ed3442e7e9ec4a45ff912664e366954c82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/KnpLabs/knp-components/archive/163308ed3442e7e9ec4a45ff912664e366954c82.zip",
+                "reference": "163308ed3442e7e9ec4a45ff912664e366954c82",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "time": "2012-12-11 07:38:57",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Component": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/knp-components/contributors"
+                }
+            ],
+            "description": "Knplabs component library",
+            "homepage": "http://github.com/KnpLabs/knp-components",
+            "keywords": [
+                "pager",
+                "components",
+                "knp",
+                "knplabs",
+                "paginator"
+            ]
+        },
+        {
             "name": "knplabs/knp-menu",
             "version": "1.1.x-dev",
             "source": {
@@ -1070,6 +1123,65 @@
             ]
         },
         {
+            "name": "knplabs/knp-paginator-bundle",
+            "version": "dev-master",
+            "target-dir": "Knp/Bundle/PaginatorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpPaginatorBundle",
+                "reference": "v2.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/KnpLabs/KnpPaginatorBundle/archive/v2.3.zip",
+                "reference": "v2.3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": ">=2.0,<3.0",
+                "knplabs/knp-components": ">=1.1,<2.0",
+                "twig/twig": ">=1.5,<2.0"
+            },
+            "time": "2013-01-18 17:41:27",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Bundle\\PaginatorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony2 Community",
+                    "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle/contributors"
+                }
+            ],
+            "description": "Paginator bundle for Symfony2 to automate pagination and simplify sorting and other features",
+            "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle",
+            "keywords": [
+                "Symfony2",
+                "pager",
+                "knp",
+                "knplabs",
+                "paginator",
+                "pagination",
+                "bundle"
+            ]
+        },
+        {
             "name": "kriswallsmith/assetic",
             "version": "dev-master",
             "source": {
@@ -1145,12 +1257,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog",
-                "reference": "1.3.1"
+                "reference": "957ee8d0d62fad0c336797f0fb1ffa63ae6d6c71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Seldaek/monolog/archive/1.3.1.zip",
-                "reference": "1.3.1",
+                "url": "https://github.com/Seldaek/monolog/archive/957ee8d0d62fad0c336797f0fb1ffa63ae6d6c71.zip",
+                "reference": "957ee8d0d62fad0c336797f0fb1ffa63ae6d6c71",
                 "shasum": ""
             },
             "require": {
@@ -1169,11 +1281,11 @@
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
                 "raven/raven": "Allow sending log messages to a Sentry server"
             },
-            "time": "2013-01-11 10:23:20",
+            "time": "2013-01-22 15:02:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
@@ -1295,18 +1407,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioDistributionBundle",
-                "reference": "222e6100b5125980b97f14c159bfb33681883abe"
+                "reference": "a8c3fa0c66e2e372e5abbd799849fa0b109c5e2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sensio/SensioDistributionBundle/archive/222e6100b5125980b97f14c159bfb33681883abe.zip",
-                "reference": "222e6100b5125980b97f14c159bfb33681883abe",
+                "url": "https://github.com/sensio/SensioDistributionBundle/archive/a8c3fa0c66e2e372e5abbd799849fa0b109c5e2e.zip",
+                "reference": "a8c3fa0c66e2e372e5abbd799849fa0b109c5e2e",
                 "shasum": ""
             },
             "require": {
                 "symfony/framework-bundle": "2.2.*"
             },
-            "time": "2013-01-17 12:27:12",
+            "time": "2013-01-22 09:37:00",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1439,12 +1551,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "96e052de58046db97f5ad09aebee659388c60b80"
+                "reference": "1f35c543a29287a4a53472658cbd4c7c34d4cbec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/96e052de58046db97f5ad09aebee659388c60b80.zip",
-                "reference": "96e052de58046db97f5ad09aebee659388c60b80",
+                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/1f35c543a29287a4a53472658cbd4c7c34d4cbec.zip",
+                "reference": "1f35c543a29287a4a53472658cbd4c7c34d4cbec",
                 "shasum": ""
             },
             "require": {
@@ -1469,7 +1581,7 @@
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master",
                 "sonata-project/intl-bundle": "dev-master"
             },
-            "time": "2013-01-21 22:14:08",
+            "time": "2013-01-22 15:01:56",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -1863,12 +1975,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle",
-                "reference": "2ea728bb62cf4a83042a89c7c937fa1315c2386b"
+                "reference": "07739c231346d70b88a05051288b1f237c2b1645"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataUserBundle/archive/2ea728bb62cf4a83042a89c7c937fa1315c2386b.zip",
-                "reference": "2ea728bb62cf4a83042a89c7c937fa1315c2386b",
+                "url": "https://github.com/sonata-project/SonataUserBundle/archive/07739c231346d70b88a05051288b1f237c2b1645.zip",
+                "reference": "07739c231346d70b88a05051288b1f237c2b1645",
                 "shasum": ""
             },
             "require": {
@@ -1885,7 +1997,7 @@
             "suggest": {
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master"
             },
-            "time": "2013-01-07 17:26:46",
+            "time": "2013-01-22 14:56:09",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2208,12 +2320,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "696900e68fb6bcb97aa0ec2fb13535a292274283"
+                "reference": "5d896f60f4d2d40174ab758d26e3186de2f91368"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/696900e68fb6bcb97aa0ec2fb13535a292274283.zip",
-                "reference": "696900e68fb6bcb97aa0ec2fb13535a292274283",
+                "url": "https://github.com/symfony/symfony/archive/5d896f60f4d2d40174ab758d26e3186de2f91368.zip",
+                "reference": "5d896f60f4d2d40174ab758d26e3186de2f91368",
                 "shasum": ""
             },
             "require": {
@@ -2267,7 +2379,7 @@
             "suggest": {
                 "doctrine/data-fixtures": "1.0.*"
             },
-            "time": "2013-01-21 21:03:00",
+            "time": "2013-01-22 11:03:36",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2410,6 +2522,7 @@
         "stof/doctrine-extensions-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
         "sonata-project/doctrine-orm-admin-bundle": 20,
-        "sonata-project/user-bundle": 20
+        "sonata-project/user-bundle": 20,
+        "knplabs/knp-paginator-bundle": 20
     }
 }
