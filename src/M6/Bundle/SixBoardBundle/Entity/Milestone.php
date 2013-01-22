@@ -75,7 +75,6 @@ class Milestone
         $this->stories = new ArrayCollection;
     }
 
-
     /**
      * Get id
      *
