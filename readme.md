@@ -1,8 +1,5 @@
 # EB gestionnaire de demandes
 
-
-
-
 (mes excuses pour mon orthographe déplorable)
 
 Gestionaire de demandes (anomalie, évolutions fonctionnelles …) sur des projets informatiques.
@@ -18,23 +15,23 @@ Gestionaire de demandes (anomalie, évolutions fonctionnelles …) sur des proje
 1/ doctrine
 2/ formulaire de filtrage (avec enregistrement en session et GET)
 3/ route de priorisation et priorisation dans la liste
-4/ trigger 
+4/ trigger
 5/ poser le routing
 
 ## menu et navigation
 
-###  menu 
+###  menu
 
 * home
 * quicklinks (les filtrages enregistrés)
 * priorisation (selon un droit)
-* calendar 
+* calendar
 * reporting
 * timeline
 
-### home 
+### home
 
-=> c'est l'accès aux tableaux de suivi. 
+=> c'est l'accès aux tableaux de suivi.
 
 par défaut, sans filtrage, on accède au ticket affecté à l'utilisateur courant.
 
@@ -43,21 +40,21 @@ par défaut, sans filtrage, on accède au ticket affecté à l'utilisateur coura
 
 ### projets et groupe de projets
 
-Un projet contient des milestones qui contiennent des demandes/story (voir plus bas). 
+Un projet contient des milestones qui contiennent des demandes/story (voir plus bas).
 
 ### demandes
 
-Une demande contient: 
+Une demande contient:
 
 * un numéro (généré)
-* un titre 
+* un titre
 * une description
 * un type : major, minor, alert, feature
 * un statut : new, valid, in progress, closed
 * un motif de fermeture : resolved, invalid, wont be resolved, duplicate, unreproducible
 * une date d'ouverture
 * une date de fermeture (optionnelle)
-* un utilisateur rapporteur 
+* un utilisateur rapporteur
 * un utilisateur assigné (optionnel)
 * n fichiers (optionnel)
 * n notes (optionnel)
@@ -74,8 +71,8 @@ En config, on peut préciser des milestones qui sont automatiquement ajoutées l
 
 ### utilisateurs
 
-* nom 
-* prenom 
+* nom
+* prenom
 * email
 * téléphone (optionel)
 * id jabber (optionnel)
@@ -94,7 +91,7 @@ crud sur les projet et les milestones
 
 ## tableaux de suivis
 
-L'interface principale est un tableau de demandes. 
+L'interface principale est un tableau de demandes.
 
 
 ### tableau de priorisation
@@ -109,7 +106,7 @@ les demandes sont toutes affichées sauf celle fermées.
 
 #### tableau de priorisation
 
-Une fois une milestone choisie on peut trier les demandes entre elles. 
+Une fois une milestone choisie on peut trier les demandes entre elles.
 
 un raccourci permet de prioriser une demande en top priorité.
 
@@ -122,20 +119,20 @@ un raccourci permet de prioriser une demande en top priorité.
 * par type (plusieurs possibles) ?
 * par rapporteur (plusieurs possibles) ?
 * par utilisateur assigné (ceux avec personne aussi) (plusieurs possibles)
-* sur numéro de demande 
+* sur numéro de demande
 * plein texte sur le titre puis la description puis un tag
 
 On peut enregistrer un filtrage, lui donner un nom, et le rappeler d'un clic. Les recherches enregistrés sont présentes dans le menu. Ce menu contient par défaut une recherche sur les bugs ouverts par moi et une recherche sur les bug qui me sont assignés.
 
 #### tableau
 
-La liste présente un synthèse des demandes. 
+La liste présente un synthèse des demandes.
 
 est présenté :
 
 * le numéro de la demande
 * le titre
-* la milestone 
+* la milestone
 * le projet
 * J-x si il y a une due date (J+ possible) *code couleur*
 
@@ -169,7 +166,7 @@ Chaque filtrage est enregistrée en session. la recherche se fait en GET (pour p
 
 ### reporting hebdomadaire
 
-il faut choisir une semaine, un mois, une année 
+il faut choisir une semaine, un mois, une année
 
 choisir deux dates ?
 
@@ -190,23 +187,23 @@ sur une semaine, un mois, une année
 
 (simpliciste)
 
-Les utilisateurs accèdent à tous les projets et peuvent tout faire dessus. 
+Les utilisateurs accèdent à tous les projets et peuvent tout faire dessus.
 
-Un droit existe pour donner l'accès à l'interface de priorisation. 
-Un droit existe pour donner l'accès à l'interface de crud (projets/milestone). 
+Un droit existe pour donner l'accès à l'interface de priorisation.
+Un droit existe pour donner l'accès à l'interface de crud (projets/milestone).
 
 ## notification
 
 trigger : à chaque modification d'une demande ou ajout d'une note
 
-Possibilité de s'abonner volontairement (mail ou jabber) (suivre) : 
+Possibilité de s'abonner volontairement (mail ou jabber) (suivre) :
 
 * à une demande
 * à une milestone
 
 L'ajout d'une demande à un milestone entraine une notification spécifique aux utilisateurs abonnés à la milestone.
 
-Une action sur une demande auto abonne l'utilisateur. 
+Une action sur une demande auto abonne l'utilisateur.
 
 On peut se desabonner d'un ticket spécifique (en allant dessus).
 
