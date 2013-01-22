@@ -10,3 +10,5 @@ build/
 vendor
 composer.phar
 php~
+
+.DS_Store
