@@ -31,30 +31,37 @@ class LoadMilestoneData extends AbstractFixture implements FixtureInterface, Ord
      */
     public function load(ObjectManager $em)
     {
+        // Milestone 1
         $milestone = new Milestone;
         $milestone->setName('TMA');
         $milestone->setDescription('Suivi et maintenance');
         $milestone->setProject($this->getReference('project_1'));
+        $milestone->setStatus(Milestone::STATUS_OPEN);
 
-        $em->persist($project);
-        $this->setReference('milestone_1', $project);
+        $em->persist($milestone);
+        $this->setReference('milestone_1', $milestone);
 
+        // Milestone 2
         $milestone = new Milestone;
         $milestone->setName('WebPerf');
         $milestone->setDescription('Mesure de la performance du site web');
         $milestone->setProject($this->getReference('project_2'));
+        $milestone->setStatus(Milestone::STATUS_OPEN);
 
-        $em->persist($project);
-        $this->setReference('milestone_2', $project);
+        $em->persist($milestone);
+        $this->setReference('milestone_2', $milestone);
 
-        $em->flush();
-
+        // Milestone 3
         $milestone = new Milestone;
         $milestone->setName('TMA');
         $milestone->setDescription('Suivi et maintenance');
         $milestone->setProject($this->getReference('project_2'));
+        $milestone->setStatus(Milestone::STATUS_OPEN);
 
-        $em->persist($project);
-        $this->setReference('milestone_3', $project);
+        $em->persist($milestone);
+        $this->setReference('milestone_3', $milestone);
+
+
+        $em->flush();
     }
 }
