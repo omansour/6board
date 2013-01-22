@@ -215,10 +215,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `6board`.`note_status_change` ;
 
 CREATE  TABLE IF NOT EXISTS `6board`.`note_status_change` (
+  `id` INT NOT NULL ,
   `status_from` VARCHAR(45) NOT NULL ,
   `status_to` VARCHAR(45) NOT NULL ,
   `note_id` INT NOT NULL ,
-  PRIMARY KEY (`note_id`) ,
+  `date` DATETIME NOT NULL ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_note_status_change_note1_idx` (`note_id` ASC) ,
   CONSTRAINT `fk_note_status_change_note1`
     FOREIGN KEY (`note_id` )
