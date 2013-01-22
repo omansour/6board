@@ -38,8 +38,6 @@ class NoteCommit
      */
     private $notes;
 
-
-
     /**
      * Get id
      *

@@ -49,14 +49,14 @@ class NoteStatusChange
     public function setStatusFrom($statusFrom)
     {
         $this->statusFrom = $statusFrom;
-    
+
         return $this;
     }
 
     /**
      * Get statusFrom
      *
-     * @return string 
+     * @return string
      */
     public function getStatusFrom()
     {
@@ -72,14 +72,14 @@ class NoteStatusChange
     public function setStatusTo($statusTo)
     {
         $this->statusTo = $statusTo;
-    
+
         return $this;
     }
 
     /**
      * Get statusTo
      *
-     * @return string 
+     * @return string
      */
     public function getStatusTo()
     {
@@ -95,14 +95,14 @@ class NoteStatusChange
     public function setNote(\M6\Bundle\SixBoardBundle\Entity\Note $note)
     {
         $this->note = $note;
-    
+
         return $this;
     }
 
     /**
      * Get note
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\Note 
+     * @return M6\Bundle\SixBoardBundle\Entity\Note
      */
     public function getNote()
     {

@@ -3,6 +3,7 @@
 namespace M6\Bundle\SixBoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * M6\Bundle\SixBoardBundle\Entity\Milestone
@@ -54,7 +55,7 @@ class Milestone
      *
      * @ORM\ManyToMany(targetEntity="Story", mappedBy="milestone")
      */
-    private $story;
+    private $stories;
 
     /**
      * @var Project
@@ -71,7 +72,7 @@ class Milestone
      */
     public function __construct()
     {
-        $this->story = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->stories = new ArrayCollection;
     }
 
 
@@ -185,7 +186,7 @@ class Milestone
      */
     public function addStory(\M6\Bundle\SixBoardBundle\Entity\Story $story)
     {
-        $this->story[] = $story;
+        $this->stories[] = $story;
 
         return $this;
     }
@@ -197,7 +198,7 @@ class Milestone
      */
     public function removeStory(\M6\Bundle\SixBoardBundle\Entity\Story $story)
     {
-        $this->story->removeElement($story);
+        $this->stories->removeElement($story);
     }
 
     /**
@@ -205,9 +206,9 @@ class Milestone
      *
      * @return Doctrine\Common\Collections\Collection
      */
-    public function getStory()
+    public function getStories()
     {
-        return $this->story;
+        return $this->stories;
     }
 
     /**

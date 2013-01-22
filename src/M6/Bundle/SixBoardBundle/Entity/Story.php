@@ -3,6 +3,7 @@
 namespace M6\Bundle\SixBoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * M6\Bundle\SixBoardBundle\Entity\Story
@@ -90,7 +91,7 @@ class Story
      *   }
      * )
      */
-    private $milestone;
+    private $milestones;
 
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
@@ -105,7 +106,7 @@ class Story
      *   }
      * )
      */
-    private $storyTo;
+    private $storiesTo;
 
     /**
      * @var User
@@ -132,8 +133,8 @@ class Story
      */
     public function __construct()
     {
-        $this->milestone = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->storyTo   = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->milestones = new ArrayCollection;
+        $this->storiesTo  = new ArrayCollection;
     }
 
 
@@ -339,7 +340,7 @@ class Story
      */
     public function addMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestone)
     {
-        $this->milestone[] = $milestone;
+        $this->milestones[] = $milestone;
 
         return $this;
     }
@@ -351,7 +352,7 @@ class Story
      */
     public function removeMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestone)
     {
-        $this->milestone->removeElement($milestone);
+        $this->milestones->removeElement($milestone);
     }
 
     /**
@@ -359,9 +360,9 @@ class Story
      *
      * @return Doctrine\Common\Collections\Collection
      */
-    public function getMilestone()
+    public function getMilestones()
     {
-        return $this->milestone;
+        return $this->milestones;
     }
 
     /**
@@ -372,7 +373,7 @@ class Story
      */
     public function addStoryTo(\M6\Bundle\SixBoardBundle\Entity\Story $storyTo)
     {
-        $this->storyTo[] = $storyTo;
+        $this->storiesTo[] = $storyTo;
 
         return $this;
     }
@@ -384,7 +385,7 @@ class Story
      */
     public function removeStoryTo(\M6\Bundle\SixBoardBundle\Entity\Story $storyTo)
     {
-        $this->storyTo->removeElement($storyTo);
+        $this->storiesTo->removeElement($storyTo);
     }
 
     /**
@@ -392,9 +393,9 @@ class Story
      *
      * @return Doctrine\Common\Collections\Collection
      */
-    public function getStoryTo()
+    public function getStoriesTo()
     {
-        return $this->storyTo;
+        return $this->storiesTo;
     }
 
     /**

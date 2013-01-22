@@ -36,7 +36,6 @@ class Project
     private $projectGroupId;
 
 
-
     /**
      * Get id
      *

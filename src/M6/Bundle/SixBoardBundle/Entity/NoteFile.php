@@ -52,8 +52,6 @@ class NoteFile
      */
     private $notes;
 
-
-
     /**
      * Get id
      *
