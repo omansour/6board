@@ -5,7 +5,7 @@ namespace M6\Bundle\SixBoardBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * M6\Bundle\SixBoardBundle\Entity\Note
+ * Note
  *
  * @ORM\Table(name="note")
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Note
 {
     /**
-     * @var integer $id
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,21 +22,21 @@ class Note
     private $id;
 
     /**
-     * @var string $note
+     * @var string
      *
      * @ORM\Column(name="note", type="text", nullable=true)
      */
     private $note;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
     /**
-     * @var Story
+     * @var \Story
      *
      * @ORM\ManyToOne(targetEntity="Story")
      * @ORM\JoinColumns({
@@ -46,7 +46,7 @@ class Note
     private $story;
 
     /**
-     * @var User
+     * @var \User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
@@ -54,6 +54,8 @@ class Note
      * })
      */
     private $user;
+
+
 
     /**
      * Get id
@@ -114,7 +116,7 @@ class Note
     /**
      * Set story
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\Story $story
+     * @param \M6\Bundle\SixBoardBundle\Entity\Story $story
      * @return Note
      */
     public function setStory(\M6\Bundle\SixBoardBundle\Entity\Story $story = null)
@@ -127,7 +129,7 @@ class Note
     /**
      * Get story
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\Story
+     * @return \M6\Bundle\SixBoardBundle\Entity\Story
      */
     public function getStory()
     {
@@ -137,10 +139,10 @@ class Note
     /**
      * Set user
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\User $user
+     * @param \Application\Sonata\UserBundle\Entity\User $user
      * @return Note
      */
-    public function setUser(\M6\Bundle\SixBoardBundle\Entity\User $user = null)
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -150,7 +152,7 @@ class Note
     /**
      * Get user
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\User
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUser()
     {

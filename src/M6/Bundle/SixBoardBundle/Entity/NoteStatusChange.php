@@ -5,7 +5,7 @@ namespace M6\Bundle\SixBoardBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * M6\Bundle\SixBoardBundle\Entity\NoteStatusChange
+ * NoteStatusChange
  *
  * @ORM\Table(name="note_status_change")
  * @ORM\Entity
@@ -13,25 +13,39 @@ use Doctrine\ORM\Mapping as ORM;
 class NoteStatusChange
 {
     /**
-     * @var string $statusFrom
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
      *
      * @ORM\Column(name="status_from", type="string", length=45, nullable=false)
      */
     private $statusFrom;
 
     /**
-     * @var string $statusTo
+     * @var string
      *
      * @ORM\Column(name="status_to", type="string", length=45, nullable=false)
      */
     private $statusTo;
 
     /**
-     * @var Note
+     * @var \DateTime
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Note")
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var \Note
+     *
+     * @ORM\ManyToOne(targetEntity="Note")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="note_id", referencedColumnName="id")
      * })
@@ -39,6 +53,16 @@ class NoteStatusChange
     private $note;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set statusFrom
@@ -87,12 +111,35 @@ class NoteStatusChange
     }
 
     /**
-     * Set note
+     * Set date
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\Note $note
+     * @param \DateTime $date
      * @return NoteStatusChange
      */
-    public function setNote(\M6\Bundle\SixBoardBundle\Entity\Note $note)
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set note
+     *
+     * @param \M6\Bundle\SixBoardBundle\Entity\Note $note
+     * @return NoteStatusChange
+     */
+    public function setNote(\M6\Bundle\SixBoardBundle\Entity\Note $note = null)
     {
         $this->note = $note;
 
@@ -102,7 +149,7 @@ class NoteStatusChange
     /**
      * Get note
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\Note
+     * @return \M6\Bundle\SixBoardBundle\Entity\Note
      */
     public function getNote()
     {

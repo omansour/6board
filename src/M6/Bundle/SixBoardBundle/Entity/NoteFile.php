@@ -5,7 +5,7 @@ namespace M6\Bundle\SixBoardBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * M6\Bundle\SixBoardBundle\Entity\NoteFile
+ * NoteFile
  *
  * @ORM\Table(name="note_file")
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class NoteFile
 {
     /**
-     * @var integer $id
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,28 +22,28 @@ class NoteFile
     private $id;
 
     /**
-     * @var string $name
+     * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
-     * @var string $description
+     * @var string
      *
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
 
     /**
-     * @var string $path
+     * @var string
      *
      * @ORM\Column(name="path", type="text", nullable=false)
      */
     private $path;
 
     /**
-     * @var Note
+     * @var \Note
      *
      * @ORM\ManyToOne(targetEntity="Note")
      * @ORM\JoinColumns({
@@ -51,6 +51,8 @@ class NoteFile
      * })
      */
     private $notes;
+
+
 
     /**
      * Get id
@@ -134,7 +136,7 @@ class NoteFile
     /**
      * Set notes
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\Note $notes
+     * @param \M6\Bundle\SixBoardBundle\Entity\Note $notes
      * @return NoteFile
      */
     public function setNotes(\M6\Bundle\SixBoardBundle\Entity\Note $notes = null)
@@ -147,7 +149,7 @@ class NoteFile
     /**
      * Get notes
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\Note
+     * @return \M6\Bundle\SixBoardBundle\Entity\Note
      */
     public function getNotes()
     {

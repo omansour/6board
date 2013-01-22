@@ -5,8 +5,9 @@ namespace M6\Bundle\SixBoardBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+
 /**
- * M6\Bundle\SixBoardBundle\Entity\Story
+ * Story
  *
  * @ORM\Table(name="story")
  * @ORM\Entity
@@ -14,74 +15,81 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Story
 {
     /**
-     * @var integer $id
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var string $title
+     * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
     private $title;
 
     /**
-     * @var string $description
+     * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @var string $status
+     * @var string
      *
-     * @ORM\Column(name="status", type="string", length=45, nullable=false)
+     * @ORM\Column(name="status", type="string", length=255, nullable=false)
      */
     private $status;
 
     /**
-     * @var \DateTime $dueDate
+     * @var \DateTime
      *
      * @ORM\Column(name="due_date", type="datetime", nullable=true)
      */
     private $dueDate;
 
     /**
-     * @var boolean $complexity
+     * @var boolean
      *
      * @ORM\Column(name="complexity", type="boolean", nullable=true)
      */
     private $complexity;
 
     /**
-     * @var string $closedFor
+     * @var string
      *
-     * @ORM\Column(name="closed_for", type="string", length=45, nullable=true)
+     * @ORM\Column(name="closed_for", type="string", length=255, nullable=false)
      */
     private $closedFor;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
     /**
-     * @var \DateTime $updatedAt
+     * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=false)
      */
     private $updatedAt;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var string
      *
-     * @ORM\ManyToMany(targetEntity="Milestone", inversedBy="story")
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Milestone", inversedBy="stories")
      * @ORM\JoinTable(name="story_has_milestone",
      *   joinColumns={
      *     @ORM\JoinColumn(name="story_id", referencedColumnName="id")
@@ -94,9 +102,9 @@ class Story
     private $milestones;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Story", inversedBy="storyFrom")
+     * @ORM\ManyToMany(targetEntity="Story", inversedBy="fromStories")
      * @ORM\JoinTable(name="story_has_story",
      *   joinColumns={
      *     @ORM\JoinColumn(name="story_id_from", referencedColumnName="id")
@@ -106,10 +114,25 @@ class Story
      *   }
      * )
      */
-    private $storiesTo;
+    private $toStories;
 
     /**
-     * @var User
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="story")
+     * @ORM\JoinTable(name="story_has_tag",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="story_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $tags;
+
+    /**
+     * @var \User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
@@ -119,7 +142,7 @@ class Story
     private $ownerUser;
 
     /**
-     * @var User
+     * @var \User
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
@@ -134,7 +157,8 @@ class Story
     public function __construct()
     {
         $this->milestones = new ArrayCollection;
-        $this->storiesTo  = new ArrayCollection;
+        $this->toStories  = new ArrayCollection;
+        $this->tags       = new ArrayCollection;
     }
 
 
@@ -333,32 +357,55 @@ class Story
     }
 
     /**
-     * Add milestone
+     * Set type
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\Milestone $milestone
+     * @param string $type
      * @return Story
      */
-    public function addMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestone)
+    public function setType($type)
     {
-        $this->milestones[] = $milestone;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Remove milestone
+     * Get type
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\Milestone $milestone
+     * @return string
      */
-    public function removeMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestone)
+    public function getType()
     {
-        $this->milestones->removeElement($milestone);
+        return $this->type;
     }
 
     /**
-     * Get milestone
+     * Add milestones
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @param \M6\Bundle\SixBoardBundle\Entity\Milestone $milestones
+     * @return Story
+     */
+    public function addMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestones)
+    {
+        $this->milestones[] = $milestones;
+
+        return $this;
+    }
+
+    /**
+     * Remove milestones
+     *
+     * @param \M6\Bundle\SixBoardBundle\Entity\Milestone $milestones
+     */
+    public function removeMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestones)
+    {
+        $this->milestones->removeElement($milestones);
+    }
+
+    /**
+     * Get milestones
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMilestones()
     {
@@ -366,45 +413,78 @@ class Story
     }
 
     /**
-     * Add storyTo
+     * Add toStories
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\Story $storyTo
+     * @param \M6\Bundle\SixBoardBundle\Entity\Story $toStory
      * @return Story
      */
-    public function addStoryTo(\M6\Bundle\SixBoardBundle\Entity\Story $storyTo)
+    public function addToStory(\M6\Bundle\SixBoardBundle\Entity\Story $toStory)
     {
-        $this->storiesTo[] = $storyTo;
+        $this->toStories[] = $toStories;
 
         return $this;
     }
 
     /**
-     * Remove storyTo
+     * Remove toStories
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\Story $storyTo
+     * @param \M6\Bundle\SixBoardBundle\Entity\Story $toStory
      */
-    public function removeStoryTo(\M6\Bundle\SixBoardBundle\Entity\Story $storyTo)
+    public function removeToStory(\M6\Bundle\SixBoardBundle\Entity\Story $toStory)
     {
-        $this->storiesTo->removeElement($storyTo);
+        $this->toStories->removeElement($toStories);
     }
 
     /**
-     * Get storyTo
+     * Get toStories
      *
-     * @return Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getStoriesTo()
+    public function getToStories()
     {
-        return $this->storiesTo;
+        return $this->toStories;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \M6\Bundle\SixBoardBundle\Entity\Tag $tags
+     * @return Story
+     */
+    public function addTag(\M6\Bundle\SixBoardBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \M6\Bundle\SixBoardBundle\Entity\Tag $tags
+     */
+    public function removeTag(\M6\Bundle\SixBoardBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 
     /**
      * Set ownerUser
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\User $ownerUser
+     * @param \Application\Sonata\UserBundle\Entity\User $ownerUser
      * @return Story
      */
-    public function setOwnerUser(\M6\Bundle\SixBoardBundle\Entity\User $ownerUser = null)
+    public function setOwnerUser(\Application\Sonata\UserBundle\Entity\User $ownerUser = null)
     {
         $this->ownerUser = $ownerUser;
 
@@ -414,7 +494,7 @@ class Story
     /**
      * Get ownerUser
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\User
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getOwnerUser()
     {
@@ -424,10 +504,10 @@ class Story
     /**
      * Set devUser
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\User $devUser
+     * @param \Application\Sonata\UserBundle\Entity\User $devUser
      * @return Story
      */
-    public function setDevUser(\M6\Bundle\SixBoardBundle\Entity\User $devUser = null)
+    public function setDevUser(\Application\Sonata\UserBundle\Entity\User $devUser = null)
     {
         $this->devUser = $devUser;
 
@@ -437,7 +517,7 @@ class Story
     /**
      * Get devUser
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\User
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getDevUser()
     {

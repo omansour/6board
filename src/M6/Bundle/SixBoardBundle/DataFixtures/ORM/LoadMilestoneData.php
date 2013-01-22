@@ -14,7 +14,6 @@ use M6\Bundle\SixBoardBundle\Entity\Milestone;
  */
 class LoadMilestoneData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
 {
-
     /**
      * Returns the fixture's order
      *

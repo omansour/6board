@@ -5,7 +5,7 @@ namespace M6\Bundle\SixBoardBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * M6\Bundle\SixBoardBundle\Entity\NoteCommit
+ * NoteCommit
  *
  * @ORM\Table(name="note_commit")
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class NoteCommit
 {
     /**
-     * @var integer $id
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,14 +22,14 @@ class NoteCommit
     private $id;
 
     /**
-     * @var string $url
+     * @var string
      *
      * @ORM\Column(name="url", type="text", nullable=false)
      */
     private $url;
 
     /**
-     * @var Note
+     * @var \Note
      *
      * @ORM\ManyToOne(targetEntity="Note")
      * @ORM\JoinColumns({
@@ -37,6 +37,8 @@ class NoteCommit
      * })
      */
     private $notes;
+
+
 
     /**
      * Get id
@@ -74,7 +76,7 @@ class NoteCommit
     /**
      * Set notes
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\Note $notes
+     * @param \M6\Bundle\SixBoardBundle\Entity\Note $notes
      * @return NoteCommit
      */
     public function setNotes(\M6\Bundle\SixBoardBundle\Entity\Note $notes = null)
@@ -87,7 +89,7 @@ class NoteCommit
     /**
      * Get notes
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\Note
+     * @return \M6\Bundle\SixBoardBundle\Entity\Note
      */
     public function getNotes()
     {

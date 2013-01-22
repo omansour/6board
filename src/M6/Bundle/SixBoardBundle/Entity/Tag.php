@@ -3,14 +3,15 @@
 namespace M6\Bundle\SixBoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Project
+ * Tag
  *
- * @ORM\Table(name="project")
+ * @ORM\Table(name="tag")
  * @ORM\Entity
  */
-class Project
+class Tag
 {
     /**
      * @var integer
@@ -29,12 +30,19 @@ class Project
     private $name;
 
     /**
-     * @var integer
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="project_group_id", type="integer", nullable=true)
+     * @ORM\ManyToMany(targetEntity="Story", mappedBy="tags")
      */
-    private $projectGroupId;
+    private $stories;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stories = new ArrayCollection;
+    }
 
 
     /**
@@ -51,7 +59,7 @@ class Project
      * Set name
      *
      * @param string $name
-     * @return Project
+     * @return Tag
      */
     public function setName($name)
     {
@@ -71,25 +79,35 @@ class Project
     }
 
     /**
-     * Set projectGroupId
+     * Add story
      *
-     * @param integer $projectGroupId
-     * @return Project
+     * @param \M6\Bundle\SixBoardBundle\Entity\Story $stories
+     * @return Tag
      */
-    public function setProjectGroupId($projectGroupId)
+    public function addStory(\M6\Bundle\SixBoardBundle\Entity\Story $story)
     {
-        $this->projectGroupId = $projectGroupId;
+        $this->stories[] = $stories;
 
         return $this;
     }
 
     /**
-     * Get projectGroupId
+     * Remove story
      *
-     * @return integer
+     * @param \M6\Bundle\SixBoardBundle\Entity\Story $story
      */
-    public function getProjectGroupId()
+    public function removeStory(\M6\Bundle\SixBoardBundle\Entity\Story $story)
     {
-        return $this->projectGroupId;
+        $this->stories->removeElement($stories);
+    }
+
+    /**
+     * Get stories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStories()
+    {
+        return $this->stories;
     }
 }

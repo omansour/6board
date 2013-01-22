@@ -5,7 +5,7 @@ namespace M6\Bundle\SixBoardBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * M6\Bundle\SixBoardBundle\Entity\Search
+ * Search
  *
  * @ORM\Table(name="search")
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Search
 {
     /**
-     * @var integer $id
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,23 +22,30 @@ class Search
     private $id;
 
     /**
-     * @var string $search
+     * @var string
      *
      * @ORM\Column(name="search", type="text", nullable=false)
      */
     private $search;
 
     /**
-     * @var boolean $public
+     * @var boolean
      *
      * @ORM\Column(name="public", type="boolean", nullable=false)
      */
     private $public;
 
     /**
-     * @var User
+     * @var string
      *
-     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
@@ -104,12 +111,35 @@ class Search
     }
 
     /**
-     * Set user
+     * Set name
      *
-     * @param M6\Bundle\SixBoardBundle\Entity\User $user
+     * @param string $name
      * @return Search
      */
-    public function setUser(\M6\Bundle\SixBoardBundle\Entity\User $user)
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return Search
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -119,7 +149,7 @@ class Search
     /**
      * Get user
      *
-     * @return M6\Bundle\SixBoardBundle\Entity\User
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUser()
     {
