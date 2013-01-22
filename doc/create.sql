@@ -239,7 +239,7 @@ CREATE  TABLE IF NOT EXISTS `6board`.`search` (
   `public` TINYINT(1)  NOT NULL DEFAULT 0 ,
   `user_id` INT NOT NULL ,
   `name` VARCHAR(255) NOT NULL ,
-  PRIMARY KEY (`id`, `user_id`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_search_user1_idx` (`user_id` ASC) ,
   CONSTRAINT `fk_search_user1`
     FOREIGN KEY (`user_id` )
