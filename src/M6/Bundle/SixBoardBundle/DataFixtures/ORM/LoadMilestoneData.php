@@ -61,7 +61,6 @@ class LoadMilestoneData extends AbstractFixture implements FixtureInterface, Ord
         $em->persist($milestone);
         $this->setReference('milestone_3', $milestone);
 
-
         $em->flush();
     }
 }
