@@ -3,6 +3,8 @@
 namespace M6\Bundle\SixBoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Note
@@ -32,6 +34,7 @@ class Note
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
 

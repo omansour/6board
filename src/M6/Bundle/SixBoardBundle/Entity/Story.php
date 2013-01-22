@@ -4,7 +4,7 @@ namespace M6\Bundle\SixBoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Story
@@ -77,7 +77,7 @@ class Story
     /**
      * @var string
      *
-     * @ORM\Column(name="closed_for", type="string", length=255, nullable=false)
+     * @ORM\Column(name="closed_for", type="string", length=255, nullable=true)
      */
     private $closedFor;
 
@@ -85,6 +85,7 @@ class Story
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
 
@@ -92,6 +93,7 @@ class Story
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 
@@ -135,7 +137,7 @@ class Story
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="story")
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="story", cascade={"persist"})
      * @ORM\JoinTable(name="story_has_tag",
      *   joinColumns={
      *     @ORM\JoinColumn(name="story_id", referencedColumnName="id")

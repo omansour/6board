@@ -52,7 +52,13 @@ class NoteStatusChange
      */
     private $note;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->date = new \DateTime;
+    }
 
     /**
      * Get id
