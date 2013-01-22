@@ -14,6 +14,22 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Story
 {
+    const STATUS_CLOSED      = 0;
+    const STATUS_NEW         = 1;
+    const STATUS_VALID       = 2;
+    const STATUS_IN_PROGRESS = 3;
+
+    const CLOSED_FOR_RESOLVED         = 1;
+    const CLOSED_FOR_INVALID          = 2;
+    const CLOSED_FOR_WONT_BE_RESOLVED = 3;
+    const CLOSED_FOR_UNREPRODUCIBLE   = 4;
+    const CLOSED_FOR_DUPLICATE        = 5;
+
+    const TYPE_MAJOR   = 1;
+    const TYPE_MINOR   = 2;
+    const TYPE_ALERT   = 3;
+    const TYPE_FEATURE = 4;
+
     /**
      * @var integer
      *

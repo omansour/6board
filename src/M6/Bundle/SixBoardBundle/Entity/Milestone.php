@@ -13,6 +13,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Milestone
 {
+    const STATUS_CLOSED = 0;
+    const STATUS_OPEN   = 1;
+
     /**
      * @var integer
      *
