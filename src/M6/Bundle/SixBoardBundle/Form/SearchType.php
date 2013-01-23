@@ -6,25 +6,70 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use M6\Bundle\SixBoardBundle\Entity\Milestone;
+use M6\Bundle\SixBoardBundle\Entity\Story;
+
+
 class SearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('project', 'genemu_jqueryselect2_entity', array(
+                'class'    => 'M6\Bundle\SixBoardBundle\Entity\Project',
+                'property' => 'name',
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+            ))
+            ->add('story_status', 'genemu_jqueryselect2_choice', array(
+                'choices'  => Story::$statuses,
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+                'mapped'   => false,
+            ))
+            ->add('story_type', 'genemu_jqueryselect2_choice', array(
+                'choices'  => Story::$types,
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+                'mapped'   => false,
+            ))
+            ->add('milestone', 'genemu_jqueryselect2_entity', array(
+                'class'    => 'M6\Bundle\SixBoardBundle\Entity\Milestone',
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+            ))
+            ->add('milestone_status', 'genemu_jqueryselect2_choice', array(
+                'choices' => Milestone::$statuses,
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+            ))
+            ->add('ownerUser', 'genemu_jqueryselect2_entity', array(
+                'class'    => 'Application\Sonata\UserBundle\Entity\User',
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+            ))
+            ->add('devUser', 'genemu_jqueryselect2_entity', array(
+                'class'    => 'Application\Sonata\UserBundle\Entity\User',
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+            ))
+            ->add('tags', 'genemu_jqueryselect2_entity', array(
+                'class'    => 'M6\Bundle\SixBoardBundle\Entity\Tag',
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+            ))
+
+            ->add('id')
             ->add('description')
-            ->add('status')
-            ->add('dueDate')
-            ->add('complexity')
-            ->add('closedFor')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('type')
-            ->add('milestones')
-            ->add('toStories')
-            ->add('tags')
-            ->add('ownerUser')
-            ->add('devUser')
+            ->add('title')
         ;
     }
 
@@ -50,16 +95,3 @@ class SearchType extends AbstractType
         return 'search_form';
     }
 }
-
-
-
-// filtrage possible
-
-// par projet (plusieurs possibles)
-// par milestone (plusieurs possibles)
-// par statut (plusieurs possibles)
-// par type (plusieurs possibles) ?
-// par rapporteur (plusieurs possibles) ?
-// par utilisateur assigné (ceux avec personne aussi) (plusieurs possibles)
-// sur numéro de demande
-// plein texte sur le titre puis la description puis un tag
