@@ -30,6 +30,20 @@ class Story
     const TYPE_ALERT   = 3;
     const TYPE_FEATURE = 4;
 
+    public static $statuses = array(
+        self::STATUS_CLOSED      => "Closed",
+        self::STATUS_NEW         => "New",
+        self::STATUS_VALID       => "Valid",
+        self::STATUS_IN_PROGRESS => "In progress",
+    );
+
+    public static $types = array(
+        self::TYPE_MAJOR   => "Major",
+        self::TYPE_MINOR   => "Mineur",
+        self::TYPE_ALERT   => "Alert",
+        self::TYPE_FEATURE => "Feature",
+    );
+
     /**
      * @var integer
      *

@@ -16,6 +16,11 @@ class Milestone
     const STATUS_CLOSED = 0;
     const STATUS_OPEN   = 1;
 
+    public static $statuses = array(
+        self::STATUS_CLOSED => "Closed",
+        self::STATUS_OPEN   => "Open",
+    );
+
     /**
      * @var integer
      *
@@ -284,5 +289,15 @@ class Milestone
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * __toString function
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName() .' ('. $this->getProject() .')';
     }
 }

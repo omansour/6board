@@ -110,4 +110,14 @@ class Tag
     {
         return $this->stories;
     }
+
+    /**
+     * __toString function
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }
