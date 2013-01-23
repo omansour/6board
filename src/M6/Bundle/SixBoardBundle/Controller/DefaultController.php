@@ -30,13 +30,13 @@ class DefaultController extends Controller
             $filters = $this->setFilters('m6_search_board', $form->getData());
         }
 
-        $query      = $this->getRepository("M6SixBoardBundle:Story")->search($filters);
-        $maxResults = $this->container->getParameter('max_result_search');
-        $pager      = $this->getPager($request->query->get('page', 1), $maxResults, $query);
+        // $query      = $this->getRepository("M6SixBoardBundle:Story")->search($filters);
+        // $maxResults = $this->container->getParameter('max_result_search');
+        // $pager      = $this->getPager($request->query->get('page', 1), $maxResults, $query);
 
         return array(
             'form'    => $form->createView(),
-            'results' => $pager,
+            // 'results' => $pager,
         );
     }
 
