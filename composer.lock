@@ -892,12 +892,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSecurityExtraBundle",
-                "reference": "ebb72f40c7496f156d0db67f27ad95978ed39e99"
+                "reference": "08e0b4674e02d3e62d9caf1545a0c776816000ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/schmittjoh/JMSSecurityExtraBundle/archive/ebb72f40c7496f156d0db67f27ad95978ed39e99.zip",
-                "reference": "ebb72f40c7496f156d0db67f27ad95978ed39e99",
+                "url": "https://github.com/schmittjoh/JMSSecurityExtraBundle/archive/08e0b4674e02d3e62d9caf1545a0c776816000ea.zip",
+                "reference": "08e0b4674e02d3e62d9caf1545a0c776816000ea",
                 "shasum": ""
             },
             "require": {
@@ -922,7 +922,7 @@
                 "symfony/form": "*",
                 "symfony/validator": "*"
             },
-            "time": "2013-01-18 10:09:22",
+            "time": "2013-01-22 16:17:04",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1551,12 +1551,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "1f35c543a29287a4a53472658cbd4c7c34d4cbec"
+                "reference": "e6f8fe9e55abeb130253d32f89802eb85a93d490"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/1f35c543a29287a4a53472658cbd4c7c34d4cbec.zip",
-                "reference": "1f35c543a29287a4a53472658cbd4c7c34d4cbec",
+                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/e6f8fe9e55abeb130253d32f89802eb85a93d490.zip",
+                "reference": "e6f8fe9e55abeb130253d32f89802eb85a93d490",
                 "shasum": ""
             },
             "require": {
@@ -1581,7 +1581,7 @@
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master",
                 "sonata-project/intl-bundle": "dev-master"
             },
-            "time": "2013-01-22 15:01:56",
+            "time": "2013-01-22 23:42:33",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -1723,12 +1723,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "9679aaa212f84ff40c300bd62b45a30bd131a6f4"
+                "reference": "447c78f3f0697f203efdd44304f4d82389416c05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle/archive/9679aaa212f84ff40c300bd62b45a30bd131a6f4.zip",
-                "reference": "9679aaa212f84ff40c300bd62b45a30bd131a6f4",
+                "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle/archive/447c78f3f0697f203efdd44304f4d82389416c05.zip",
+                "reference": "447c78f3f0697f203efdd44304f4d82389416c05",
                 "shasum": ""
             },
             "require": {
@@ -1736,7 +1736,7 @@
                 "doctrine/orm": ">=2.2,<2.4-dev",
                 "symfony/symfony": ">=2.1,<2.3-dev"
             },
-            "time": "2013-01-22 00:32:54",
+            "time": "2013-01-23 01:27:44",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -1775,12 +1775,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sonata-project/SonataEasyExtendsBundle.git",
-                "reference": "779a64aa342f2d9b599ea03511064a2913195181"
+                "reference": "33d9dced64afc785976828cbc3edf141061fedee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataEasyExtendsBundle/archive/779a64aa342f2d9b599ea03511064a2913195181.zip",
-                "reference": "779a64aa342f2d9b599ea03511064a2913195181",
+                "url": "https://github.com/sonata-project/SonataEasyExtendsBundle/archive/33d9dced64afc785976828cbc3edf141061fedee.zip",
+                "reference": "33d9dced64afc785976828cbc3edf141061fedee",
                 "shasum": ""
             },
             "require": {
@@ -1789,7 +1789,7 @@
                 "symfony/console": "2.*",
                 "symfony/finder": "2.*"
             },
-            "time": "2012-11-26 23:12:18",
+            "time": "2013-01-23 11:39:05",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2320,12 +2320,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "5d896f60f4d2d40174ab758d26e3186de2f91368"
+                "reference": "4bdfb92a3586cf077f4dab90d69b91cb96255f8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/5d896f60f4d2d40174ab758d26e3186de2f91368.zip",
-                "reference": "5d896f60f4d2d40174ab758d26e3186de2f91368",
+                "url": "https://github.com/symfony/symfony/archive/4bdfb92a3586cf077f4dab90d69b91cb96255f8b.zip",
+                "reference": "4bdfb92a3586cf077f4dab90d69b91cb96255f8b",
                 "shasum": ""
             },
             "require": {
@@ -2367,7 +2367,8 @@
                 "symfony/translation": "self.version",
                 "symfony/validator": "self.version",
                 "symfony/yaml": "self.version",
-                "symfony/stopwatch": "self.version"
+                "symfony/stopwatch": "self.version",
+                "symfony/property-access": "self.version"
             },
             "require-dev": {
                 "doctrine/data-fixtures": "1.0.*",
@@ -2379,7 +2380,7 @@
             "suggest": {
                 "doctrine/data-fixtures": "1.0.*"
             },
-            "time": "2013-01-22 11:03:36",
+            "time": "2013-01-23 13:21:06",
             "type": "library",
             "extra": {
                 "branch-alias": {
