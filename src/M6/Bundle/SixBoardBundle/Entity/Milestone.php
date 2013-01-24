@@ -76,7 +76,8 @@ class Milestone
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Story", mappedBy="milestones")
+     * @ORM\OneToMany(targetEntity="StoryMilestone", mappedBy="milestone", cascade={"ALL"}, orphanRemoval)
+     * @ORM\OrderBy({"rank" = "ASC"})
      */
     private $stories;
 
@@ -236,39 +237,6 @@ class Milestone
     }
 
     /**
-     * Add stories
-     *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Story $stories
-     * @return Milestone
-     */
-    public function addStory(\M6\Bundle\SixBoardBundle\Entity\Story $stories)
-    {
-        $this->stories[] = $stories;
-
-        return $this;
-    }
-
-    /**
-     * Remove stories
-     *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Story $stories
-     */
-    public function removeStory(\M6\Bundle\SixBoardBundle\Entity\Story $stories)
-    {
-        $this->stories->removeElement($stories);
-    }
-
-    /**
-     * Get stories
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getStories()
-    {
-        return $this->stories;
-    }
-
-    /**
      * Set project
      *
      * @param \M6\Bundle\SixBoardBundle\Entity\Project $project
@@ -299,5 +267,40 @@ class Milestone
     public function __toString()
     {
         return $this->getName() .' ('. $this->getProject() .')';
+    }
+
+    public function getStories()
+    {
+        return $this->stories;
+    }
+
+    public function addStory(Story $story)
+    {
+        $exists = $this->getStories()->exists(function($s) use ($story) {
+            return $s->getId() === $story->getId();
+        });
+
+        if (!$exists) {
+            $sm = new StoryMilestone();
+            $sm->setMilestone($this);
+            $sm->setStory($story);
+
+            $this->getMilestones()->add($sm);
+        }
+
+        return $this;
+    }
+
+    public function removeStory(Story $story)
+    {
+        $found = $this->getMilestones()->filter(function($s) use ($story) {
+            return $story->getId() === $s->getId();
+        });
+
+        if (count($found)) {
+            $this->getMilestones()->removeElement($found->first());
+        }
+
+        return $this;
     }
 }
