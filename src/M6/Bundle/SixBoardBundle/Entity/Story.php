@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Story
  *
  * @ORM\Table(name="story")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="StoryRepository")
  */
 class Story
 {
@@ -151,7 +151,14 @@ class Story
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="story", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Story", mappedBy="toStories")
+     */
+    private $fromStories;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="stories", cascade={"persist"})
      * @ORM\JoinTable(name="story_has_tag",
      *   joinColumns={
      *     @ORM\JoinColumn(name="story_id", referencedColumnName="id")
@@ -188,9 +195,10 @@ class Story
      */
     public function __construct()
     {
-        $this->milestones = new ArrayCollection;
-        $this->toStories  = new ArrayCollection;
-        $this->tags       = new ArrayCollection;
+        $this->milestones  = new ArrayCollection;
+        $this->toStories   = new ArrayCollection;
+        $this->tags        = new ArrayCollection;
+        $this->fromStories = new ArrayCollection;
     }
 
 
@@ -554,5 +562,25 @@ class Story
     public function getDevUser()
     {
         return $this->devUser;
+    }
+
+    /**
+     * getFromStories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFromStories()
+    {
+        return $this->fromStories;
+    }
+
+    /**
+     * setFromStories
+     *
+     * @param \M6\Bundle\SixBoardBundle\Entity\Story $fromStories
+     */
+    public function setFromStories($fromStories)
+    {
+        $this->fromStories = $fromStories;
     }
 }

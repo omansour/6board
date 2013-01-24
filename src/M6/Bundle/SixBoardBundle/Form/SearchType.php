@@ -67,9 +67,9 @@ class SearchType extends AbstractType
                 'required' => false,
             ))
 
-            ->add('id')
-            ->add('description')
-            ->add('title')
+            ->add('id', null, array('required' => false))
+            ->add('description', null, array('required' => false))
+            ->add('title', null, array('required' => false))
         ;
     }
 
