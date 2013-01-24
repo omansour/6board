@@ -3,6 +3,7 @@
 namespace M6\Bundle\SixBoardBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class Controller extends BaseController
 {
@@ -41,7 +42,6 @@ class Controller extends BaseController
             // Transform entities objects into a pair of class/id
             if (is_object($value)) {
                 if ($value instanceof ArrayCollection) {
-
                     if (count($value)) {
                         $filters[$key] = array(
                             'class' => get_class($value->first()),
