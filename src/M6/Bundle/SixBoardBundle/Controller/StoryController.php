@@ -20,7 +20,7 @@ class StoryController extends Controller
      * @Route("/story/show/{id}", name="show_story")
      * @Template()
      */
-    public function showAction(Request $request, Story $id)
+    public function showAction(Request $request, Story $story)
     {
     }
 
