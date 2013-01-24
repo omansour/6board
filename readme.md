@@ -12,11 +12,11 @@ Gestionaire de demandes (anomalie, évolutions fonctionnelles …) sur des proje
 
 ## priorités
 
-1/ doctrine
-2/ formulaire de filtrage (avec enregistrement en session et GET)
-3/ route de priorisation et priorisation dans la liste
-4/ trigger
-5/ poser le routing
+- [] doctrine
+- [] formulaire de filtrage (avec enregistrement en session et GET)
+- [] route de priorisation et priorisation dans la liste
+- [] trigger
+- [] poser le routing
 
 ## menu et navigation
 
