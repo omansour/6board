@@ -121,15 +121,7 @@ class Story
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Milestone", inversedBy="stories")
-     * @ORM\JoinTable(name="story_has_milestone",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="story_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="milestone_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\OneToMany(targetEntity="StoryMilestone", mappedBy="story", cascade={"ALL"}, orphanRemoval=true)
      */
     private $milestones;
 
@@ -420,39 +412,6 @@ class Story
     }
 
     /**
-     * Add milestones
-     *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Milestone $milestones
-     * @return Story
-     */
-    public function addMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestones)
-    {
-        $this->milestones[] = $milestones;
-
-        return $this;
-    }
-
-    /**
-     * Remove milestones
-     *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Milestone $milestones
-     */
-    public function removeMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestones)
-    {
-        $this->milestones->removeElement($milestones);
-    }
-
-    /**
-     * Get milestones
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMilestones()
-    {
-        return $this->milestones;
-    }
-
-    /**
      * Add toStories
      *
      * @param \M6\Bundle\SixBoardBundle\Entity\Story $toStory
@@ -582,5 +541,40 @@ class Story
     public function setFromStories($fromStories)
     {
         $this->fromStories = $fromStories;
+    }
+
+    public function getMilestones()
+    {
+        return $this->milestones;
+    }
+
+    public function addMilestone(Milestone $m)
+    {
+        $exists = $this->getMilestones()->exists(function($milestone) use ($m) {
+            return $m->getId() === $milestone->getId();
+        });
+
+        if (!$exists) {
+            $sm = new StoryMilestone();
+            $sm->setMilestone($m);
+            $sm->setStory($this);
+
+            $this->getMilestones()->add($sm);
+        }
+
+        return $this;
+    }
+
+    public function removeMilestone(Milestone $m)
+    {
+        $found = $this->getMilestones()->filter(function($milestone) use ($m) {
+            return $m->getId() === $milestone->getId();
+        });
+
+        if (count($found)) {
+            $this->getMilestones()->removeElement($found->first());
+        }
+
+        return $this;
     }
 }
