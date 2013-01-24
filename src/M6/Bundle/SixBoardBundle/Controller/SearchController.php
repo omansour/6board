@@ -12,9 +12,9 @@ use M6\Bundle\SixBoardBundle\Form\SearchType;
 use M6\Bundle\SixBoardBundle\Entity\Story;
 
 /**
- * Default controller
+ * Search controller
  */
-class DefaultController extends Controller
+class SearchController extends Controller
 {
     /**
      * @Route("/", name="homepage")
@@ -64,7 +64,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/reset/filters", name="reset_filters")
+     * @Route("/filters/reset", name="reset_filters")
      * @Template()
      */
     public function resetAction(Request $request)
