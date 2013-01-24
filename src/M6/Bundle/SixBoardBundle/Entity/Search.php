@@ -52,8 +52,6 @@ class Search
      */
     private $user;
 
-
-
     /**
      * Get id
      *
@@ -85,6 +83,16 @@ class Search
     public function getSearch()
     {
         return $this->search;
+    }
+
+    /**
+     * is public
+     *
+     * @return boolean
+     */
+    public function isPublic()
+    {
+        return $this->public;
     }
 
     /**
