@@ -76,7 +76,7 @@ class Milestone
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="StoryMilestone", mappedBy="milestone", cascade={"ALL"}, orphanRemoval)
+     * @ORM\OneToMany(targetEntity="StoryMilestone", mappedBy="milestone", cascade={"ALL"}, orphanRemoval=true)
      * @ORM\OrderBy({"rank" = "ASC"})
      */
     private $stories;
@@ -285,7 +285,7 @@ class Milestone
             $sm->setMilestone($this);
             $sm->setStory($story);
 
-            $this->getMilestones()->add($sm);
+            $this->getStories()->add($sm);
         }
 
         return $this;
@@ -293,12 +293,12 @@ class Milestone
 
     public function removeStory(Story $story)
     {
-        $found = $this->getMilestones()->filter(function($s) use ($story) {
+        $found = $this->getStories()->filter(function($s) use ($story) {
             return $story->getId() === $s->getId();
         });
 
         if (count($found)) {
-            $this->getMilestones()->removeElement($found->first());
+            $this->getStories()->removeElement($found->first());
         }
 
         return $this;
