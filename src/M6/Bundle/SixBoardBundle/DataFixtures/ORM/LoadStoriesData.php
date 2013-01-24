@@ -32,7 +32,7 @@ class LoadStoriesData extends AbstractFixture implements FixtureInterface, Order
      */
     public function load(ObjectManager $em)
     {
-        // Milestone 1
+        // Story 1
         $story = new Story;
         $story->setStatus(Story::STATUS_NEW);
         $story->setTitle('Bannières au mauvais format');
@@ -43,9 +43,44 @@ class LoadStoriesData extends AbstractFixture implements FixtureInterface, Order
             $tag = new Tag;
             $tag->setName('Publicite');
         $story->addTag($tag);
+        $story->setOwnerUser($this->getReference('user_1'));
 
         $em->persist($story);
         $this->setReference('story_1', $story);
+
+        // Story 2
+        $story = new Story;
+        $story->setStatus(Story::STATUS_NEW);
+        $story->setTitle('Vidéo mal lue');
+        $story->setDescription('La vidéo ne se lance pas automatiquement');
+        $story->setDueDate(new \DateTime('now'));
+        $story->setType(Story::TYPE_MINOR);
+        $story->addMilestone($this->getReference('milestone_2'));
+            $tag = new Tag;
+            $tag->setName('Bug');
+        $story->addTag($tag);
+        $story->setOwnerUser($this->getReference('user_1'));
+
+        $em->persist($story);
+        $this->setReference('story_2', $story);
+
+        $em->flush();
+
+        // Story 3
+        $story = new Story;
+        $story->setStatus(Story::STATUS_NEW);
+        $story->setTitle('Tag Google Analystics');
+        $story->setDescription('Rajouter le tag js de GA en async');
+        $story->setDueDate(new \DateTime('now'));
+        $story->setType(Story::TYPE_MAJOR);
+        $story->addMilestone($this->getReference('milestone_2'));
+            $tag = new Tag;
+            $tag->setName('Publicite');
+        $story->addTag($tag);
+        $story->setOwnerUser($this->getReference('user_2'));
+
+        $em->persist($story);
+        $this->setReference('story_2', $story);
 
         $em->flush();
     }
