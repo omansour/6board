@@ -169,6 +169,7 @@ class Story
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="owner_user_id", referencedColumnName="id")
      * })
+     * @Gedmo\Blameable(on="create")
      */
     private $ownerUser;
 

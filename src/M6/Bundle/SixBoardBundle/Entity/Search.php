@@ -3,6 +3,7 @@
 namespace M6\Bundle\SixBoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Search
@@ -49,6 +50,7 @@ class Search
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
+     * @Gedmo\Blameable(on="create")
      */
     private $user;
 
