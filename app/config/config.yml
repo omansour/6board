@@ -88,6 +88,7 @@ stof_doctrine_extensions:
     orm:
         default:
             timestampable: true
+            sortable: true
 
 parameters:
     max_result_search: 20
