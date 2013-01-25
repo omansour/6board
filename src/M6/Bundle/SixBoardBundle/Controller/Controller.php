@@ -16,7 +16,7 @@ class Controller extends BaseController
      */
     protected function getRepository($class)
     {
-        return $this->getDoctrine()->getEntityManager()->getRepository($class);
+        return $this->getDoctrine()->getManager()->getRepository($class);
     }
 
     /**
@@ -48,7 +48,7 @@ class Controller extends BaseController
                             'ids' => array()
                         );
                         foreach ($value as $v) {
-                            $identifier = $this->getDoctrine()->getEntityManager()->getUnitOfWork()->getEntityIdentifier($v);
+                            $identifier = $this->getDoctrine()->getManager()->getUnitOfWork()->getEntityIdentifier($v);
                             $filters[$key]['ids'][] = $identifier['id'];
                         }
                     } else {
@@ -57,7 +57,7 @@ class Controller extends BaseController
                 } elseif (!$value instanceof \DateTime) {
                     $filters[$key] = array(
                         'class' => get_class($value),
-                        'id'    => $this->getDoctrine()->getEntityManager()->getUnitOfWork()->getEntityIdentifier($value)
+                        'id'    => $this->getDoctrine()->getManager()->getUnitOfWork()->getEntityIdentifier($value)
                     );
                 }
             }
@@ -91,9 +91,9 @@ class Controller extends BaseController
             // Get entities from pair of class/id
             if (is_array($value) && isset($value['class'])) {
                 if (isset($value['id'])) {
-                    $filters[$key] = $this->getDoctrine()->getEntityManager()->find($value['class'], $value['id']);
+                    $filters[$key] = $this->getDoctrine()->getManager()->find($value['class'], $value['id']);
                 } elseif (isset($value['ids'])) {
-                    $data = $this->getDoctrine()->getEntityManager()->getRepository($value['class'])->findBy(array('id' => $value['ids']));
+                    $data = $this->getDoctrine()->getManager()->getRepository($value['class'])->findBy(array('id' => $value['ids']));
                     $filters[$key] = new ArrayCollection($data);
                 }
             }

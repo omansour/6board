@@ -96,8 +96,8 @@ class SearchController extends Controller
                 $search->setName($data['name']);
                 $search->setUser($this->getUser());
 
-                $this->getDoctrine()->getEntityManager()->persist($search);
-                $this->getDoctrine()->getEntityManager()->flush();
+                $this->getDoctrine()->getManager()->persist($search);
+                $this->getDoctrine()->getManager()->flush();
 
                 $this->addFlash('success', sprintf('The search named %s has been successfully saved', $data['name']));
             }
