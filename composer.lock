@@ -388,12 +388,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle",
-                "reference": "7bf5d3a1a87e32ce7ff6502386dc5893656d4278"
+                "reference": "398a844934396f7025faa19cddb0a213d8cac66f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle/archive/7bf5d3a1a87e32ce7ff6502386dc5893656d4278.zip",
-                "reference": "7bf5d3a1a87e32ce7ff6502386dc5893656d4278",
+                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle/archive/398a844934396f7025faa19cddb0a213d8cac66f.zip",
+                "reference": "398a844934396f7025faa19cddb0a213d8cac66f",
                 "shasum": ""
             },
             "require": {
@@ -414,7 +414,7 @@
                 "doctrine/doctrine-bundle": "*",
                 "doctrine/mongodb-odm-bundle": "*"
             },
-            "time": "2013-01-22 00:55:42",
+            "time": "2013-01-24 23:26:27",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -457,12 +457,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "baa42fda5607978d70040b9f38b6b3a13823c903"
+                "reference": "93349ad3ab200c7aa69237355c4ee811d359d160"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/l3pp4rd/DoctrineExtensions/archive/baa42fda5607978d70040b9f38b6b3a13823c903.zip",
-                "reference": "baa42fda5607978d70040b9f38b6b3a13823c903",
+                "url": "https://github.com/l3pp4rd/DoctrineExtensions/archive/93349ad3ab200c7aa69237355c4ee811d359d160.zip",
+                "reference": "93349ad3ab200c7aa69237355c4ee811d359d160",
                 "shasum": ""
             },
             "require": {
@@ -482,7 +482,7 @@
                 "doctrine/mongodb": ">=1.0.0",
                 "doctrine/mongodb-odm": ">=1.0.0-BETA7"
             },
-            "time": "2013-01-18 18:21:44",
+            "time": "2013-01-24 18:57:40",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1646,12 +1646,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "f734fbcbc0b17a5559d873b0909de197b36657d0"
+                "reference": "25e5892ce956c4c50bcc17e75d78b8084d49894a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/f734fbcbc0b17a5559d873b0909de197b36657d0.zip",
-                "reference": "f734fbcbc0b17a5559d873b0909de197b36657d0",
+                "url": "https://github.com/sonata-project/SonataAdminBundle/archive/25e5892ce956c4c50bcc17e75d78b8084d49894a.zip",
+                "reference": "25e5892ce956c4c50bcc17e75d78b8084d49894a",
                 "shasum": ""
             },
             "require": {
@@ -1676,7 +1676,7 @@
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master",
                 "sonata-project/intl-bundle": "dev-master"
             },
-            "time": "2013-01-23 23:52:04",
+            "time": "2013-01-24 11:51:06",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2070,12 +2070,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle",
-                "reference": "07739c231346d70b88a05051288b1f237c2b1645"
+                "reference": "202a4a45aed01d40eb3696bb4e91af1b612b3ed1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sonata-project/SonataUserBundle/archive/07739c231346d70b88a05051288b1f237c2b1645.zip",
-                "reference": "07739c231346d70b88a05051288b1f237c2b1645",
+                "url": "https://github.com/sonata-project/SonataUserBundle/archive/202a4a45aed01d40eb3696bb4e91af1b612b3ed1.zip",
+                "reference": "202a4a45aed01d40eb3696bb4e91af1b612b3ed1",
                 "shasum": ""
             },
             "require": {
@@ -2092,7 +2092,7 @@
             "suggest": {
                 "sonata-project/doctrine-orm-admin-bundle": "dev-master"
             },
-            "time": "2013-01-22 14:56:09",
+            "time": "2013-01-25 00:09:45",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -2415,12 +2415,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/symfony/symfony.git",
-                "reference": "c3ee8f65f79312419f9dad3605b0a6c8c2bca5f8"
+                "reference": "5381faed6d0c8c4398c731cba7bbc6c963005471"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/symfony/archive/c3ee8f65f79312419f9dad3605b0a6c8c2bca5f8.zip",
-                "reference": "c3ee8f65f79312419f9dad3605b0a6c8c2bca5f8",
+                "url": "https://github.com/symfony/symfony/archive/5381faed6d0c8c4398c731cba7bbc6c963005471.zip",
+                "reference": "5381faed6d0c8c4398c731cba7bbc6c963005471",
                 "shasum": ""
             },
             "require": {
@@ -2475,7 +2475,7 @@
             "suggest": {
                 "doctrine/data-fixtures": "1.0.*"
             },
-            "time": "2013-01-24 08:14:41",
+            "time": "2013-01-25 06:59:49",
             "type": "library",
             "extra": {
                 "branch-alias": {
