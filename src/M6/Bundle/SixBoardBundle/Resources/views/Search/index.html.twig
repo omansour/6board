@@ -24,7 +24,7 @@
               <td>{{ story.title }}</td>
               <td>
                 {% for milestone in story.milestones %}
-                    {{ milestone }}
+                    {{ milestone.milestone }}
                 {% endfor %}
               </td>
               <td>{{ story.ownerUser }}</td>
