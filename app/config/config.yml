@@ -89,6 +89,8 @@ stof_doctrine_extensions:
         default:
             timestampable: true
             sortable: true
+            blameable: true
+            loggable:  true
 
 parameters:
     max_result_search: 20
@@ -106,3 +108,22 @@ knp_paginator:
 
 genemu_form:
     select2: ~
+
+sonata_user:
+    security_acl:           false
+
+    class:                  # Entity Classes
+        user:               Application\Sonata\UserBundle\Entity\User
+
+    admin:                  # Admin Classes
+        user:
+            class:          Application\Sonata\UserBundle\Admin\UserAdmin
+            controller:     SonataAdminBundle:CRUD
+            translation:    SonataUserBundle
+
+    profile:  # Profile Form (firstname, lastname, etc ...)
+        form:
+            type:               sonata_user_profile
+            handler:            sonata.user.profile.form.handler.default
+            name:               sonata_user_profile_form
+            validation_groups:  [Profile]
