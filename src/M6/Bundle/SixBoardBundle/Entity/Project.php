@@ -29,15 +29,6 @@ class Project
     private $name;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="project_group_id", type="integer", nullable=true)
-     */
-    private $projectGroupId;
-
-
-
-    /**
      * Get id
      *
      * @return integer
@@ -70,28 +61,6 @@ class Project
         return $this->name;
     }
 
-    /**
-     * Set projectGroupId
-     *
-     * @param integer $projectGroupId
-     * @return Project
-     */
-    public function setProjectGroupId($projectGroupId)
-    {
-        $this->projectGroupId = $projectGroupId;
-
-        return $this;
-    }
-
-    /**
-     * Get projectGroupId
-     *
-     * @return integer
-     */
-    public function getProjectGroupId()
-    {
-        return $this->projectGroupId;
-    }
 
     /**
      * __toString function
