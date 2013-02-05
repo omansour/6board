@@ -3,10 +3,11 @@
 namespace M6\Bundle\SixBoardBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+use M6\Bundle\SixBoardBundle\Controller\Controller;
 use M6\Bundle\SixBoardBundle\Entity\Project;
 use M6\Bundle\SixBoardBundle\Form\ProjectType;
 
@@ -15,7 +16,7 @@ use M6\Bundle\SixBoardBundle\Form\ProjectType;
  *
  * @Route("/admin/project")
  */
-class ProjectController extends BaseController
+class ProjectController extends Controller
 {
     /**
      * Lists all Project entities.
@@ -26,9 +27,7 @@ class ProjectController extends BaseController
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('M6SixBoardBundle:Project')->findAll();
+        $entities = $this->getRepository('M6SixBoardBundle:Project')->findAll();
 
         return array(
             'entities' => $entities,
@@ -71,8 +70,8 @@ class ProjectController extends BaseController
      */
     public function newAction()
     {
-        $entity = new Project();
-        $form   = $this->createForm(new ProjectType(), $entity);
+        $entity = new Project;
+        $form   = $this->createForm(new ProjectType, $entity);
 
         return array(
             'entity' => $entity,
@@ -89,9 +88,7 @@ class ProjectController extends BaseController
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('M6SixBoardBundle:Project')->find($id);
+        $entity = $this->getRepository('M6SixBoardBundle:Project')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Project entity.');

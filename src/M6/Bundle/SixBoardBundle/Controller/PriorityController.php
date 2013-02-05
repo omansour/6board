@@ -5,6 +5,8 @@ namespace M6\Bundle\SixBoardBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use M6\Bundle\SixBoardBundle\Controller\Controller;
+
 /**
  * Story controller
  */

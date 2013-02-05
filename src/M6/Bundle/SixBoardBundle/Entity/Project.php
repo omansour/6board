@@ -42,6 +42,7 @@ class Project
      * Set name
      *
      * @param string $name
+     *
      * @return Project
      */
     public function setName($name)

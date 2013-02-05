@@ -6,10 +6,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\EventDispatcher\GenericEvent;
 
 use M6\Bundle\SixBoardBundle\Controller\Controller;
-use M6\Bundle\SixBoardBundle\Form\SearchType;
 use M6\Bundle\SixBoardBundle\Entity\Story;
+use M6\Bundle\SixBoardBundle\Event\Events;
 
 /**
  * Story controller
@@ -22,6 +23,7 @@ class StoryController extends Controller
      */
     public function showAction(Request $request, Story $story)
     {
+
     }
 
     /**
@@ -30,6 +32,10 @@ class StoryController extends Controller
      */
     public function newAction(Request $request)
     {
+        // After persisting the new story :
+        $this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
+        $this->get('event_dispatcher')->dispatch(Events::SUSCRIBE_STORY, new GenericEvent($story));
+
     }
 
 

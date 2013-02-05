@@ -3,10 +3,11 @@
 namespace M6\Bundle\SixBoardBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+use M6\Bundle\SixBoardBundle\Controller\Controller;
 use M6\Bundle\SixBoardBundle\Entity\Milestone;
 use M6\Bundle\SixBoardBundle\Form\MilestoneType;
 
@@ -15,7 +16,7 @@ use M6\Bundle\SixBoardBundle\Form\MilestoneType;
  *
  * @Route("/admin/milestone")
  */
-class MilestoneController extends BaseController
+class MilestoneController extends Controller
 {
     /**
      * Lists all Milestone entities.
@@ -26,9 +27,7 @@ class MilestoneController extends BaseController
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('M6SixBoardBundle:Milestone')->findAll();
+        $entities = $this->getRepository('M6SixBoardBundle:Milestone')->findAll();
 
         return array(
             'entities' => $entities,
@@ -44,8 +43,9 @@ class MilestoneController extends BaseController
      */
     public function createAction(Request $request)
     {
-        $entity  = new Milestone();
-        $form = $this->createForm(new MilestoneType(), $entity);
+        $entity = new Milestone;
+        $form   = $this->createForm(new MilestoneType, $entity);
+
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -71,8 +71,8 @@ class MilestoneController extends BaseController
      */
     public function newAction()
     {
-        $entity = new Milestone();
-        $form   = $this->createForm(new MilestoneType(), $entity);
+        $entity = new Milestone;
+        $form   = $this->createForm(new MilestoneType, $entity);
 
         return array(
             'entity' => $entity,
@@ -89,9 +89,7 @@ class MilestoneController extends BaseController
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('M6SixBoardBundle:Milestone')->find($id);
+        $entity = $this->getRepository('M6SixBoardBundle:Milestone')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Milestone entity.');
@@ -114,15 +112,13 @@ class MilestoneController extends BaseController
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('M6SixBoardBundle:Milestone')->find($id);
+        $entity = $this->getRepository('M6SixBoardBundle:Milestone')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Milestone entity.');
         }
 
-        $editForm = $this->createForm(new MilestoneType(), $entity);
+        $editForm = $this->createForm(new MilestoneType, $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -143,14 +139,14 @@ class MilestoneController extends BaseController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('M6SixBoardBundle:Milestone')->find($id);
+        $entity = $this->getRepository('M6SixBoardBundle:Milestone')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Milestone entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new MilestoneType(), $entity);
+        $editForm   = $this->createForm(new MilestoneType, $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
