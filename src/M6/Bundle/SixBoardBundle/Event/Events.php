@@ -11,4 +11,5 @@ class Events
     const STORY_UPDATE  = 'story.update';
     const MILESTONE_NEW = 'milestone.new';
     const PROJECT_NEW   = 'project.new';
+    const SUBSCRIBE     = 'suscribe.object';
 }

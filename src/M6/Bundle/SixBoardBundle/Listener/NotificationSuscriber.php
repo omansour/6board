@@ -26,8 +26,8 @@ class NotificationSuscriber implements EventSubscriberInterface
      */
     public function __construct(EntityManager $entityManager, Mailer $mailer)
     {
-        $this->mailer = $mailer;
         $this->em     = $entityManager;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -39,9 +39,31 @@ class NotificationSuscriber implements EventSubscriberInterface
     {
         return array(
             Events::STORY_NEW    => 'onNewStory',
-            Events::STORY_UPDATE => 'onUpdateStory'
+            Events::STORY_UPDATE => 'onUpdateStory',
+            Events::SUBSCRIBE     => 'onSuscribe',
         );
     }
+
+    /**
+     * Tiggered by the creation of a new story
+     *
+     * @param GenericEvent $event The generic event
+     */
+    public function onSuscribe(GenericEvent $event)
+    {
+        $object = $event->getSubject();
+        $user   = $event->getArgument('user');
+        $type   = $event->getArgument('type');
+
+        $follower = new Follow;
+        $follower->setUser($user);
+        $follower->objectId($object->getId());
+        $follower->objectClass($type);
+
+        $this->em->persist($follower);
+        $this->em->flush();
+    }
+
 
     /**
      * Tiggered by the creation of a new story
@@ -55,16 +77,16 @@ class NotificationSuscriber implements EventSubscriberInterface
         $followers = $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($story, Follow::STORY);
 
         // gets the followers of the story's milestone too
-        foreach ($story->getMilestones() as $milestone) {
+        foreach ($story->getMilestones() as $storyMilestone) {
+            $milestone   = $storyMilestone->getMilestone();
             $followers[] = $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($milestone, Follow::MILESTONE);
 
             // gets the followers of project's milestone
-            foreach ($milestone->getProject() as $project) {
-                $followers[] = $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($project, Follow::PROJECT);
-            }
+            $project = $milestone->getProject();
+            $followers[] = $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($project, Follow::PROJECT);
         }
 
-        $this->mailer->sendNewStory($story, $user);
+        $this->mailer->sendNewStory($story, $followers);
     }
 
     /**

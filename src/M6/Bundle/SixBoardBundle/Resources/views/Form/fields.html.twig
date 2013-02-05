@@ -1,0 +1,10 @@
+{% block form_widget_simple %}
+{% spaceless %}
+    {% if type is defined and type == 'date' %}
+        {% set type = 'text' %}
+    {% else %}
+        {% set type = type|default('text') %}
+    {% endif %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endspaceless %}
+{% endblock form_widget_simple %}

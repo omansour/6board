@@ -21,6 +21,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources:
+            - 'M6SixBoardBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -94,6 +97,7 @@ stof_doctrine_extensions:
 
 parameters:
     max_result_search: 20
+    mailer_from: 'noreply@m6web.fr'
 
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
@@ -108,6 +112,7 @@ knp_paginator:
 
 genemu_form:
     select2: ~
+    date: ~
 
 sonata_user:
     security_acl:           false
@@ -127,3 +132,5 @@ sonata_user:
             handler:            sonata.user.profile.form.handler.default
             name:               sonata_user_profile_form
             validation_groups:  [Profile]
+
+

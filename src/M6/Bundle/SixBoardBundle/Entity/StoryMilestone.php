@@ -126,4 +126,14 @@ class StoryMilestone
     {
         return $this->milestone;
     }
+
+    /**
+     * __toString function
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getMilestone();
+    }
 }

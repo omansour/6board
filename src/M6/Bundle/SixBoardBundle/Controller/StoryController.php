@@ -11,6 +11,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use M6\Bundle\SixBoardBundle\Controller\Controller;
 use M6\Bundle\SixBoardBundle\Entity\Story;
 use M6\Bundle\SixBoardBundle\Event\Events;
+use M6\Bundle\SixBoardBundle\Form\StoryType;
 
 /**
  * Story controller
@@ -27,17 +28,37 @@ class StoryController extends Controller
     }
 
     /**
-     * @Route("/story/new", name="new_story")
+     * Displays a form to create a new Story entity.
+     *
+     * @Route("/story/new", name="story_new")
      * @Template()
      */
     public function newAction(Request $request)
     {
-        // After persisting the new story :
-        $this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
-        $this->get('event_dispatcher')->dispatch(Events::SUSCRIBE_STORY, new GenericEvent($story));
+        $story = new Story;
+        $story->setOwnerUser($this->getUser());
 
+        $form = $this->createForm(new StoryType, $story);
+
+
+        if ($request->getMethod() == "POST") {
+            $form->bind($request);
+
+            if ($form->isValid()) {
+
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($story);
+                $em->flush();
+
+                // After persisting the new story :
+                $this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
+                $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
+
+            }
+        }
+
+        return array(
+            'form'   => $form->createView(),
+        );
     }
-
-
-
 }

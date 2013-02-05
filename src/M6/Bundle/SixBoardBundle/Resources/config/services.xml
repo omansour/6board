@@ -5,13 +5,11 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-
         <service id="sixboard.mailer.notification.suscriber" class="M6\Bundle\SixBoardBundle\Listener\NotificationSuscriber">
             <tag name="kernel.event_subscriber" />
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="sixboard.mailer.notifyer" />
         </service>
-
         <service id="sixboard.mailer.notifyer" class="M6\Bundle\SixBoardBundle\Mailer\Mailer">
             <argument type="service" id="mailer" />
             <argument type="service" id="templating" />

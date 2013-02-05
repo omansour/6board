@@ -39,7 +39,7 @@ class Story
 
     public static $types = array(
         self::TYPE_MAJOR   => "Major",
-        self::TYPE_MINOR   => "Mineur",
+        self::TYPE_MINOR   => "Minor",
         self::TYPE_ALERT   => "Alert",
         self::TYPE_FEATURE => "Feature",
     );
@@ -577,5 +577,10 @@ class Story
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) '('. $this->getId() .')'.$this->getTitle();
     }
 }

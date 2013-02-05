@@ -11,12 +11,14 @@ use M6\Bundle\SixBoardBundle\Entity\Follow;
  */
 class FollowRepository extends EntityRepository
 {
+
     /**
      * Returns an array of followers for a given type
      *
-     * @param $filters array array of filters
+     * @param object $object The object
+     * @param string $type   The type
      *
-     * @return Query
+     * @return DoctrineCollection
      */
     public function getFollowersFor($object, $type)
     {
