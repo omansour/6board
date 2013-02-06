@@ -86,6 +86,9 @@ class NotificationSuscriber implements EventSubscriberInterface
             $followers[] = $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($project, Follow::PROJECT);
         }
 
+        // We ensure we only send one mail to each person
+        $followers = array_unique($followers);
+
         $this->mailer->sendNewStory($story, $followers);
     }
 
