@@ -40,7 +40,7 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, OrderedF
     /**
      * Loads the fixture
      *
-     * @param  ObjectManager $em The ObjectManager
+     * @param ObjectManager $em The ObjectManager
      */
     public function load(ObjectManager $em)
     {

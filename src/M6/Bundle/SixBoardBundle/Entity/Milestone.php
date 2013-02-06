@@ -100,7 +100,6 @@ class Milestone
         $this->stories    = new ArrayCollection;
     }
 
-
     /**
      * Get id
      *
@@ -114,7 +113,7 @@ class Milestone
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string    $name
      * @return Milestone
      */
     public function setName($name)
@@ -137,7 +136,7 @@ class Milestone
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string    $description
      * @return Milestone
      */
     public function setDescription($description)
@@ -160,7 +159,7 @@ class Milestone
     /**
      * Set dueDate
      *
-     * @param \DateTime $dueDate
+     * @param  \DateTime $dueDate
      * @return Milestone
      */
     public function setDueDate($dueDate)
@@ -183,7 +182,7 @@ class Milestone
     /**
      * Set status
      *
-     * @param string $status
+     * @param  string    $status
      * @return Milestone
      */
     public function setStatus($status)
@@ -206,7 +205,7 @@ class Milestone
     /**
      * Add milestones
      *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Milestone $milestones
+     * @param  \M6\Bundle\SixBoardBundle\Entity\Milestone $milestones
      * @return Milestone
      */
     public function addMilestone(\M6\Bundle\SixBoardBundle\Entity\Milestone $milestones)
@@ -239,7 +238,7 @@ class Milestone
     /**
      * Set project
      *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Project $project
+     * @param  \M6\Bundle\SixBoardBundle\Entity\Project $project
      * @return Milestone
      */
     public function setProject(\M6\Bundle\SixBoardBundle\Entity\Project $project = null)

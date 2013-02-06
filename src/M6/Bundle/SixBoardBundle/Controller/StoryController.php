@@ -5,7 +5,6 @@ namespace M6\Bundle\SixBoardBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 use M6\Bundle\SixBoardBundle\Controller\Controller;
@@ -87,7 +86,6 @@ class StoryController extends Controller
                 // After persisting the new story :
                 $this->get('event_dispatcher')->dispatch(Events::STORY_EDIT, new GenericEvent($story));
                 $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
-
 
                 $savedStory = $this->getRepository("M6SixBoardBundle:Story")->findOneById($story->getId());
 

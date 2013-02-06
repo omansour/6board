@@ -51,8 +51,8 @@ class Mailer
     /**
      * Sends the email when a new story
      *
-     * @param Story  $story The story
-     * @param array  $user  An array of users
+     * @param Story $story The story
+     * @param array $user  An array of users
      */
     public function sendNewStory($story, $users)
     {

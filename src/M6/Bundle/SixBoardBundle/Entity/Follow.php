@@ -3,7 +3,6 @@
 namespace M6\Bundle\SixBoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Follow
@@ -64,7 +63,7 @@ class Follow
     /**
      * Set objectClass
      *
-     * @param string $objectClass
+     * @param  string $objectClass
      * @return Follow
      */
     public function setObjectClass($objectClass)
@@ -87,7 +86,7 @@ class Follow
     /**
      * Set objectId
      *
-     * @param integer $objectId
+     * @param  integer $objectId
      * @return Follow
      */
     public function setObjectId($objectId)

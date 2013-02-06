@@ -28,7 +28,6 @@ class StoryRepository extends EntityRepository
             ->leftJoin('s.tags', 't')
         ;
 
-
         if (isset($filters['project']) && !empty($filters['project']) ) {
             $ids = array();
             $entities = $filters['project']->toArray();

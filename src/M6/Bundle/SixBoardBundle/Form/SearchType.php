@@ -9,7 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use M6\Bundle\SixBoardBundle\Entity\Milestone;
 use M6\Bundle\SixBoardBundle\Entity\Story;
 
-
 class SearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)

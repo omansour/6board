@@ -44,7 +44,6 @@ class Tag
         $this->stories = new ArrayCollection;
     }
 
-
     /**
      * Get id
      *
@@ -58,7 +57,7 @@ class Tag
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Tag
      */
     public function setName($name)
@@ -81,7 +80,7 @@ class Tag
     /**
      * Add story
      *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Story $stories
+     * @param  \M6\Bundle\SixBoardBundle\Entity\Story $stories
      * @return Tag
      */
     public function addStory(\M6\Bundle\SixBoardBundle\Entity\Story $story)

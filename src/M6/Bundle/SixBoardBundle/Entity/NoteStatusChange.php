@@ -73,7 +73,7 @@ class NoteStatusChange
     /**
      * Set statusFrom
      *
-     * @param string $statusFrom
+     * @param  string           $statusFrom
      * @return NoteStatusChange
      */
     public function setStatusFrom($statusFrom)
@@ -96,7 +96,7 @@ class NoteStatusChange
     /**
      * Set statusTo
      *
-     * @param string $statusTo
+     * @param  string           $statusTo
      * @return NoteStatusChange
      */
     public function setStatusTo($statusTo)
@@ -119,7 +119,7 @@ class NoteStatusChange
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param  \DateTime        $date
      * @return NoteStatusChange
      */
     public function setDate($date)
@@ -142,7 +142,7 @@ class NoteStatusChange
     /**
      * Set note
      *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Note $note
+     * @param  \M6\Bundle\SixBoardBundle\Entity\Note $note
      * @return NoteStatusChange
      */
     public function setNote(\M6\Bundle\SixBoardBundle\Entity\Note $note = null)

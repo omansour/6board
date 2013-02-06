@@ -5,7 +5,6 @@ namespace M6\Bundle\SixBoardBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-
 /**
  * Note
  *
@@ -70,7 +69,6 @@ class Note
         $this->story = $story;
     }
 
-
     /**
      * Get id
      *
@@ -84,7 +82,7 @@ class Note
     /**
      * Set note
      *
-     * @param string $note
+     * @param  string $note
      * @return Note
      */
     public function setNote($note)
@@ -107,7 +105,7 @@ class Note
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime $createdAt
      * @return Note
      */
     public function setCreatedAt($createdAt)
@@ -130,7 +128,7 @@ class Note
     /**
      * Set story
      *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Story $story
+     * @param  \M6\Bundle\SixBoardBundle\Entity\Story $story
      * @return Note
      */
     public function setStory(\M6\Bundle\SixBoardBundle\Entity\Story $story = null)
@@ -153,7 +151,7 @@ class Note
     /**
      * Set user
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @param  \Application\Sonata\UserBundle\Entity\User $user
      * @return Note
      */
     public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)

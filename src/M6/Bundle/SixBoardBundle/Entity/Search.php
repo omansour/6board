@@ -67,7 +67,7 @@ class Search
     /**
      * Set search
      *
-     * @param string $search
+     * @param  string $search
      * @return Search
      */
     public function setSearch($search)
@@ -100,7 +100,7 @@ class Search
     /**
      * Set public
      *
-     * @param boolean $public
+     * @param  boolean $public
      * @return Search
      */
     public function setPublic($public)
@@ -123,7 +123,7 @@ class Search
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Search
      */
     public function setName($name)
@@ -146,7 +146,7 @@ class Search
     /**
      * Set user
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @param  \Application\Sonata\UserBundle\Entity\User $user
      * @return Search
      */
     public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)

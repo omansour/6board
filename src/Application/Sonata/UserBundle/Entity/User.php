@@ -40,7 +40,7 @@ class User extends BaseUser
     /**
      * Set jabberId
      *
-     * @param string $jabberId
+     * @param  string $jabberId
      * @return User
      */
     public function setJabberId($jabberId)

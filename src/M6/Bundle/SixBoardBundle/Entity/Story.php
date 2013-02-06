@@ -201,7 +201,6 @@ class Story
         $this->fromStories = new ArrayCollection;
     }
 
-
     /**
      * Get id
      *
@@ -215,7 +214,7 @@ class Story
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string $title
      * @return Story
      */
     public function setTitle($title)
@@ -238,7 +237,7 @@ class Story
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string $description
      * @return Story
      */
     public function setDescription($description)
@@ -261,7 +260,7 @@ class Story
     /**
      * Set status
      *
-     * @param string $status
+     * @param  string $status
      * @return Story
      */
     public function setStatus($status)
@@ -284,7 +283,7 @@ class Story
     /**
      * Set dueDate
      *
-     * @param \DateTime $dueDate
+     * @param  \DateTime $dueDate
      * @return Story
      */
     public function setDueDate($dueDate)
@@ -307,7 +306,7 @@ class Story
     /**
      * Set complexity
      *
-     * @param boolean $complexity
+     * @param  boolean $complexity
      * @return Story
      */
     public function setComplexity($complexity)
@@ -330,7 +329,7 @@ class Story
     /**
      * Set closedFor
      *
-     * @param string $closedFor
+     * @param  string $closedFor
      * @return Story
      */
     public function setClosedFor($closedFor)
@@ -353,7 +352,7 @@ class Story
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime $createdAt
      * @return Story
      */
     public function setCreatedAt($createdAt)
@@ -376,7 +375,7 @@ class Story
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param  \DateTime $updatedAt
      * @return Story
      */
     public function setUpdatedAt($updatedAt)
@@ -399,7 +398,7 @@ class Story
     /**
      * Set type
      *
-     * @param string $type
+     * @param  string $type
      * @return Story
      */
     public function setType($type)
@@ -422,7 +421,7 @@ class Story
     /**
      * Add toStories
      *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Story $toStory
+     * @param  \M6\Bundle\SixBoardBundle\Entity\Story $toStory
      * @return Story
      */
     public function addToStory(\M6\Bundle\SixBoardBundle\Entity\Story $toStory)
@@ -455,7 +454,7 @@ class Story
     /**
      * Add tags
      *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Tag $tags
+     * @param  \M6\Bundle\SixBoardBundle\Entity\Tag $tags
      * @return Story
      */
     public function addTag(\M6\Bundle\SixBoardBundle\Entity\Tag $tags)
@@ -488,7 +487,7 @@ class Story
     /**
      * Set ownerUser
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $ownerUser
+     * @param  \Application\Sonata\UserBundle\Entity\User $ownerUser
      * @return Story
      */
     public function setOwnerUser(\Application\Sonata\UserBundle\Entity\User $ownerUser = null)
@@ -511,7 +510,7 @@ class Story
     /**
      * Set devUser
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $devUser
+     * @param  \Application\Sonata\UserBundle\Entity\User $devUser
      * @return Story
      */
     public function setDevUser(\Application\Sonata\UserBundle\Entity\User $devUser = null)
@@ -590,7 +589,6 @@ class Story
     {
         return (string) '('. $this->getId() .')'.$this->getTitle();
     }
-
 
     public function getNotes()
     {

@@ -34,5 +34,4 @@ class FollowRepository extends EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
-
 }

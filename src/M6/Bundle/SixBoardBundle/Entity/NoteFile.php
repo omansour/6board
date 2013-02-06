@@ -52,8 +52,6 @@ class NoteFile
      */
     private $notes;
 
-
-
     /**
      * Get id
      *
@@ -67,7 +65,7 @@ class NoteFile
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string   $name
      * @return NoteFile
      */
     public function setName($name)
@@ -90,7 +88,7 @@ class NoteFile
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string   $description
      * @return NoteFile
      */
     public function setDescription($description)
@@ -113,7 +111,7 @@ class NoteFile
     /**
      * Set path
      *
-     * @param string $path
+     * @param  string   $path
      * @return NoteFile
      */
     public function setPath($path)
@@ -136,7 +134,7 @@ class NoteFile
     /**
      * Set notes
      *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Note $notes
+     * @param  \M6\Bundle\SixBoardBundle\Entity\Note $notes
      * @return NoteFile
      */
     public function setNotes(\M6\Bundle\SixBoardBundle\Entity\Note $notes = null)

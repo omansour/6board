@@ -38,8 +38,6 @@ class NoteCommit
      */
     private $notes;
 
-
-
     /**
      * Get id
      *
@@ -53,7 +51,7 @@ class NoteCommit
     /**
      * Set url
      *
-     * @param string $url
+     * @param  string     $url
      * @return NoteCommit
      */
     public function setUrl($url)
@@ -76,7 +74,7 @@ class NoteCommit
     /**
      * Set notes
      *
-     * @param \M6\Bundle\SixBoardBundle\Entity\Note $notes
+     * @param  \M6\Bundle\SixBoardBundle\Entity\Note $notes
      * @return NoteCommit
      */
     public function setNotes(\M6\Bundle\SixBoardBundle\Entity\Note $notes = null)

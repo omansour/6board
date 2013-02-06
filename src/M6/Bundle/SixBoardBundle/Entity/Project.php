@@ -62,7 +62,6 @@ class Project
         return $this->name;
     }
 
-
     /**
      * __toString function
      *

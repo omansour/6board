@@ -109,6 +109,4 @@ class NotificationSuscriber implements EventSubscriberInterface
         $story = $event->getSubject();
     }
 
-
-
 }
