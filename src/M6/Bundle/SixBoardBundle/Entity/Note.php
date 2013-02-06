@@ -41,7 +41,7 @@ class Note
     /**
      * @var \Story
      *
-     * @ORM\ManyToOne(targetEntity="Story")
+     * @ORM\ManyToOne(targetEntity="Story", inversedBy="notes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="story_id", referencedColumnName="id")
      * })
@@ -58,6 +58,17 @@ class Note
      */
     private $user;
 
+    /**
+     * The constructor
+     *
+     * @param Application\Sonata\UserBundle\Entity\User $user  The user
+     * @param Story                                     $story The story
+     */
+    public function __construct(\Application\Sonata\UserBundle\Entity\User $user, Story $story)
+    {
+        $this->user  = $user;
+        $this->story = $story;
+    }
 
 
     /**

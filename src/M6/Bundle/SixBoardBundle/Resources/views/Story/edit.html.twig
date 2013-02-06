@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+  <form method="POST" action="{{ path("story_edit", { id : story.id}) }}">
+      {% include "M6SixBoardBundle:Form:form_story.html.twig" %}
+  </form>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ form_javascript(form) }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ form_stylesheet(form) }}
+{% endblock %}

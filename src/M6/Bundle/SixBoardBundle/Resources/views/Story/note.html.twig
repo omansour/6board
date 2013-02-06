@@ -1,0 +1,11 @@
+{% for note in notes %}
+<div class="media">
+  <a class="pull-left" href="#">
+    <img class="media-object" src="http://placekitten.com/g/64/64">
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">#{{ note.id }} by {{ note.user }}</h4>
+    {{ note.note|raw }}
+  </div>
+</div>
+{% endfor %}

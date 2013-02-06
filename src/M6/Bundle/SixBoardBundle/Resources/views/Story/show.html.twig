@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+     <div class="container">
+        <div class="well">
+            <h1>#{{ story.id }} {{ story.title}}</h1>
+            <p>{{ story.description }}</p>
+        </div>
+
+        {{ render(controller('M6SixBoardBundle:Story:note', { 'id': story.id }), {}) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {# form_javascript(form) #}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {# form_stylesheet(form) #}
+{% endblock %}

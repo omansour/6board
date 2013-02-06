@@ -11,6 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table(name="story")
  * @ORM\Entity(repositoryClass="StoryRepository")
+ * @Gedmo\Loggable
  */
 class Story
 {
@@ -71,6 +72,7 @@ class Story
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=255, nullable=false)
+     * @Gedmo\Versioned
      */
     private $status;
 
@@ -182,6 +184,11 @@ class Story
      * })
      */
     private $devUser;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Note", mappedBy="story")
+     */
+    private $notes;
 
     /**
      * Constructor
@@ -582,5 +589,16 @@ class Story
     public function __toString()
     {
         return (string) '('. $this->getId() .')'.$this->getTitle();
+    }
+
+
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    public function setNotes()
+    {
+        $this->notes = $notes;
     }
 }

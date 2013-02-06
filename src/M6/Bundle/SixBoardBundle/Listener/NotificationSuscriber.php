@@ -55,15 +55,22 @@ class NotificationSuscriber implements EventSubscriberInterface
         $user   = $event->getArgument('user');
         $type   = $event->getArgument('type');
 
-        $follower = new Follow;
-        $follower->setUser($user);
-        $follower->objectId($object->getId());
-        $follower->objectClass($type);
+        $result = $this->em->getRepository("M6SixBoardBundle:Follow")->findOneBy(array(
+            'user'        => $user,
+            'objectId'    => $object->getId(),
+            'objectClass' => $type,
+        ));
 
-        $this->em->persist($follower);
-        $this->em->flush();
+        if (!$result) {
+            $follower = new Follow;
+            $follower->setUser($user);
+            $follower->setObjectId($object->getId());
+            $follower->setObjectClass($type);
+
+            $this->em->persist($follower);
+            $this->em->flush();
+        }
     }
-
 
     /**
      * Tiggered by the creation of a new story
@@ -101,5 +108,7 @@ class NotificationSuscriber implements EventSubscriberInterface
     {
         $story = $event->getSubject();
     }
+
+
 
 }
