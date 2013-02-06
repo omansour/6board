@@ -40,7 +40,6 @@ class StoryController extends Controller
 
         $form = $this->createForm(new StoryType, $story);
 
-
         if ($request->getMethod() == "POST") {
             $form->bind($request);
 
@@ -53,7 +52,6 @@ class StoryController extends Controller
                 // After persisting the new story :
                 $this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
                 $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
-
             }
         }
 
