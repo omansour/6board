@@ -19,7 +19,7 @@ class StoryType extends AbstractType
                 'choices'  => Story::$statuses,
                 'multiple' => false,
                 'expanded' => false,
-                'required' => false,
+                'required' => true,
             ))
             ->add('dueDate', 'genemu_jquerydate', array(
             'widget' => 'single_text'
@@ -32,10 +32,11 @@ class StoryType extends AbstractType
                 'required' => true,
             ))
             ->add('milestones', 'genemu_jqueryselect2_entity', array(
-                'class'    => 'M6\Bundle\SixBoardBundle\Entity\StoryMilestone',
+                'class'    => 'M6\Bundle\SixBoardBundle\Entity\Milestone',
                 'multiple' => true,
                 'expanded' => false,
                 'required' => true,
+                'by_reference' => false
             ))
             ->add('tags', 'genemu_jqueryselect2_entity', array(
                 'class'    => 'M6\Bundle\SixBoardBundle\Entity\Tag',

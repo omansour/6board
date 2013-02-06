@@ -54,8 +54,8 @@ class StoryController extends Controller
                 $em->flush();
 
                 // After persisting the new story :
-                $this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
                 $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
+                $this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
             }
         }
 
@@ -84,17 +84,24 @@ class StoryController extends Controller
                 $em->flush();
 
                 // After persisting the new story :
-                $this->get('event_dispatcher')->dispatch(Events::STORY_EDIT, new GenericEvent($story));
                 $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
+                $this->get('event_dispatcher')->dispatch(Events::STORY_EDIT, new GenericEvent($story));
 
-                $savedStory = $this->getRepository("M6SixBoardBundle:Story")->findOneById($story->getId());
 
                 $repository = $this->getRepository('Gedmo\Loggable\Entity\LogEntry');
                 $versions   = $repository->getLogEntries($story);
 
-                $version = array_shift(array_values($versions));
+                // We must take the last known state of the object
+                // Becarefull we can't take $versions[0] cause it's the current object we just edited.
+                // We cant either revert the state of the object as it would modify the object itself
+                // We assume the key 1 always exists, cause the key 0 is created on the object creation
+                // And the key one is created when flushing on line 84
+                $version = $versions[1];
 
                 $repository->revert($story, $version->getVersion());
+
+                $savedStory = $this->getRepository("M6SixBoardBundle:Story")->findOneById($story->getId());
+
 
                 $note = new Note($this->getUser(), $savedStory);
 
@@ -123,6 +130,10 @@ class StoryController extends Controller
 
                 $em->persist($note);
                 $em->flush($note);
+
+                $this->addFlash('success', 'The story has been edited');
+
+                return $this->redirect($this->generateUrl('show_story', array('id' => $savedStory->getId())));
             }
         }
 

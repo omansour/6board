@@ -599,4 +599,9 @@ class Story
     {
         $this->notes = $notes;
     }
+
+    public function getReadableStatus()
+    {
+        return self::$statuses[$this->getStatus()];
+    }
 }

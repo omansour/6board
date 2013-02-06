@@ -52,21 +52,20 @@ class Mailer
      * Sends the email when a new story
      *
      * @param Story $story The story
-     * @param array $user  An array of users
+     * @param array $user  An array of user's mail
      */
     public function sendNewStory($story, $users)
     {
         $template = 'M6SixBoardBundle:Mail:newStory.html.twig';
 
-        $from  = $this->options['from'];
+        $from  = $this->from;
         $title = 'A new story has been created';
 
         foreach ($users as $user) {
-            $to = array($user->getEmail() => $user->getUsername());
+            $to = array($user['emailCanonical'] => $user['emailCanonical']);
 
             $parameters = array(
-                'order' => $order,
-                'user'  => $user
+                'story' => $story
             );
 
             $this->sendMessage($title, $template, $parameters, $from, $to);

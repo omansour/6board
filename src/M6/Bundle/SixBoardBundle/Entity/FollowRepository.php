@@ -23,6 +23,8 @@ class FollowRepository extends EntityRepository
     public function getFollowersFor($object, $type)
     {
         $queryBuilder = $this->createQueryBuilder("f")
+            ->select('u.emailCanonical')
+            ->leftJoin('f.user', 'u')
             ->andWhere('f.objectClass = :objectClass')
             ->andWhere('f.objectId = :objectId')
 
@@ -31,7 +33,7 @@ class FollowRepository extends EntityRepository
                 'objectId'    => $object->getId(),
             ));
 
-        return $queryBuilder->getQuery()->getResult();
+        return $queryBuilder->getQuery()->getScalarResult();
     }
 
 }

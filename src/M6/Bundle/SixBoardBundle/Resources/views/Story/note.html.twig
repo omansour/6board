@@ -4,7 +4,7 @@
         <img class="media-object" src="http://placekitten.com/g/64/64">
       </a>
       <div class="media-body">
-        <h4 class="media-heading">#{{ note.id }} by {{ note.user }}</h4>
+        <h4 class="media-heading">#{{ note.id }} by {{ note.user }} {{ note.createdAt|date('d-m-Y h:i') }}</h4>
         {{ note.note|raw }}
       </div>
     </div>

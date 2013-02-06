@@ -82,15 +82,14 @@ class NotificationSuscriber implements EventSubscriberInterface
         $story = $event->getSubject();
 
         $followers = $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($story, Follow::STORY);
-
         // gets the followers of the story's milestone too
         foreach ($story->getMilestones() as $storyMilestone) {
-            $milestone   = $storyMilestone->getMilestone();
-            $followers[] = $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($milestone, Follow::MILESTONE);
+            $milestone  = $storyMilestone->getMilestone();
+            $followers += $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($milestone, Follow::MILESTONE);
 
             // gets the followers of project's milestone
             $project = $milestone->getProject();
-            $followers[] = $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($project, Follow::PROJECT);
+            $followers += $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($project, Follow::PROJECT);
         }
 
         // We ensure we only send one mail to each person
