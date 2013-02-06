@@ -92,7 +92,7 @@ class StoryController extends Controller
                 $repository = $this->getRepository('Gedmo\Loggable\Entity\LogEntry');
                 $versions   = $repository->getLogEntries($story);
 
-                $version = array_shift(array_values($versions))
+                $version = array_shift(array_values($versions));
 
                 $repository->revert($story, $version->getVersion());
 
