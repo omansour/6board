@@ -13,8 +13,7 @@
         <service id="sixboard.mailer.notifyer" class="M6\Bundle\SixBoardBundle\Mailer\Mailer">
             <argument type="service" id="mailer" />
             <argument type="service" id="templating" />
-            <argument type="service" id="translator" />
-            <argument type="collection"></argument>
+            <argument>%sixboard.mailer.mailer_from%</argument>
         </service>
 
     </services>

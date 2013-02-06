@@ -97,6 +97,8 @@ stof_doctrine_extensions:
 
 parameters:
     max_result_search: 20
+
+m6_six_board:
     mailer_from: 'noreply@m6web.fr'
 
 knp_paginator:

@@ -11,7 +11,7 @@ class Mailer
 {
     protected $mailer;
     protected $templating;
-    protected $options;
+    protected $from;
 
     /**
      * Constructor
@@ -20,11 +20,11 @@ class Mailer
      * @param EngineInterface $templating The templating
      * @param array           $options    An array of options
      */
-    public function __construct(\Swift_Mailer $mailer, EngineInterface $templating, $translator, array $options = array())
+    public function __construct(\Swift_Mailer $mailer, EngineInterface $templating, $from)
     {
         $this->mailer     = $mailer;
         $this->templating = $templating;
-        $this->options    = $options;
+        $this->from       = $from;
     }
 
     /**
