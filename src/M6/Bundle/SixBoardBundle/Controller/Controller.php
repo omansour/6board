@@ -20,14 +20,14 @@ class Controller extends BaseController
     }
 
     /**
-     * Set flash
+     * add flash
      *
      * @param string $type type
      * @param string $text text
      */
-    protected function setFlash($type, $text)
+    protected function addFlash($type, $text)
     {
-        $this->get('session')->getFlashBag()->add($type, $this->trans($text));
+        $this->get('session')->getFlashBag()->add($type, $text);
     }
 
     /**
