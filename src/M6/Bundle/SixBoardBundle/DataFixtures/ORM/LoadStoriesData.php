@@ -8,6 +8,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use M6\Bundle\SixBoardBundle\Entity\Story;
+use M6\Bundle\SixBoardBundle\Entity\StoryMilestone;
 use M6\Bundle\SixBoardBundle\Entity\Tag;
 
 /**
@@ -39,9 +40,16 @@ class LoadStoriesData extends AbstractFixture implements FixtureInterface, Order
         $story->setDescription('Il faudrait prévoir de mettre les bannières au format 500x300');
         $story->setDueDate(new \DateTime('now'));
         $story->setType(Story::TYPE_MINOR);
-        $story->addMilestone($this->getReference('milestone_1'));
+
+            $sm = new StoryMilestone();
+            $sm->setMilestone($this->getReference('milestone_1'));
+            $sm->setStory($story);
+
+        $story->addStoryMilestone($sm);
+
             $tag = new Tag;
             $tag->setName('Publicite');
+
         $story->addTag($tag);
         $story->setOwnerUser($this->getReference('user_1'));
 
@@ -55,7 +63,12 @@ class LoadStoriesData extends AbstractFixture implements FixtureInterface, Order
         $story->setDescription('La vidéo ne se lance pas automatiquement');
         $story->setDueDate(new \DateTime('now'));
         $story->setType(Story::TYPE_MINOR);
-        $story->addMilestone($this->getReference('milestone_2'));
+
+            $sm = new StoryMilestone();
+            $sm->setMilestone($this->getReference('milestone_2'));
+            $sm->setStory($story);
+
+        $story->addStoryMilestone($sm);
             $tag = new Tag;
             $tag->setName('Bug');
         $story->addTag($tag);
@@ -73,7 +86,12 @@ class LoadStoriesData extends AbstractFixture implements FixtureInterface, Order
         $story->setDescription('Rajouter le tag js de GA en async');
         $story->setDueDate(new \DateTime('now'));
         $story->setType(Story::TYPE_MAJOR);
-        $story->addMilestone($this->getReference('milestone_2'));
+
+            $sm = new StoryMilestone();
+            $sm->setMilestone($this->getReference('milestone_2'));
+            $sm->setStory($story);
+
+        $story->addStoryMilestone($sm);
             $tag = new Tag;
             $tag->setName('Publicite');
         $story->addTag($tag);

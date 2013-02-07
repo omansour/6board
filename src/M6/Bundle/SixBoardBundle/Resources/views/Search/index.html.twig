@@ -21,10 +21,10 @@
           {% for story in pagination %}
           <tr {% if loop.index is odd %}class="color"{% endif %}>
               <td>{{ story.id }}</td>
-              <td>{{ story.title }}</td>
+              <td><a href="{{ path("show_story", { id: story.id }) }}">{{ story.title }}</a></td>
               <td>
-                {% for milestone in story.milestones %}
-                    {{ milestone.milestone }}
+                {% for storyMilestone in story.storyMilestones %}
+                    {{ storyMilestone.milestone }}
                 {% endfor %}
               </td>
               <td>{{ story.ownerUser }}</td>

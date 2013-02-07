@@ -10,10 +10,15 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="sixboard.mailer.notifyer" />
         </service>
+
         <service id="sixboard.mailer.notifyer" class="M6\Bundle\SixBoardBundle\Mailer\Mailer">
             <argument type="service" id="mailer" />
             <argument type="service" id="templating" />
             <argument>%sixboard.mailer.mailer_from%</argument>
+        </service>
+
+        <service id="sixboard.state_listener" class="M6\Bundle\SixBoardBundle\Listener\StateListener">
+            <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 
     </services>

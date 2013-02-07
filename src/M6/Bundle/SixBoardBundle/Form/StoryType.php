@@ -8,8 +8,14 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use M6\Bundle\SixBoardBundle\Entity\Story;
 
+/**
+ * StoryType Form
+ */
 class StoryType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -53,13 +59,19 @@ class StoryType extends AbstractType
         ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'M6\Bundle\SixBoardBundle\Form\Model\Story'
+            'data_class' => 'M6\Bundle\SixBoardBundle\Entity\Story'
         ));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return 'story_type';

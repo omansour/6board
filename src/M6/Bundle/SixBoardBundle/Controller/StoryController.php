@@ -13,7 +13,6 @@ use M6\Bundle\SixBoardBundle\Entity\Follow;
 use M6\Bundle\SixBoardBundle\Entity\Note;
 use M6\Bundle\SixBoardBundle\Event\Events;
 use M6\Bundle\SixBoardBundle\Form\StoryType;
-use M6\Bundle\SixBoardBundle\Form\Model\Story as FormStory;
 
 /**
  * Story controller
@@ -40,12 +39,10 @@ class StoryController extends Controller
      */
     public function newAction(Request $request)
     {
-        $story = new Story;
+        $story = new Story($this->getUser());
         $story->setOwnerUser($this->getUser());
 
-        $formStory = new FormStory($story);
-
-        $form = $this->createForm(new StoryType, $formStory);
+        $form = $this->createForm(new StoryType, $story);
 
         if ($request->getMethod() == "POST") {
             $form->bind($request);
@@ -53,13 +50,16 @@ class StoryController extends Controller
             if ($form->isValid()) {
 
                 $em = $this->getDoctrine()->getEntityManager();
-                ldd($formStory->getStory());
-                $em->persist($formStory->getStory());
+                $em->persist($story);
                 $em->flush();
 
                 // After persisting the new story :
-                $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
-                $this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
+                //$this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
+                //$this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
+
+                $this->addFlash('success', 'The story has been added');
+
+                return $this->redirect($this->generateUrl("show_story", array('id' => $story->getId())));
             }
         }
 
@@ -76,10 +76,18 @@ class StoryController extends Controller
      */
     public function editAction(Request $request, Story $story)
     {
+        $story->setUser($this->getUser());
         $form = $this->createForm(new StoryType, $story);
+
+        $prevCollections = $story->getStoryMilestones();
+        $prevCollections = $prevCollections->toArray();
 
         if ($request->getMethod() == "POST") {
             $form->bind($request);
+
+            foreach($prevCollections as $sm) {
+                $story->removeStoryMilestone($sm);
+            }
 
             if ($form->isValid()) {
 
@@ -91,53 +99,9 @@ class StoryController extends Controller
                 $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
                 $this->get('event_dispatcher')->dispatch(Events::STORY_EDIT, new GenericEvent($story));
 
-
-                $repository = $this->getRepository('Gedmo\Loggable\Entity\LogEntry');
-                $versions   = $repository->getLogEntries($story);
-
-                // We must take the last known state of the object
-                // Becarefull we can't take $versions[0] cause it's the current object we just edited.
-                // We cant either revert the state of the object as it would modify the object itself
-                // We assume the key 1 always exists, cause the key 0 is created on the object creation
-                // And the key one is created when flushing on line 84
-                $version = $versions[1];
-
-                $repository->revert($story, $version->getVersion());
-
-                $savedStory = $this->getRepository("M6SixBoardBundle:Story")->findOneById($story->getId());
-
-
-                $note = new Note($this->getUser(), $savedStory);
-
-                $content = '';
-
-                foreach ($version->getData() as $key => $data) {
-                    switch ($key) {
-                        case 'status':
-                            $newStatus = $savedStory->{'get'.ucfirst($key)}();
-                            $newStatus = Story::$statuses[$newStatus];
-
-                            $oldStatus = $story->{'get'.ucfirst($key)}();
-                            $oldStatus = Story::$statuses[$oldStatus];
-
-                            $content .= $key. ' has changed from ' .  $oldStatus  . ' to ' . $newStatus . '<br />';
-                            break;
-
-                        default:
-                            $content .= $key. ' has changed from ' .  $story->{'get'.ucfirst($key)}()  . ' to ' . $savedStory->{'get'.ucfirst($key)}() . '<br />';
-                            break;
-                    }
-                }
-
-                $story = $savedStory;
-                $note->setNote($content);
-
-                $em->persist($note);
-                $em->flush($note);
-
                 $this->addFlash('success', 'The story has been edited');
 
-                return $this->redirect($this->generateUrl('show_story', array('id' => $savedStory->getId())));
+                return $this->redirect($this->generateUrl('show_story', array('id' => $story->getId())));
             }
         }
 

@@ -20,7 +20,7 @@ class StoryRepository extends EntityRepository
     public function search($filters)
     {
         $queryBuilder = $this->createQueryBuilder("s")
-            ->leftJoin('s.milestones', 'sm')
+            ->leftJoin('s.storyMilestones', 'sm')
             ->leftJoin('sm.milestone', 'm')
             ->leftJoin('m.project', 'p')
             ->leftJoin('s.ownerUser', 'ousr')

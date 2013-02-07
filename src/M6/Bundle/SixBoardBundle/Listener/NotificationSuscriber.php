@@ -83,7 +83,7 @@ class NotificationSuscriber implements EventSubscriberInterface
 
         $followers = $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($story, Follow::STORY);
         // gets the followers of the story's milestone too
-        foreach ($story->getMilestones() as $storyMilestone) {
+        foreach ($story->getStoryMilestones() as $storyMilestone) {
             $milestone  = $storyMilestone->getMilestone();
             $followers += $this->em->getRepository("M6SixBoardBundle:Follow")->getFollowersFor($milestone, Follow::MILESTONE);
 

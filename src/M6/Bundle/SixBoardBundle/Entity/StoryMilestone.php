@@ -33,7 +33,7 @@ class StoryMilestone
     /**
      * @var Story
      *
-     * @ORM\ManyToOne(targetEntity="Story", inversedBy="milestones")
+     * @ORM\ManyToOne(targetEntity="Story", inversedBy="storyMilestones")
      */
     private $story;
 

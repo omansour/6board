@@ -127,6 +127,8 @@ class Story
      */
     private $storyMilestones;
 
+    private $milestones;
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -190,15 +192,19 @@ class Story
      */
     private $notes;
 
+    private $user;
+
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct($user = null)
     {
         $this->storyMilestones = new ArrayCollection;
+        $this->milestones      = new ArrayCollection;
         $this->toStories       = new ArrayCollection;
         $this->tags            = new ArrayCollection;
         $this->fromStories     = new ArrayCollection;
+        $this->user            = $user;
     }
 
     /**
@@ -565,6 +571,30 @@ class Story
         $this->storyMilestones->removeElement($m);
     }
 
+    public function getMilestones()
+    {
+        $milestones = new ArrayCollection();
+
+        foreach ($this->storyMilestones as $sm) {
+            $milestones[] = $sm->getMilestone();
+        }
+
+        return $milestones;
+    }
+
+    public function setMilestones($milestones)
+    {
+        foreach ($milestones as $m) {
+            $sm = new StoryMilestone();
+
+            $sm->setStory($this);
+            $sm->setMilestone($m);
+
+            $this->addStoryMilestone($sm);
+        }
+
+    }
+
     public function __toString()
     {
         return (string) '('. $this->getId() .')'.$this->getTitle();
@@ -583,5 +613,15 @@ class Story
     public function getReadableStatus()
     {
         return self::$statuses[$this->getStatus()];
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 }
