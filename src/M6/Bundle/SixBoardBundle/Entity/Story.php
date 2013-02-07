@@ -125,7 +125,7 @@ class Story
      *
      * @ORM\OneToMany(targetEntity="StoryMilestone", mappedBy="story", cascade={"ALL"}, orphanRemoval=true)
      */
-    private $milestones;
+    private $storyMilestones;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -195,10 +195,10 @@ class Story
      */
     public function __construct()
     {
-        $this->milestones  = new ArrayCollection;
-        $this->toStories   = new ArrayCollection;
-        $this->tags        = new ArrayCollection;
-        $this->fromStories = new ArrayCollection;
+        $this->storyMilestones = new ArrayCollection;
+        $this->toStories       = new ArrayCollection;
+        $this->tags            = new ArrayCollection;
+        $this->fromStories     = new ArrayCollection;
     }
 
     /**
@@ -550,39 +550,19 @@ class Story
         $this->fromStories = $fromStories;
     }
 
-    public function getMilestones()
+    public function getStoryMilestones()
     {
-        return $this->milestones;
+        return $this->storyMilestones;
     }
 
-    public function addMilestone(Milestone $m)
+    public function addStoryMilestone(StoryMilestone $m)
     {
-        $exists = $this->getMilestones()->exists(function($milestone) use ($m) {
-            return $m->getId() === $milestone->getId();
-        });
-
-        if (!$exists) {
-            $sm = new StoryMilestone();
-            $sm->setMilestone($m);
-            $sm->setStory($this);
-
-            $this->getMilestones()->add($sm);
-        }
-
-        return $this;
+        $this->storyMilestones->add($m);
     }
 
-    public function removeMilestone(Milestone $m)
+    public function removeStoryMilestone(StoryMilestone $m)
     {
-        $found = $this->getMilestones()->filter(function($milestone) use ($m) {
-            return $m->getId() === $milestone->getId();
-        });
-
-        if (count($found)) {
-            $this->getMilestones()->removeElement($found->first());
-        }
-
-        return $this;
+        $this->storyMilestones->removeElement($m);
     }
 
     public function __toString()

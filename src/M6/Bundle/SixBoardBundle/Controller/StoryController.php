@@ -13,6 +13,7 @@ use M6\Bundle\SixBoardBundle\Entity\Follow;
 use M6\Bundle\SixBoardBundle\Entity\Note;
 use M6\Bundle\SixBoardBundle\Event\Events;
 use M6\Bundle\SixBoardBundle\Form\StoryType;
+use M6\Bundle\SixBoardBundle\Form\Model\Story as FormStory;
 
 /**
  * Story controller
@@ -42,7 +43,9 @@ class StoryController extends Controller
         $story = new Story;
         $story->setOwnerUser($this->getUser());
 
-        $form = $this->createForm(new StoryType, $story);
+        $formStory = new FormStory($story);
+
+        $form = $this->createForm(new StoryType, $formStory);
 
         if ($request->getMethod() == "POST") {
             $form->bind($request);
@@ -50,7 +53,8 @@ class StoryController extends Controller
             if ($form->isValid()) {
 
                 $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($story);
+                ldd($formStory->getStory());
+                $em->persist($formStory->getStory());
                 $em->flush();
 
                 // After persisting the new story :

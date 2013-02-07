@@ -56,7 +56,7 @@ class StoryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'M6\Bundle\SixBoardBundle\Entity\Story'
+            'data_class' => 'M6\Bundle\SixBoardBundle\Form\Model\Story'
         ));
     }
 
