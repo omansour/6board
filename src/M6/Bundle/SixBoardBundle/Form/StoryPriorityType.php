@@ -6,8 +6,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SearchPriorityType extends AbstractType
+class StoryPriorityType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -15,30 +18,16 @@ class SearchPriorityType extends AbstractType
                 'class'    => 'M6\Bundle\SixBoardBundle\Entity\Milestone',
                 'multiple' => false,
                 'expanded' => false,
-                'required' => false,
+                'required' => true,
             ))
         ;
     }
 
     /**
-     * setDefaultOptions
-     *
-     * @param OptionsResolverInterface $resolver The resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(array(
-            'csrf_protection' => false,
-        ));
-    }
-
-    /**
-     * Returns the name of the form
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
-        return 'search_priority_form';
+        return 'priority_story';
     }
 }

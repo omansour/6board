@@ -142,4 +142,23 @@ class StoryRepository extends EntityRepository
 
         return $queryBuilder->getQuery();
     }
+
+    /**
+     * Retrieves the stories attached to the given milestone
+     *
+     * @param Milestone $milestone The milestone
+     *
+     * @return array
+     */
+    public function fecthStoryViaMilestone($milestone)
+    {
+        $queryBuilder = $this->createQueryBuilder("s")
+            ->leftJoin('s.storyMilestones', 'sm')
+            ->leftJoin('sm.milestone', 'm')
+            ->where('m.id = :milestone_id')
+            ->orderBy('sm.rank', 'ASC')
+            ->setParameter('milestone_id', $milestone->getId());
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

@@ -1,0 +1,76 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+<form method="POST" action="{{ path("story_priority_index") }}">
+    <div class="hero-unit">
+        {{ form_widget(form) }}
+        <input type="submit" value="Search" class="btn btn-info" />
+    </div>
+</form>
+
+{% if results is not null %}
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th class="span2"></th>
+      <th class="span2"></th>
+      <th class="span2"></th>
+      <th class="span9"></th>
+      <th class="span2"></th>
+    </tr>
+  </thead>
+  <tbody class="sortable">
+    {% for story in results %}
+        <tr data-story-id="{{ story.id }}">
+          <td><a href="#"><i class="icon-star-empty"></i>{{ story.id }}</a></td>
+          <td><strong>{{ story.ownerUser }}</strong></td>
+          <td><span class="label pull-right">{{ story.readableStatus }}</span></td>
+          <td><strong>{{ story.title }}</strong></td>
+          <td><strong>{{ story.dueDate|date('d-m-Y') }}</strong></td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ form_javascript(form) }}
+
+    {% if results is not null %}
+    <script>
+        $(function() {
+
+            var fixHelper = function(e, ui) {
+                ui.children().each(function() {
+                    $(this).width($(this).width());
+                });
+                return ui;
+            };
+
+            $(".sortable").sortable({
+                helper: fixHelper,
+                revert: true,
+                update: function(event, ui) {
+                    var position = ui.item.index();
+                    var id       = $(this).find('tr').attr('data-story-id');
+                    var orderRoute = "{{ path('reorder_story', { 'id' : milestoneId}) }}";
+
+                    console.log(position, id);
+                    $.get(orderRoute, { 'storyId' : id, 'position': position});
+                }
+            }).disableSelection();
+
+
+        });
+    </script>
+    {% endif %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ form_stylesheet(form) }}
+{% endblock %}

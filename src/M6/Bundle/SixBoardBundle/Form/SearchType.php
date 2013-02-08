@@ -11,6 +11,9 @@ use M6\Bundle\SixBoardBundle\Entity\Story;
 
 class SearchType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

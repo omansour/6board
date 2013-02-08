@@ -54,8 +54,8 @@ class StoryController extends Controller
                 $em->flush();
 
                 // After persisting the new story :
-                //$this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
-                //$this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
+                $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
+                $this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
 
                 $this->addFlash('success', 'The story has been added');
 
@@ -125,5 +125,7 @@ class StoryController extends Controller
             'notes' => $story->getNotes()
         );
     }
+
+
 
 }

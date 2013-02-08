@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * StoryMilestone
  *
  * @ORM\Table(name="story_milestone")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Gedmo\Sortable\Entity\Repository\SortableRepository")
  */
 class StoryMilestone
 {
