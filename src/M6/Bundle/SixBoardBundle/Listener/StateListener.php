@@ -42,29 +42,35 @@ class StateListener implements EventSubscriber
 
                     $changeSet = $uow->getEntityChangeSet($entity);
 
-                    $note    = new Note($entity->getUser(), $entity);
-                    $content = '';
+                    $note      = new Note($entity->getUser(), $entity);
+                    $content   = '';
+                    $toPersist = false;
 
                     foreach ($changeSet as $key => $data) {
-                        if ($data[0] != $data[1]) {
+                        if ($data[0] == $data[1]) {
+                            // there are no changes
+                        } else {
                             switch ($key) {
                                 case 'status':
+                                    $toPersist = true;
                                     $oldStatus = Story::$statuses[$data[0]];
                                     $newStatus = Story::$statuses[$data[1]];
 
                                     $content .= $key. ' has changed from ' .  $oldStatus  . ' to ' . $newStatus . '<br />';
                                     break;
 
-                                // other case to handle
+                                // other cases to handle
                             }
                         }
                     }
 
-                    $note->setNote($content);
-                    $em->persist($note);
+                    if ($toPersist) {
+                        $note->setNote($content);
+                        $em->persist($note);
 
-                    // ajoute a la liste des chose à sauvegarder car le persist ne suffit pas pour le onFlush()
-                    $uow->computeChangeSet($em->getClassMetadata(get_class($note)), $note);
+                        // ajoute a la liste des chose à sauvegarder car le persist ne suffit pas pour le onFlush()
+                        $uow->computeChangeSet($em->getClassMetadata(get_class($note)), $note);
+                    }
                 }
             }
         }
