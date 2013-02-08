@@ -61,7 +61,7 @@ class Milestone
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Milestone", inversedBy="milestones")
+     * @ORM\ManyToMany(targetEntity="Milestone", inversedBy="attachedMilestones")
      * @ORM\JoinTable(name="milestone_has_autoaddmilestone",
      *   joinColumns={
      *     @ORM\JoinColumn(name="milestone_id", referencedColumnName="id")
@@ -72,6 +72,11 @@ class Milestone
      * )
      */
     private $milestones;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Milestone", mappedBy="milestones")
+     **/
+    private $attachedMilestones;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -96,8 +101,9 @@ class Milestone
      */
     public function __construct()
     {
-        $this->milestones = new ArrayCollection;
-        $this->stories    = new ArrayCollection;
+        $this->attachedMilestones = new ArrayCollection;
+        $this->milestones         = new ArrayCollection;
+        $this->stories            = new ArrayCollection;
     }
 
     /**
@@ -301,5 +307,15 @@ class Milestone
         }
 
         return $this;
+    }
+
+    public function getAttachedMilestones()
+    {
+        return $this->attachedMilestones;
+    }
+
+    public function setAttachedMilestones($attachedMilestones)
+    {
+        $this->attachedMilestones = $attachedMilestones;
     }
 }
