@@ -71,7 +71,7 @@ class Story
     /**
      * @var smallint
      *
-     * @ORM\Column(name="status", type="smallint", length=255, nullable=false)
+     * @ORM\Column(name="status", type="smallint", nullable=false)
      * @Gedmo\Versioned
      */
     private $status;
@@ -116,7 +116,7 @@ class Story
     /**
      * @var smallint
      *
-     * @ORM\Column(name="type", type="smallint", length=255, nullable=false)
+     * @ORM\Column(name="type", type="smallint", nullable=false)
      */
     private $type;
 
@@ -613,6 +613,11 @@ class Story
     public function getReadableStatus()
     {
         return self::$statuses[$this->getStatus()];
+    }
+
+    public function getReadableTypes()
+    {
+        return self::$types[$this->getType()];
     }
 
     public function getUser()
