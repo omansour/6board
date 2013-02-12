@@ -71,4 +71,28 @@ class Mailer
             $this->sendMessage($title, $template, $parameters, $from, $to);
         }
     }
+
+    /**
+     * Sends the email when a new note
+     *
+     * @param Note  $note The note
+     * @param array $user An array of user's mail
+     */
+    public function sendNewNote($story, $users)
+    {
+        $template = 'M6SixBoardBundle:Mail:newNote.html.twig';
+
+        $from  = $this->from;
+        $title = 'A new note has been created';
+
+        foreach ($users as $user) {
+            $to = array($user['emailCanonical'] => $user['emailCanonical']);
+
+            $parameters = array(
+                'note' => $note
+            );
+
+            $this->sendMessage($title, $template, $parameters, $from, $to);
+        }
+    }
 }
