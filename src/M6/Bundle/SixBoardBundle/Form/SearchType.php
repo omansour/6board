@@ -9,6 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use M6\Bundle\SixBoardBundle\Entity\Milestone;
 use M6\Bundle\SixBoardBundle\Entity\Story;
 
+/**
+ * Class SearchType
+ */
 class SearchType extends AbstractType
 {
     /**
