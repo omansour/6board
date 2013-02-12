@@ -59,6 +59,14 @@ class StateListener implements EventSubscriber
                                     $content .= $key. ' has changed from ' .  $oldStatus  . ' to ' . $newStatus . '<br />';
                                     break;
 
+                                case 'dueDate':
+                                    $toPersist = true;
+                                    $oldDate   = $data[0];
+                                    $newDate   = $data[1];
+
+                                    $content .= $key. ' has changed from ' .  $oldDate->format('d-m-Y')  . ' to ' . $newDate->format('d-m-Y') . '<br />';
+                                    break;
+
                                 // other cases to handle
                             }
                         }
