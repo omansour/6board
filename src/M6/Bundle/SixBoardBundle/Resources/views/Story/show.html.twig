@@ -5,6 +5,7 @@
         <div class="well">
             <h1>#{{ story.id }} {{ story.title}} - {{ story.readableStatus }}</h1>
             <p>{{ story.description }}</p>
+            <a href="{{ path('story_edit', { 'id' : story.id }) }}" class="btn btn-info">Edit</a>
         </div>
 
         {{ render(controller('M6SixBoardBundle:Story:note', { 'id': story.id }), {}) }}
