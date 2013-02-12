@@ -79,7 +79,7 @@ class Story
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="due_date", type="datetime", nullable=true)
+     * @ORM\Column(name="due_date", type="date", nullable=true)
      */
     private $dueDate;
 

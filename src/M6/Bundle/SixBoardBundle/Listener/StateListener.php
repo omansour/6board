@@ -59,6 +59,33 @@ class StateListener implements EventSubscriber
                                     $content .= $key. ' has changed from ' .  $oldStatus  . ' to ' . $newStatus . '<br />';
                                     break;
 
+                                case 'type':
+                                    $toPersist = true;
+                                    $oldType = Story::$types[$data[0]];
+                                    $newType = Story::$types[$data[1]];
+
+                                    $content .= $key. ' has changed from ' .  $oldType  . ' to ' . $newType . '<br />';
+                                    break;
+
+                                case 'dueDate':
+                                    $toPersist = true;
+                                    $oldDate   = $data[0];
+                                    $newDate   = $data[1];
+
+                                    $content .= 'The due date has changed from ' .  $oldDate->format('d-m-Y')  . ' to ' . $newDate->format('d-m-Y') . '<br />';
+                                    break;
+
+                                case 'devUser':
+                                    $toPersist = true;
+                                    $oldUser   = $data[0];
+                                    $newUser   = $data[1];
+
+                                    $content .= 'The user assigned to this story has changed';
+                                    $content .= ($oldUser) ? ' from ' .  $oldUser : '';
+                                    $content .= ' to ' . $newUser . '<br />';
+
+                                    break;
+
                                 // other cases to handle
                             }
                         }
