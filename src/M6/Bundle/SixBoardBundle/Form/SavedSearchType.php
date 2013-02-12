@@ -18,7 +18,7 @@ class SavedSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('public')
+            ->add('public', null, array('required' => false))
             ->add('name')
         ;
     }

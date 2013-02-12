@@ -36,7 +36,63 @@ class Controller extends BaseController
      * @param array  $filters Filters
      * @param string $type    Type
      */
-    public function setFilters($name, array $filters = array())
+    public function setFilters($name, array $filters = array(), $encode = true)
+    {
+        $this->getRequest()->getSession()->set(
+            $name,
+            $encode ? $this->identifierEncode($filters) : $filters
+        );
+    }
+
+    /**
+     * Get Filters
+     *
+     * @param array $filters Filters
+     * @param type  $type    Type
+     *
+     * @return array
+     */
+    public function getFilters($name, array $filters = array(), $decode = true)
+    {
+        $filters = array_merge(
+            $this->getRequest()->getSession()->get(
+                $name,
+                array()
+            ),
+            $filters
+        );
+
+        return $decode ? $this->identifierDecode($filters) : $filters;
+    }
+
+    /**
+     * Returns the pager
+     *
+     * @param integer        $page    Page
+     * @param integer        $perPage Max per page
+     * @param Doctrine_Query $query   Query
+     *
+     * @return \Pagination
+     */
+    public function getPager($page = 1, $perPage = 10, $query = null)
+    {
+        $paginator = $this->get('knp_paginator');
+
+        $pagination = $paginator->paginate(
+            $query,
+            $page,
+            $perPage
+        );
+
+        return $pagination;
+    }
+
+    /**
+     * Transform Object reference to ID in filters
+     * @param  array $filters The filters
+     * @return array          The proceced filters
+     */
+    public function identifierEncode($filters)
     {
         foreach ($filters as $key => $value) {
             // Transform entities objects into a pair of class/id
@@ -63,30 +119,16 @@ class Controller extends BaseController
             }
         }
 
-        $this->getRequest()->getSession()->set(
-            $name,
-            $filters
-        );
+        return $filters;
     }
 
     /**
-     * Get Filters
-     *
-     * @param array $filters Filters
-     * @param type  $type    Type
-     *
-     * @return array
+     * Transform ID reference to Objects in filters
+     * @param  array $filters The filters
+     * @return array          The proceced filters
      */
-    public function getFilters($name, array $filters = array())
+    public function identifierDecode($filters)
     {
-        $filters = array_merge(
-            $this->getRequest()->getSession()->get(
-                $name,
-                array()
-            ),
-            $filters
-        );
-
         foreach ($filters as $key => $value) {
             // Get entities from pair of class/id
             if (is_array($value) && isset($value['class'])) {
@@ -100,28 +142,6 @@ class Controller extends BaseController
         }
 
         return $filters;
-    }
-
-    /**
-     * Returns the pager
-     *
-     * @param integer        $page    Page
-     * @param integer        $perPage Max per page
-     * @param Doctrine_Query $query   Query
-     *
-     * @return \Pagination
-     */
-    public function getPager($page = 1, $perPage = 10, $query = null)
-    {
-        $paginator = $this->get('knp_paginator');
-
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            $perPage
-        );
-
-        return $pagination;
     }
 
 }

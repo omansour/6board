@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+      <div class="row">
+        <table class="table table-condensed">
+          <tr>
+          {# sorting of properties based on query components #}
+              <th>Name </th>
+              <th>Actions</th>
+          </tr>
+
+          {% for entity in entities %}
+          <tr>
+              <td>{{ entity.name }}</td>
+              <td><a href="{{ path("edit_filters", { id: entity.id }) }}" class="btn">Edit</a></td>
+              <td><a href="{{ path("load_saved_filters", { id: entity.id }) }}" class="btn btn-primary">Load</a></td>
+          </tr>
+          {% endfor %}
+          </table>
+      </div>
+{% endblock %}

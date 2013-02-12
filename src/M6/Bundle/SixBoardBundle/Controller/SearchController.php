@@ -87,7 +87,8 @@ class SearchController extends Controller
      */
     public function saveFiltersAction(Request $request)
     {
-        $search = new Search($this->getUser(), $this->getFilters('m6_search_board'));
+        $filters = $this->getFilters('m6_search_board', array(), false);
+        $search = new Search($this->getUser(), $filters);
 
         $form = $this->createForm(new SavedSearchType, $search);
         $form->bind($request);
@@ -103,17 +104,61 @@ class SearchController extends Controller
     }
 
     /**
-     * @Route("/filters/load/{id}", name="load_saved_filter")
+     * @Route("/filters/load/{id}", name="load_saved_filters")
      * @Template()
      */
-    public function loadFilters(Search $search)
+    public function loadFiltersAction(Search $search)
     {
         if ($search->isPublic() || $this->getUser()->getId() == $search->getUser()->getId()) {
-            $filters = $this->setFilters('m6_search_board', unserialize($search->getSearch()));
+            $filters = $this->setFilters('m6_search_board', $search->getSearch(), false);
         } else {
             $this->addFlash('error', 'The search you\'re trying to access to is not public');
         }
 
         return $this->redirect($this->generateUrl('homepage'));
+    }
+
+    /**
+     * @Route("/filters", name="browse_filters")
+     * @Template("M6SixBoardBundle:Search:browse.html.twig")
+     */
+    public function browseFiltersAction()
+    {
+        $entities = $this->getRepository('M6SixBoardBundle:Search')->findByUser($this->getUser());
+
+        return array(
+            'entities' => $entities,
+        );
+    }
+
+    /**
+     * @Route("/filters/edit/{id}", name="edit_filters")
+     * @Template("M6SixBoardBundle:Search:edit.html.twig")
+     */
+    public function editFiltersAction(Request $request, Search $search)
+    {
+        if ($this->getUser()->isUser($search->getUser())) {
+
+            $form = $this->createForm(new SavedSearchType, $search);
+
+            if ($request->isMethod('POST')) {
+                $form->bind($request);
+
+                if ($form->isValid()) {
+                    $this->getDoctrine()->getManager()->persist($search);
+                    $this->getDoctrine()->getManager()->flush();
+                    $this->addFlash('success', 'The search has been saved');
+                }
+            }
+
+            return array(
+                'entity' => $search,
+                'form' => $form->createView(),
+            );
+
+        } else {
+            $this->addFlash('error', 'The search you\'re trying to access to is not public');
+            return $this->redirect($this->generateUrl('homepage'));
+        }
     }
 }
