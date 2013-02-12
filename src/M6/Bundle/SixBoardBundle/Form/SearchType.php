@@ -32,14 +32,12 @@ class SearchType extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
                 'required' => false,
-                'mapped'   => false,
             ))
             ->add('story_type', 'genemu_jqueryselect2_choice', array(
                 'choices'  => Story::$types,
                 'multiple' => true,
                 'expanded' => false,
                 'required' => false,
-                'mapped'   => false,
             ))
             ->add('milestone', 'genemu_jqueryselect2_entity', array(
                 'class'    => 'M6\Bundle\SixBoardBundle\Entity\Milestone',
