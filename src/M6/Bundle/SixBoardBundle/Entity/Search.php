@@ -23,9 +23,9 @@ class Search
     private $id;
 
     /**
-     * @var string
+     * @var array
      *
-     * @ORM\Column(name="search", type="text", nullable=false)
+     * @ORM\Column(name="search", type="array", nullable=false)
      */
     private $search;
 
@@ -54,6 +54,15 @@ class Search
      */
     private $user;
 
+
+    public function __construct(\Application\Sonata\UserBundle\Entity\User $user = null, Array $filters = null, $public = false, $name = null)
+    {
+        $this->setUser($user);
+        $this->setSearch($filters);
+        $this->setPublic($public);
+        $this->setName($name);
+    }
+
     /**
      * Get id
      *
@@ -67,7 +76,7 @@ class Search
     /**
      * Set search
      *
-     * @param  string $search
+     * @param  array $search
      * @return Search
      */
     public function setSearch($search)
@@ -80,7 +89,7 @@ class Search
     /**
      * Get search
      *
-     * @return string
+     * @return array
      */
     public function getSearch()
     {

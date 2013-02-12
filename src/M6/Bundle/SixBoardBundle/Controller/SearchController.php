@@ -3,12 +3,14 @@
 namespace M6\Bundle\SixBoardBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use M6\Bundle\SixBoardBundle\Controller\Controller;
 use M6\Bundle\SixBoardBundle\Entity\Story;
+use M6\Bundle\SixBoardBundle\Entity\Search;
 use M6\Bundle\SixBoardBundle\Form\SearchType;
 use M6\Bundle\SixBoardBundle\Form\SavedSearchType;
 
@@ -58,9 +60,12 @@ class SearchController extends Controller
         $maxResults = $this->container->getParameter('max_result_search');
         $pager      = $this->getPager($request->query->get('page', 1), $maxResults, $query);
 
+        $saveSearchForm = $this->createForm(new SavedSearchType, new Search());
+
         return array(
             'form'       => $form->createView(),
             'pagination' => $pager,
+            'save_search_form' => $saveSearchForm->createView(),
         );
     }
 
@@ -78,34 +83,23 @@ class SearchController extends Controller
     /**
      * @Route("/filters/save", name="save_filters")
      * @Template()
+     * @Method({"POST"})
      */
-    public function saveFilters(Request $request)
+    public function saveFiltersAction(Request $request)
     {
-        $form = $this->createForm(new SavedSearchType, $filters);
+        $search = new Search($this->getUser(), $this->getFilters('m6_search_board'));
 
-        if ('POST' === $this->getRequest()->getMethod()) {
-            $form->bind($request);
+        $form = $this->createForm(new SavedSearchType, $search);
+        $form->bind($request);
 
-            if ($form->isValid()) {
-
-                $data = $form->getData();
-
-                $search = new Search;
-                $search->setSearch(serialize($this->getFilters('m6_search_board')));
-                $search->setPublic($data['public']);
-                $search->setName($data['name']);
-                $search->setUser($this->getUser());
-
-                $this->getDoctrine()->getManager()->persist($search);
-                $this->getDoctrine()->getManager()->flush();
-
-                $this->addFlash('success', sprintf('The search named %s has been successfully saved', $data['name']));
-            }
+        if ($form->isValid()) {
+            $this->getDoctrine()->getManager()->persist($search);
+            $this->getDoctrine()->getManager()->flush();
         }
 
-        return array(
-            'form' => $form
-        );
+        $this->addFlash('success', 'The search has been successfully saved');
+
+        return $this->redirect($this->generateUrl('homepage'));
     }
 
     /**

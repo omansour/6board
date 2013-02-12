@@ -2,9 +2,18 @@
 
 {% block body %}
 
-  <form method="GET" action="{{ path("homepage") }}">
-      {% include "M6SixBoardBundle:Form:form.html.twig" %}
-  </form>
+  <div class="hero-unit">
+    <form method="GET" action="{{ path("homepage") }}">
+        {% include "M6SixBoardBundle:Form:form.html.twig" %}
+    </form>
+    <form action="{{ path('save_filters') }}" method="post" {{ form_enctype(save_search_form) }}>
+      <fieldset>
+          <legend>Save the current research:</legend>
+          {{ form_widget(save_search_form) }}
+        <button type="submit" class="btn">Save search</button>
+      </fieldset>
+    </form>
+  </div>
 
       <!-- Example row of columns -->
       <div class="row">
