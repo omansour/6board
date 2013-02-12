@@ -41,10 +41,10 @@
 
     {% if results is not null %}
     <script>
-        $(function() {
+        $(function () {
 
-            var fixHelper = function(e, ui) {
-                ui.children().each(function() {
+            var fixHelper = function (e, ui) {
+                ui.children().each(function () {
                     $(this).width($(this).width());
                 });
                 return ui;
@@ -53,27 +53,37 @@
             $(".sortable").sortable({
                 helper: fixHelper,
                 revert: true,
-                update: function(event, ui) {
+                update: function (event, ui) {
                     var position = ui.item.index();
-                    var id       = $(this).find('tr').attr('data-story-id');
+                    var id = $(this).find('tr').attr('data-story-id');
                     var orderRoute = "{{ path('reorder_story', { 'id' : milestoneId}) }}";
 
-                    console.log(position, id);
-                    $.get(orderRoute, { 'storyId' : id, 'position': position});
+                    $.get(orderRoute, {
+                        'storyId': id,
+                        'position': position
+                    });
                 }
             }).disableSelection();
 
-            $("tr").not(':first').hover(function() {
+            // show/hide the shortcut for moving an element to top
+            $("tr").not(':first').hover(function () {
                 $(this).find('.toReveal').show();
-            }, function() {
+            }, function () {
                 $(this).find('.toReveal').hide();
             });
 
-
-            $('.toReveal').on('click', function() {
+            // shortcut move to top
+            $('.toReveal').on('click', function () {
                 $(this).closest('tr').prependTo($('#sortableList'));
-            });
 
+                var id = $(this).closest('tr').attr('data-story-id');
+                var orderRoute = "{{ path('reorder_story', { 'id' : milestoneId}) }}";
+
+                $.get(orderRoute, {
+                    'storyId': id,
+                    'position': 0
+                });
+            });
         });
     </script>
     {% endif %}
