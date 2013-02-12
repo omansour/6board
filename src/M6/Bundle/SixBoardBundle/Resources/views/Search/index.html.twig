@@ -20,7 +20,7 @@
         <table class="table table-condensed">
         <tr>
           {# sorting of properties based on query components #}
-              <th>Id</th>
+              <th>Priority</th>
               <th>Status</th>
               <th>Title</th>
               <th>Milestone</th>
@@ -32,14 +32,18 @@
           {% for story in pagination %}
           <tr {% if loop.index is odd %}class="color"{% endif %}>
               <td>{{ story.id }}</td>
-              <td>{% if story.type %}<span class="label label-info">{{ story.getReadableStatus }}</span>{% endif %}</td>
+              <td>
+                {% if story.type %}<span class="label label-info">{{ story.getReadableStatus }}</span>{% endif %}
+              </td>
               <td><a href="{{ path("show_story", { id: story.id }) }}">{{ story.title }}</a></td>
               <td>
                 {% for storyMilestone in story.storyMilestones %}
                     {{ storyMilestone.milestone }}
                 {% endfor %}
               </td>
-              <td>{% if story.type %}<span class="label label-info">{{ story.getReadableTypes }}</span>{% endif %}</td>
+              <td>
+                {% if story.type %}<span class="label label-info">{{ story.getReadableTypes }}</span>{% endif %}
+              </td>
               <td>{{ story.ownerUser }}</td>
               <td>{{ story.devUser }}</td>
           </tr>
