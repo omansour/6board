@@ -158,6 +158,7 @@ class SearchController extends Controller
 
         } else {
             $this->addFlash('error', 'The search you\'re trying to access to is not public');
+
             return $this->redirect($this->generateUrl('homepage'));
         }
     }
