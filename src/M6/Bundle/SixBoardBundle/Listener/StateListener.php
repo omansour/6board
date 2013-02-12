@@ -83,7 +83,6 @@ class StateListener implements EventSubscriber
                                     $content .= 'The user assigned to this story has changed';
                                     $content .= ($oldUser) ? ' from ' .  $oldUser : '';
                                     $content .= ' to ' . $newUser . '<br />';
-
                                     break;
 
                                 // other cases to handle

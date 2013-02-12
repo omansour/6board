@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 use M6\Bundle\SixBoardBundle\Form\StoryPriorityType;
 use M6\Bundle\SixBoardBundle\Controller\Controller;
@@ -14,41 +15,14 @@ use M6\Bundle\SixBoardBundle\Entity\Story;
 use M6\Bundle\SixBoardBundle\Entity\Milestone;
 
 /**
- * Story controller
+ * Priority controller
  */
 class PriorityController extends Controller
 {
     /**
-     * Liste des stories par priorité
-     */
-    public function indexAction()
-    {
-        $filters = $this->getFilters('m6_search_priority');
-
-        $form = $this->createForm(new SearchPriorityType, $filters);
-
-        if ($request->query->has($form->getName())) {
-            $form->bind($request);
-
-            if ($form->isValid()) {
-                $filters = $this->setFilters('m6_search_priority', $form->getData());
-            }
-        }
-
-        $filters = $this->getFilters('m6_search_priority');
-
-        $query = $this->getRepository("M6SixBoardBundle:Story")->search($filters);
-
-        return array(
-            'form'    => $form->createView(),
-            'stories' => $query->getQuery()->execute(),
-        );
-    }
-
-
-    /**
      * @Route("/story/priority", name="story_priority_index")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      *
      * @param Request $request The Request
      *
@@ -79,6 +53,7 @@ class PriorityController extends Controller
     /**
      * @Route("/story/priority/move/{id}", name="reorder_story")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      *
      * @param Request $request The Request
      *
