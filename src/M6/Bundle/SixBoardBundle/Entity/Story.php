@@ -205,6 +205,7 @@ class Story
         $this->tags            = new ArrayCollection;
         $this->fromStories     = new ArrayCollection;
         $this->user            = $user;
+        $this->status          = self::STATUS_NEW;
     }
 
     /**
