@@ -53,7 +53,6 @@ class StoryController extends Controller
                 $em->persist($story);
                 $em->flush();
 
-                // After persisting the new story :
                 $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
                 $this->get('event_dispatcher')->dispatch(Events::STORY_NEW, new GenericEvent($story));
 
@@ -76,7 +75,11 @@ class StoryController extends Controller
      */
     public function editAction(Request $request, Story $story)
     {
+        // We need this line to know the current user whe
+        // accessing to the entity on the StateListener as we have no access
+        // to the security_context
         $story->setUser($this->getUser());
+
         $form = $this->createForm(new StoryType, $story);
 
         $prevCollections = $story->getStoryMilestones();
@@ -95,7 +98,6 @@ class StoryController extends Controller
                 $em->persist($story);
                 $em->flush();
 
-                // After persisting the new story :
                 $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
                 $this->get('event_dispatcher')->dispatch(Events::STORY_EDIT, new GenericEvent($story));
 
@@ -125,7 +127,6 @@ class StoryController extends Controller
             'notes' => $story->getNotes()
         );
     }
-
 
 
 }
