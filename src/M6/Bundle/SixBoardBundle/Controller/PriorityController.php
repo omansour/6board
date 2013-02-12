@@ -32,14 +32,13 @@ class PriorityController extends Controller
     {
         $form = $this->createForm(new StoryPriorityType);
 
-        if ($request->getMethod() == "POST") {
+        if ($request->query->has($form->getName())) {
             $form->bind($request);
 
             if ($form->isValid()) {
                 $data    = $form->getData();
                 $results = $this->getRepository("M6SixBoardBundle:Story")->fecthStoryViaMilestone($data['milestone']);
             }
-
         }
 
         return array(
