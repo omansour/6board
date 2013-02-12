@@ -170,4 +170,9 @@ class Note
     {
         return $this->user;
     }
+
+    public function __toString()
+    {
+        return (string) $this->getNote();
+    }
 }
