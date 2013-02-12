@@ -39,7 +39,7 @@ class StoryType extends AbstractType
             ))
             ->add('milestones', 'genemu_jqueryselect2_entity', array(
                 'class'    => 'M6\Bundle\SixBoardBundle\Entity\Milestone',
-                'multiple' => true,
+                'multiple' => false,
                 'expanded' => false,
                 'required' => true,
                 'by_reference' => false
