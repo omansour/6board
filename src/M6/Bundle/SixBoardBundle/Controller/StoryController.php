@@ -23,7 +23,7 @@ class StoryController extends Controller
      * @Route("/story/show/{id}", name="show_story")
      * @Template()
      */
-    public function showAction(Request $request, Story $story)
+    public function showAction(Story $story)
     {
         return array(
             'story' => $story
