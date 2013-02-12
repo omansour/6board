@@ -42,29 +42,13 @@ class StoryRepository extends EntityRepository
         }
 
         if (isset($filters['story_status']) && !empty($filters['story_status']) ) {
-            $ids = array();
-            $entities = $filters['story_status']->toArray();
-
-            if (!empty($entities)) {
-                foreach ($entities as $entity) {
-                    $ids[] = $entity->getId();
-                }
-
-                $queryBuilder->andWhere($queryBuilder->expr()->in('s.status', $ids));
-            }
+                $queryBuilder->andWhere('s.status = :status')
+                    ->setParameter('status', $filters['story_status']);
         }
 
         if (isset($filters['story_type']) && !empty($filters['story_type']) ) {
-            $ids = array();
-            $entities = $filters['story_type']->toArray();
-
-            if (!empty($entities)) {
-                foreach ($entities as $entity) {
-                    $ids[] = $entity->getId();
-                }
-
-                $queryBuilder->andWhere($queryBuilder->expr()->in('s.type', $ids));
-            }
+                $queryBuilder->andWhere('s.type = :type')
+                    ->setParameter('type', $filters['story_type']);
         }
 
         if (isset($filters['milestone']) && !empty($filters['milestone']) ) {

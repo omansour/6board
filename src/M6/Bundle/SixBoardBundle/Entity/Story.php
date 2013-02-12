@@ -69,9 +69,9 @@ class Story
     private $description;
 
     /**
-     * @var string
+     * @var smallint
      *
-     * @ORM\Column(name="status", type="string", length=255, nullable=false)
+     * @ORM\Column(name="status", type="smallint", length=255, nullable=false)
      * @Gedmo\Versioned
      */
     private $status;
@@ -114,9 +114,9 @@ class Story
     private $updatedAt;
 
     /**
-     * @var string
+     * @var smallint
      *
-     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     * @ORM\Column(name="type", type="smallint", length=255, nullable=false)
      */
     private $type;
 
