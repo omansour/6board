@@ -20,10 +20,10 @@
       <th class="span2"></th>
     </tr>
   </thead>
-  <tbody class="sortable">
+  <tbody class="sortable" id="sortableList">
     {% for story in results %}
         <tr data-story-id="{{ story.id }}">
-          <td><a href="#"><i class="icon-star-empty"></i>{{ story.id }}</a></td>
+          <td>#{{ story.id }} <a href="#" class="toReveal"><img src="{{ asset('img/arrow-up.png') }}" /></a></td>
           <td><strong>{{ story.ownerUser }}</strong></td>
           <td><span class="label pull-right">{{ story.readableStatus }}</span></td>
           <td><strong>{{ story.title }}</strong></td>
@@ -63,6 +63,16 @@
                 }
             }).disableSelection();
 
+            $("tr").not(':first').hover(function() {
+                $(this).find('.toReveal').show();
+            }, function() {
+                $(this).find('.toReveal').hide();
+            });
+
+
+            $('.toReveal').on('click', function() {
+                $(this).closest('tr').prependTo($('#sortableList'));
+            });
 
         });
     </script>
