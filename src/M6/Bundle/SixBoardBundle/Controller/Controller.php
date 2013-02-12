@@ -5,6 +5,9 @@ namespace M6\Bundle\SixBoardBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Doctrine\Common\Collections\ArrayCollection;
 
+/**
+ * Controller class
+ */
 class Controller extends BaseController
 {
    /**
