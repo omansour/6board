@@ -8,7 +8,7 @@
             <a href="{{ path('story_edit', { 'id' : story.id }) }}" class="btn btn-info">Edit</a>
         </div>
 
-        {{ render(controller('M6SixBoardBundle:Story:note', { 'id': story.id }), {}) }}
+        {{ render(controller('M6SixBoardBundle:Note:storyNotes', { 'id': story.id })) }}
     </div>
 {% endblock %}
 

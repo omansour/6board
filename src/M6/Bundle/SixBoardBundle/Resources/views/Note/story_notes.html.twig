@@ -1,4 +1,6 @@
-{% for note in notes %}
+<h2 class="page-header">Notes on this story:</h2>
+
+{% for note in story.notes %}
     <div class="media">
       <a class="pull-left" href="#">
         <img class="media-object" src="http://placekitten.com/g/64/64">
@@ -9,3 +11,9 @@
       </div>
     </div>
 {% endfor %}
+
+<form action="{{ path('note_create', {id: story.id}) }}" method="post" {{ form_enctype(form) }}>
+    <h3 class="page-header">Add a note to this story:</h3>
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>

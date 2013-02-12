@@ -110,22 +110,4 @@ class StoryController extends Controller
             'story'  => $story
         );
     }
-
-    /**
-     * @Route("/notes/show/{id}", name="notes_show")
-     * @Template()
-     *
-     * @param Story $story The story
-     *
-     * @return array
-     */
-    public function noteAction(Story $story)
-    {
-        return array(
-            'notes' => $story->getNotes()
-        );
-    }
-
-
-
 }
