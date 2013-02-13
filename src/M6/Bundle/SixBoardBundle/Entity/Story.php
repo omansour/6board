@@ -609,7 +609,7 @@ class Story
 
     public function setMilestones($milestones)
     {
-        if(!is_array($milestones) && !is_a($milestones, "Doctrine\Common\Collections\ArrayCollection"))
+        if(is_a($milestones, "M6\Bundle\SixBoardBundle\Entity\Milestone"))
         {
             $milestones = new ArrayCollection(array($milestones));
         }

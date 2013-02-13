@@ -153,6 +153,17 @@ class MilestoneController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $storyMilstones = $entity->getStories();
+            $milstones = $entity->getMilestones();
+
+            foreach ($storyMilstones as $storyMilestone) {
+                $story = $storyMilestone->getStory();
+                $story->setMilestones($milstones);
+                $em->persist($story);
+            }
+
+            $em->flush();
+
             return $this->redirect($this->generateUrl('admin_milestone_edit', array('id' => $id)));
         }
 

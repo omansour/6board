@@ -281,16 +281,18 @@ class Milestone
 
     public function addStory(Story $story)
     {
-        $exists = $this->getStories()->exists(function($s) use ($story) {
-            return $s->getId() === $story->getId();
+
+        $exists = $this->getStories()->exists(function($key, $s) use ($story) {
+            return $s->getStory()->getId() === $story->getId();
         });
 
         if (!$exists) {
             $sm = new StoryMilestone();
+
             $sm->setMilestone($this);
             $sm->setStory($story);
 
-            $this->getStories()->add($sm);
+            $this->stories->add($sm);
         }
 
         return $this;
