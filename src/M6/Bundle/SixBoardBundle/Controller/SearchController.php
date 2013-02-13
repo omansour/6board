@@ -66,6 +66,7 @@ class SearchController extends Controller
             'form'       => $form->createView(),
             'pagination' => $pager,
             'save_search_form' => $saveSearchForm->createView(),
+            'unique_milestone' => (array_key_exists('milestone', $filters) && count($filters['milestone']) == 1) ? $filters['milestone'][0] : false,
         );
     }
 

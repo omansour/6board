@@ -1,7 +1,6 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-
   <div class="hero-unit">
     <form method="GET" action="{{ path("homepage") }}">
         {% include "M6SixBoardBundle:Form:form.html.twig" %}
@@ -15,15 +14,19 @@
     </form>
   </div>
 
+
       <!-- Example row of columns -->
       <div class="row">
         <table class="table table-condensed">
         <tr>
           {# sorting of properties based on query components #}
-              <th>Priority</th>
+              <th>Id</th>
               <th>Status</th>
               <th>Title</th>
               <th>Milestone</th>
+              {% if unique_milestone %}
+              <th>Priority</th>
+              {% endif %}
               <th>Type</th>
               <th>Reported by</th>
               <th>Assigned to</th>
@@ -38,9 +41,20 @@
               <td><a href="{{ path("show_story", { id: story.id }) }}">{{ story.title }}</a></td>
               <td>
                 {% for storyMilestone in story.storyMilestones %}
+                  {% set mathFilter = storyMilestone.milestone == unique_milestone %}
+                  {% if mathFilter %}<b>{% endif %}
                     {{ storyMilestone.milestone }}
+                  {% if mathFilter %}</b>{% endif %}
                 {% endfor %}
               </td>
+              {% if unique_milestone %}
+              <td>
+                {% for storyMilestone in story.storyMilestones %}
+                  {% if storyMilestone.milestone == unique_milestone %}
+                    {{ storyMilestone.rank }}
+                  {% endif %}
+                {% endfor %}</td>
+              {% endif %}
               <td>
                 {% if story.type %}<span class="label label-info">{{ story.getReadableTypes }}</span>{% endif %}
               </td>
