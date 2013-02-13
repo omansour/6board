@@ -11,6 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table(name="story")
  * @ORM\Entity(repositoryClass="StoryRepository")
+ * @ORM\HasLifecycleCallbacks()
  * @Gedmo\Loggable
  */
 class Story
@@ -206,6 +207,29 @@ class Story
         $this->fromStories     = new ArrayCollection;
         $this->user            = $user;
         $this->status          = self::STATUS_NEW;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function attacheMilestones()
+    {
+        $milestones = $this->getMilestones();
+
+        foreach ($milestones as $m) {
+
+            $attachedMilstones = $m->getMilestones();
+
+            foreach ($attachedMilstones as $am) {
+
+                $sam = new StoryMilestone();
+
+                $sam->setStory($this);
+                $sam->setMilestone($am);
+
+                $this->addStoryMilestone($sam);
+            }
+        }
     }
 
     /**
@@ -585,7 +609,13 @@ class Story
 
     public function setMilestones($milestones)
     {
+        if(!is_array($milestones) && !is_a($milestones, "Doctrine\Common\Collections\ArrayCollection"))
+        {
+            $milestones = new ArrayCollection(array($milestones));
+        }
+
         foreach ($milestones as $m) {
+
             $sm = new StoryMilestone();
 
             $sm->setStory($this);
@@ -593,7 +623,6 @@ class Story
 
             $this->addStoryMilestone($sm);
         }
-
     }
 
     public function __toString()
