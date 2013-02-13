@@ -13,18 +13,28 @@
     <table class="table table-condensed table-hover">
         <thead>
             <tr>
-                <th class="span2"></th>
-                <th class="span2"></th>
-                <th class="span2"></th>
-                <th class="span8"></th>
-                <th class="span3"></th>
-                <th class="span2"></th>
+                <th class="">Id</th>
+                <th class="">Rank</th>
+                <th class="">User</th>
+                <th class="">Status</th>
+                <th class="">Title</th>
+                <th class="">Milestone</th>
+                <th class="">Due date</th>
             </tr>
         </thead>
         <tbody class="sortable" id="sortableList">
         {% for story in results %}
             <tr data-story-id="{{ story.id }}">
-                <td>#{{ story.id }} <a href="#" class="toReveal"><img src="{{ asset('img/arrow-up.png') }}" /></a></td>
+                <td>#{{ story.id }}</td>
+                <td>
+                    {% for storyMilestone in story.storyMilestones %}
+                        {% if storyMilestone.milestone.id == milestoneId %}
+                            {{ storyMilestone.rank }}
+                            {% if storyMilestone.prioritized %}<i class="icon-hand-left" title="This story was manually prioritized"></i>{% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    <a href="#" class="toReveal"><i class="icon-arrow-up"></i></a>
+                </td>
                 <td><strong>{{ story.ownerUser }}</strong></td>
                 <td><span class="label pull-right">{{ story.readableStatus }}</span></td>
                 <td><strong>{{ story.title }}</strong></td>

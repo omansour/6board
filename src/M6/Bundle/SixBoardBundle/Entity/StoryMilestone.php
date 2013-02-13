@@ -31,6 +31,13 @@ class StoryMilestone
     private $rank;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="prioritized", type="boolean")
+     */
+    private $prioritized = false;
+
+    /**
      * @var Story
      *
      * @ORM\ManyToOne(targetEntity="Story", inversedBy="storyMilestones")
@@ -64,6 +71,11 @@ class StoryMilestone
      */
     public function setRank($rank)
     {
+        if($this->id != null && $this->rank != $rank)
+        {
+            $this->prioritized = true;
+        }
+
         $this->rank = $rank;
 
         return $this;
@@ -77,6 +89,16 @@ class StoryMilestone
     public function getRank()
     {
         return $this->rank;
+    }
+
+    /**
+     * Is prioritized
+     *
+     * @return boolean
+     */
+    public function isPrioritized()
+    {
+        return $this->prioritized;
     }
 
     /**
