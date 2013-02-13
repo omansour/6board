@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Follow
 {
 
-    const PROJECT   = 1;
-    const MILESTONE = 2;
-    const STORY     = 3;
+    const PROJECT   = 'project';
+    const MILESTONE = 'milestone';
+    const STORY     = 'story';
 
     /**
      * @var integer
@@ -29,14 +29,14 @@ class Follow
     /**
      * @var string
      *
-     * @ORM\Column(name="object_class", type="integer", nullable=false)
+     * @ORM\Column(name="object_class", type="string", length=10, nullable=false)
      */
     private $objectClass;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="object_id", type="integer", nullable=false)
+     * @ORM\Column(name="object_id", type="string", nullable=false)
      */
     private $objectId;
 
