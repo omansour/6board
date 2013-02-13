@@ -2,37 +2,48 @@
 
 {% block body %}
 
-<form method="POST" action="{{ path("story_priority_index") }}">
-    <div class="hero-unit">
-        {{ form_widget(form) }}
-        <input type="submit" value="Search" class="btn btn-info" />
-    </div>
-</form>
+    <form method="GET" action="{{ path("story_priority_index") }}">
+        <div class="hero-unit">
+            {{ form_widget(form) }}
+            <input type="submit" value="Search" class="btn btn-info" />
+        </div>
+    </form>
 
-{% if results is not null %}
-<table class="table table-condensed table-hover">
-  <thead>
-    <tr>
-      <th class="span2"></th>
-      <th class="span2"></th>
-      <th class="span2"></th>
-      <th class="span9"></th>
-      <th class="span2"></th>
-    </tr>
-  </thead>
-  <tbody class="sortable" id="sortableList">
-    {% for story in results %}
-        <tr data-story-id="{{ story.id }}">
-          <td>#{{ story.id }} <a href="#" class="toReveal"><img src="{{ asset('img/arrow-up.png') }}" /></a></td>
-          <td><strong>{{ story.ownerUser }}</strong></td>
-          <td><span class="label pull-right">{{ story.readableStatus }}</span></td>
-          <td><strong>{{ story.title }}</strong></td>
-          <td><strong>{{ story.dueDate|date('d-m-Y') }}</strong></td>
-        </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% endif %}
+    {% if results is not null %}
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th class="span2"></th>
+                <th class="span2"></th>
+                <th class="span2"></th>
+                <th class="span8"></th>
+                <th class="span3"></th>
+                <th class="span2"></th>
+            </tr>
+        </thead>
+        <tbody class="sortable" id="sortableList">
+        {% for story in results %}
+            <tr data-story-id="{{ story.id }}">
+                <td>#{{ story.id }} <a href="#" class="toReveal"><img src="{{ asset('img/arrow-up.png') }}" /></a></td>
+                <td><strong>{{ story.ownerUser }}</strong></td>
+                <td><span class="label pull-right">{{ story.readableStatus }}</span></td>
+                <td><strong>{{ story.title }}</strong></td>
+                <td>
+                    <ul>
+                    {% for storyMilestone in story.storyMilestones %}
+                        {% if storyMilestone.milestone.id != milestoneId %}
+                            <li>{{ storyMilestone.rank }} - {{ storyMilestone.milestone }}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </td>
+                <td><strong>{{ story.dueDate|date('d-m-Y') }}</strong></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
 {% endblock %}
 
 {% block javascripts %}

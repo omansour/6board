@@ -11,8 +11,10 @@
         <ul class="nav">
           <li><a href="{{ path("homepage") }}">Home</a></li>
           <li><a href="{{ path("story_new") }}">New Story</a></li>
-          {% if is_granted("ROLE_ADMIN") %}
-            <li><a href="{{ path("story_priority_index") }}">Priorities</a></li>
+          {% if app.user %}
+            {% if is_granted("ROLE_ADMIN") %}
+              <li><a href="{{ path("story_priority_index") }}">Priorities</a></li>
+            {% endif %}
           {% endif %}
           <li><a href="{{ path("browse_filters") }}">Saved searches</a></li>
           <li><a href="{{ path("sonata_admin_dashboard") }}" target="_blank">Admin</a></li>
