@@ -87,7 +87,7 @@ class Story
     /**
      * @var smallint
      *
-     * @ORM\Column(name="complexity", type="boolean", nullable=true)
+     * @ORM\Column(name="complexity", type="smallint", nullable=true)
      */
     private $complexity;
 
