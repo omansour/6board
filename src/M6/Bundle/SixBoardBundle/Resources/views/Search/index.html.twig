@@ -5,6 +5,7 @@
     <form method="GET" action="{{ path("homepage") }}">
         {% include "M6SixBoardBundle:Form:form.html.twig" %}
     </form>
+
     <form action="{{ path('save_filters') }}" method="post" {{ form_enctype(save_search_form) }}>
       <fieldset>
           <legend>Save the current research:</legend>
@@ -12,6 +13,7 @@
         <button type="submit" class="btn">Save search</button>
       </fieldset>
     </form>
+
   </div>
 
 
@@ -68,7 +70,7 @@
               {{ knp_pagination_render(pagination) }}
           </div>
       </div>
-    <hr>
+
 {% endblock %}
 
 {% block javascripts %}
