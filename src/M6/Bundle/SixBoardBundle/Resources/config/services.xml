@@ -21,6 +21,14 @@
             <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 
+        <service id="skriv.markup.renderer" class="Skriv\Markup\Renderer">
+        </service>
+
+        <service id="m6.twig.sixboard_extension" class="M6\Bundle\SixBoardBundle\Twig\SixBoardExtension">
+            <tag name="twig.extension" />
+            <argument type="service" id="skriv.markup.renderer" />
+        </service>
+
     </services>
 
 </container>

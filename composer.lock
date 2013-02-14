@@ -1,6 +1,91 @@
 {
-    "hash": "81675cb746b5eb48d5330bf67e88dd1f",
+    "hash": "5d2f37370234f830adab8e0545376c46",
     "packages": [
+        {
+            "name": "amaury/skrivmarkup",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/Amaury/SkrivMarkup",
+                "reference": "6488562ea0d2d0f890056942c38daa0426d7eb5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Amaury/SkrivMarkup/zipball/6488562ea0d2d0f890056942c38daa0426d7eb5a",
+                "reference": "6488562ea0d2d0f890056942c38daa0426d7eb5a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "amaury/wikirenderer": "dev-master"
+            },
+            "time": "2013-02-06 14:21:53",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Skriv\\Markup": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Amaury Bouchard",
+                    "email": "amaury@amaury.net",
+                    "homepage": "http://amaury.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Interpreter of the Skriv Markup Language. PHP implementation.",
+            "keywords": [
+                "wiki",
+                "Skriv"
+            ]
+        },
+        {
+            "name": "amaury/wikirenderer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/Amaury/wikirenderer",
+                "reference": "816968b749e387c5ce027295ce55ca5523f0e609"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Amaury/wikirenderer/zipball/816968b749e387c5ce027295ce55ca5523f0e609",
+                "reference": "816968b749e387c5ce027295ce55ca5523f0e609",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "time": "2013-02-10 12:11:38",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "WikiRenderer": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Laurent Jouanneau",
+                    "email": "ljouanneau@gmail.com",
+                    "homepage": "http://ljouanneau.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "WikiRenderer is a library to generate HTML (or anything else) from wiki content.",
+            "homepage": "http://wikirenderer.jelix.org",
+            "keywords": [
+                "wiki"
+            ]
+        },
         {
             "name": "doctrine/common",
             "version": "2.3.x-dev",
@@ -2636,6 +2721,8 @@
         "sonata-project/doctrine-orm-admin-bundle": 20,
         "sonata-project/user-bundle": 20,
         "knplabs/knp-paginator-bundle": 20,
-        "raulfraile/ladybug-bundle": 20
+        "raulfraile/ladybug-bundle": 20,
+        "amaury/wikirenderer": 20,
+        "amaury/skrivmarkup": 20
     }
 }

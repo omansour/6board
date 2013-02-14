@@ -26,6 +26,5 @@ class M6SixBoardExtension extends Extension
         $loader->load('services.xml');
 
         $container->setParameter('sixboard.mailer.mailer_from', $config['mailer_from']);
-
     }
 }

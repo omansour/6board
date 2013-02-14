@@ -7,7 +7,7 @@
       </a>
       <div class="media-body">
         <h4 class="media-heading">#{{ note.id }} by {{ note.user }} {{ note.createdAt|date('d-m-Y h:i') }}</h4>
-        {{ note.note|raw }}
+        {% autoescape false %}{{ note.note|skriv_render }}{% endautoescape %}
       </div>
     </div>
 {% endfor %}
@@ -15,5 +15,6 @@
 <form action="{{ path('note_create', {id: story.id}) }}" method="post" {{ form_enctype(form) }}>
     <h3 class="page-header">Add a note to this story:</h3>
     {{ form_widget(form) }}
+    <p class="mutted">You can use the <a href="http://markup.skriv.org/" target="_blank">skriv markup syntax</a></p>
     <button type="submit" class="btn btn-primary">Send</button>
 </form>
