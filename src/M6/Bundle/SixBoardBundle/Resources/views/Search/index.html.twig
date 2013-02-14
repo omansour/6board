@@ -1,24 +1,31 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-  <div class="hero-unit">
-    <form method="GET" action="{{ path("homepage") }}">
-        {% include "M6SixBoardBundle:Form:form.html.twig" %}
-    </form>
 
-    <form action="{{ path('save_filters') }}" method="post" {{ form_enctype(save_search_form) }}>
-      <fieldset>
-          <legend>Save the current research:</legend>
-          {{ form_widget(save_search_form) }}
-        <button type="submit" class="btn">Save search</button>
-      </fieldset>
-    </form>
+    <div class="row-fluid">
+      <div class="span3">
+        <div class="hero-unit">
+          <fieldset>
+                <legend>Filter stories</legend>
+          </fieldset>
+          <form method="GET" action="{{ path("homepage") }}">
+              {% include "M6SixBoardBundle:Form:form.html.twig" %}
+          </form>
 
-  </div>
+          <form action="{{ path('save_filters') }}" method="post" {{ form_enctype(save_search_form) }}>
+            <fieldset>
+                <legend>Save the current research:</legend>
+                {{ form_widget(save_search_form) }}
+              <button type="submit" class="btn">Save search</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
 
 
+      <!-- story tables -->
       <!-- Example row of columns -->
-      <div class="row">
+      <div class="span9">
         <table class="table table-condensed">
         <tr>
           {# sorting of properties based on query components #}
@@ -70,6 +77,8 @@
               {{ knp_pagination_render(pagination) }}
           </div>
       </div>
+      <!-- end of table -->
+    </div>
 
 {% endblock %}
 
