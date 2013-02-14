@@ -85,7 +85,7 @@ class Story
     private $dueDate;
 
     /**
-     * @var boolean
+     * @var smallint
      *
      * @ORM\Column(name="complexity", type="boolean", nullable=true)
      */
