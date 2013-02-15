@@ -58,15 +58,16 @@ class SearchController extends Controller
 
         $query      = $this->getRepository("M6SixBoardBundle:Story")->search($filters);
         $maxResults = $this->container->getParameter('max_result_search');
-        $pager      = $this->getPager($request->query->get('page', 1), $maxResults, $query);
+        $results      = $this->getPager($request->query->get('page', 1), $maxResults, $query);
 
         $saveSearchForm = $this->createForm(new SavedSearchType, new Search());
 
         return array(
             'form'       => $form->createView(),
-            'pagination' => $pager,
+            'pagination' => $results,
             'save_search_form' => $saveSearchForm->createView(),
             'unique_milestone' => (array_key_exists('milestone', $filters) && count($filters['milestone']) == 1) ? $filters['milestone'][0] : false,
+            'milestoneId' => 0
         );
     }
 

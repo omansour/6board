@@ -9,50 +9,8 @@
         </div>
     </form>
 
-    {% if results is not null %}
-    <table class="table table-condensed table-hover">
-        <thead>
-            <tr>
-                <th class="">Id</th>
-                <th class="">Rank</th>
-                <th class="">User</th>
-                <th class="">Status</th>
-                <th class="">Title</th>
-                <th class="">Milestone</th>
-                <th class="">Due date</th>
-            </tr>
-        </thead>
-        <tbody class="sortable" id="sortableList">
-        {% for story in results %}
-            <tr data-story-id="{{ story.id }}">
-                <td>#{{ story.id }}</td>
-                <td>
-                    {% for storyMilestone in story.storyMilestones %}
-                        {% if storyMilestone.milestone.id == milestoneId %}
-                            {{ storyMilestone.rank }}
-                            {% if storyMilestone.prioritized %}<i class="icon-hand-left" title="This story was manually prioritized"></i>{% endif %}
-                        {% endif %}
-                    {% endfor %}
-                    <a href="#" class="toReveal"><i class="icon-arrow-up"></i></a>
-                </td>
-                <td><strong>{{ story.ownerUser }}</strong></td>
-                <td><span class="label pull-right">{{ story.readableStatus }}</span></td>
-                <td><strong>{{ story.title }}</strong></td>
-                <td>
-                    <ul>
-                    {% for storyMilestone in story.storyMilestones %}
-                        {% if storyMilestone.milestone.id != milestoneId %}
-                            <li>{{ storyMilestone.rank }} - {{ storyMilestone.milestone }}</li>
-                        {% endif %}
-                    {% endfor %}
-                    </ul>
-                </td>
-                <td><strong>{{ story.dueDate|date('d-m-Y') }}</strong></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    {% endif %}
+    <!-- results -->
+    {{ include('M6SixBoardBundle:Story:story_tab.html.twig', {'results': results, 'milestoneId': milestoneId, 'unique_milestone': unique_milestone, 'showRank': true}) }}
 
 {% endblock %}
 

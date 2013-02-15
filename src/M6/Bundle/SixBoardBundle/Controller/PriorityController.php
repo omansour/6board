@@ -45,6 +45,7 @@ class PriorityController extends Controller
             'form'        => $form->createView(),
             'results'     => isset($results) ? $results : null,
             'milestoneId' => isset($data['milestone']) ? $data['milestone']->getId() : null,
+            'unique_milestone' => 1
         );
     }
 

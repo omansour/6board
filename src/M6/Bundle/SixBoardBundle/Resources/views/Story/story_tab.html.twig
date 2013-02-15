@@ -1,0 +1,50 @@
+{% if results is not null %}
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th class="">Id</th>
+                <th class="">Title</th>
+                {% if showRank == true %}
+                <th class="">Rank</th>
+                {% endif %}
+                <th class="">User</th>
+                <th class="">Status</th>
+                <th class="">Title</th>
+                <th class="">Milestone</th>
+                <th class="">Due date</th>
+            </tr>
+        </thead>
+        <tbody class="sortable" id="sortableList">
+        {% for story in results %}
+            <tr data-story-id="{{ story.id }}">
+                <td>#{{ story.id }}</td>
+                <td><a href="{{ path("show_story", { id: story.id }) }}">{{ story.title }}</a></td>
+                {% if showRank == true %}
+                <td>
+                    {% for storyMilestone in story.storyMilestones %}
+                        {% if storyMilestone.milestone.id == milestoneId %}
+                            {{ storyMilestone.rank }}
+                            {% if storyMilestone.prioritized %}<i class="icon-hand-left" title="This story was manually prioritized"></i>{% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    <a href="#" class="toReveal"><i class="icon-arrow-up"></i></a>
+                </td>
+                {% endif %}
+                <td><strong>{{ story.ownerUser }}</strong></td>
+                <td><span class="label">{{ story.readableStatus }}</span></td>
+                <td><strong>{{ story.title }}</strong></td>
+                <td>
+                    <ul>
+                    {% for storyMilestone in story.storyMilestones %}
+                        {#% if storyMilestone.milestone.id != milestoneId %#}
+                        <li>{{ storyMilestone.rank }} - {{ storyMilestone.milestone }}</li>
+                        {#% endif %#}
+                    {% endfor %}
+                    </ul>
+                </td>
+                <td><strong>{{ story.dueDate|date('d-m-Y') }}</strong></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
