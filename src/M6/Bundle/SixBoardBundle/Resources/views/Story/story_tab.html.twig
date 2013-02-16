@@ -3,11 +3,13 @@
         <thead>
             <tr>
                 <th class="">Id</th>
+                <th class="">Type</th>
                 <th class="">Title</th>
                 {% if showRank == true %}
                 <th class="">Rank</th>
                 {% endif %}
-                <th class="">User</th>
+                <th class="">Reporter</th>
+                <th class="">Assigned to</th>
                 <th class="">Status</th>
                 <th class="">Title</th>
                 <th class="">Milestone</th>
@@ -17,7 +19,8 @@
         <tbody class="sortable" id="sortableList">
         {% for story in results %}
             <tr data-story-id="{{ story.id }}">
-                <td>#{{ story.id }}</td>
+                <td><a href="{{ path("show_story", { id: story.id }) }}">#{{ story.id }}</a></td>
+                <td>{{ story.getReadableTypes }}</td>
                 <td><a href="{{ path("show_story", { id: story.id }) }}">{{ story.title }}</a></td>
                 {% if showRank == true %}
                 <td>
@@ -30,7 +33,8 @@
                     <a href="#" class="toReveal"><i class="icon-arrow-up"></i></a>
                 </td>
                 {% endif %}
-                <td><strong>{{ story.ownerUser }}</strong></td>
+                <td>{{ story.ownerUser }}</td>
+                <td><strong>{{ story.devUser }}</strong></td>
                 <td><span class="label">{{ story.readableStatus }}</span></td>
                 <td><strong>{{ story.title }}</strong></td>
                 <td>
