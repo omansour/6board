@@ -20,6 +20,19 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('milestone', 'genemu_jqueryselect2_entity', array(
+                'class'    => 'M6\Bundle\SixBoardBundle\Entity\Milestone',
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+            ))
+            ->add('story_status', 'genemu_jqueryselect2_choice', array(
+                // 'class'    => 'M6\Bundle\SixBoardBundle\Entity\Story',
+                'choices'  => Story::$statuses,
+                'multiple' => true,
+                'expanded' => false,
+                'required' => false,
+            ))
             ->add('project', 'genemu_jqueryselect2_entity', array(
                 'class'    => 'M6\Bundle\SixBoardBundle\Entity\Project',
                 'property' => 'name',
@@ -27,20 +40,8 @@ class SearchType extends AbstractType
                 'expanded' => false,
                 'required' => false,
             ))
-            ->add('story_status', 'genemu_jqueryselect2_choice', array(
-                'choices'  => Story::$statuses,
-                'multiple' => true,
-                'expanded' => false,
-                'required' => false,
-            ))
             ->add('story_type', 'genemu_jqueryselect2_choice', array(
                 'choices'  => Story::$types,
-                'multiple' => true,
-                'expanded' => false,
-                'required' => false,
-            ))
-            ->add('milestone', 'genemu_jqueryselect2_entity', array(
-                'class'    => 'M6\Bundle\SixBoardBundle\Entity\Milestone',
                 'multiple' => true,
                 'expanded' => false,
                 'required' => false,
