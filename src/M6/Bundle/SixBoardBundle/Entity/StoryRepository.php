@@ -29,37 +29,23 @@ class StoryRepository extends EntityRepository
         ;
 
         if (isset($filters['project']) && !empty($filters['project']) ) {
-            $ids = array();
-            $entities = $filters['project']->toArray();
-
-            if (!empty($entities)) {
-                foreach ($entities as $entity) {
-                    $ids[] = $entity->getId();
-                }
-
+            $ids = self::extractIds($filters['project']);
+            if (!empty($ids)) {
                 $queryBuilder->andWhere($queryBuilder->expr()->in('p.id', $ids));
             }
         }
 
         if (isset($filters['story_status']) && !empty($filters['story_status']) ) {
-                $queryBuilder->andWhere('s.status = :status')
-                    ->setParameter('status', $filters['story_status']);
+            $queryBuilder->andWhere($queryBuilder->expr()->in('s.status', $filters['story_status']));
         }
 
         if (isset($filters['story_type']) && !empty($filters['story_type']) ) {
-                $queryBuilder->andWhere('s.type = :type')
-                    ->setParameter('type', $filters['story_type']);
+            $queryBuilder->andWhere($queryBuilder->expr()->in('s.type', $filters['story_type']));
         }
 
         if (isset($filters['milestone']) && !empty($filters['milestone']) ) {
-            $ids = array();
-            $entities = $filters['milestone']->toArray();
-
-            if (!empty($entities)) {
-                foreach ($entities as $entity) {
-                    $ids[] = $entity->getId();
-                }
-
+            $ids = self::extractIds($filters['milestone']);
+            if (!empty($ids)) {
                 $queryBuilder->andWhere($queryBuilder->expr()->in('m.id', $ids));
             }
         }
@@ -69,40 +55,22 @@ class StoryRepository extends EntityRepository
         }
 
         if (isset($filters['ownerUser']) && !empty($filters['ownerUser']) ) {
-            $ids = array();
-            $entities = $filters['ownerUser']->toArray();
-
-            if (!empty($entities)) {
-                foreach ($entities as $entity) {
-                    $ids[] = $entity->getId();
-                }
-
+            $ids = self::extractIds($filters['ownerUser']);
+            if (!empty($ids)) {
                 $queryBuilder->andWhere($queryBuilder->expr()->in('ousr.id', $ids));
             }
         }
 
         if (isset($filters['devUser']) && !empty($filters['devUser']) ) {
-            $ids = array();
-            $entities = $filters['devUser']->toArray();
-
-            if (!empty($entities)) {
-                foreach ($entities as $entity) {
-                    $ids[] = $entity->getId();
-                }
-
+            $ids = self::extractIds($filters['devUser']);
+            if (!empty($ids)) {
                 $queryBuilder->andWhere($queryBuilder->expr()->in('dusr.id', $ids));
             }
         }
 
         if (isset($filters['tags']) && !empty($filters['tags']) ) {
-            $ids = array();
-            $entities = $filters['tags']->toArray();
-
-            if (!empty($entities)) {
-                foreach ($entities as $entity) {
-                    $ids[] = $entity->getId();
-                }
-
+            $ids = self::extractIds($filters['tags']);
+            if (!empty($ids)) {
                 $queryBuilder->andWhere($queryBuilder->expr()->in('t.id', $ids));
             }
         }
@@ -144,5 +112,18 @@ class StoryRepository extends EntityRepository
             ->setParameter('milestone_id', $milestone->getId());
 
         return $queryBuilder->getQuery()->getResult();
+    }
+
+    protected static function extractIds($filter)
+    {
+        $ids = array();
+        $entities = $filter->toArray();
+
+        if (!empty($entities)) {
+            foreach ($entities as $entity) {
+                $ids[] = $entity->getId();
+            }
+        }
+        return $ids;
     }
 }
