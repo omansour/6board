@@ -11,7 +11,6 @@
                 <th class="">Reporter</th>
                 <th class="">Assigned to</th>
                 <th class="">Status</th>
-                <th class="">Title</th>
                 <th class="">Milestone</th>
                 <th class="">Due date</th>
             </tr>
@@ -36,7 +35,6 @@
                 <td>{{ story.ownerUser }}</td>
                 <td><strong>{{ story.devUser }}</strong></td>
                 <td><span class="label">{{ story.readableStatus }}</span></td>
-                <td><strong>{{ story.title }}</strong></td>
                 <td>
                     <ul>
                     {% for storyMilestone in story.storyMilestones %}

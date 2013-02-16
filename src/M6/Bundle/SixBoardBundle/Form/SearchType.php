@@ -27,7 +27,6 @@ class SearchType extends AbstractType
                 'required' => false,
             ))
             ->add('story_status', 'genemu_jqueryselect2_choice', array(
-                // 'class'    => 'M6\Bundle\SixBoardBundle\Entity\Story',
                 'choices'  => Story::$statuses,
                 'multiple' => true,
                 'expanded' => false,
