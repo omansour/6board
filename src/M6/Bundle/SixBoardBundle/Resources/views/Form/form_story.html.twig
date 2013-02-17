@@ -1,5 +1,7 @@
 <div class="hero-unit">
     {{ form_widget(form) }}
     <input type="submit" value="Submit" class="btn btn-info" />
+    {% if story is defined %}
     <a href="{{ path('show_story', { id : story.id}) }}" class="btn btn-danger" >Cancel</a>
+    {% endif %}
 </div>
