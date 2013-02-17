@@ -3,8 +3,12 @@
 {% block body %}
      <div class="container">
         <div class="well">
-            <h1>#{{ story.id }} {{ story.title}} - {{ story.readableStatus }}</h1>
+            <p><span class="label">{{ story.readableStatus }}</span></p>
+            <h1>#{{ story.id }} {{ story.title}}</h1>
             <p>{{ story.description }}</p>
+            <p>type : {{ story.getReadableTypes }}
+            </p>
+            <p>status : {{ story.getReadableStatus }}</p>
             <a href="{{ path('story_edit', { 'id' : story.id }) }}" class="btn btn-info">Edit</a>
         </div>
 
