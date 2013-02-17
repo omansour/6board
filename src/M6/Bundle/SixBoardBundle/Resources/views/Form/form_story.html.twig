@@ -1,5 +1,5 @@
 <div class="hero-unit">
     {{ form_widget(form) }}
     <input type="submit" value="Submit" class="btn btn-info" />
-    <a
+    <a href="{{ path('show_story', { id : story.id}) }}" class="btn btn-danger" >Cancel</a>
 </div>
