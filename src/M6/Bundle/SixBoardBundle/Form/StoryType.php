@@ -28,7 +28,8 @@ class StoryType extends AbstractType
                 'required' => true,
             ))
             ->add('dueDate', 'genemu_jquerydate', array(
-            'widget' => 'single_text'
+                'widget' => 'single_text',
+                'required' => false,
             ))
             ->add('complexity')
             ->add('type', 'genemu_jqueryselect2_choice', array(
