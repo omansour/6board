@@ -33,7 +33,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
-
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
 
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new M6\Bundle\SixBoardBundle\M6SixBoardBundle(),

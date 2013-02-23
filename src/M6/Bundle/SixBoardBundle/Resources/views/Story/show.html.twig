@@ -5,7 +5,7 @@
         <div class="well">
             <p><span class="label">{{ story.readableStatus }}</span></p>
             <h1>#{{ story.id }} {{ story.title}}</h1>
-            <p>{% autoescape false %}{{ story.description|skriv_render }}{% endautoescape %}</p>
+            <p>{% autoescape false %}{{ story.description|markdown }}{% endautoescape %}</p>
         </div>
         <div class="row">
             <div class="span6">

@@ -1,5 +1,5 @@
 {
-    "hash": "5d2f37370234f830adab8e0545376c46",
+    "hash": "8141e63bb4b1e720dfe666d666c90c2a",
     "packages": [
         {
             "name": "amaury/skrivmarkup",
@@ -87,6 +87,65 @@
             ]
         },
         {
+            "name": "dflydev/markdown",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dflydev/dflydev-markdown.git",
+                "reference": "11f8faa2d17f717a038b4d372abd22a6ac4a15dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dflydev/dflydev-markdown/zipball/11f8faa2d17f717a038b4d372abd22a6ac4a15dc",
+                "reference": "11f8faa2d17f717a038b4d372abd22a6ac4a15dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "time": "2012-07-15 16:31:27",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "dflydev\\markdown": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Dragonfly Development Inc.",
+                    "email": "info@dflydev.com",
+                    "homepage": "http://dflydev.com"
+                },
+                {
+                    "name": "Beau Simensen",
+                    "email": "beau@dflydev.com",
+                    "homepage": "http://beausimensen.com"
+                },
+                {
+                    "name": "Michel Fortin",
+                    "homepage": "http://michelf.com"
+                },
+                {
+                    "name": "John Gruber",
+                    "homepage": "http://daringfireball.net"
+                }
+            ],
+            "description": "PHP Markdown & Extra",
+            "homepage": "http://github.com/dflydev/dflydev-markdown",
+            "keywords": [
+                "markdown"
+            ]
+        },
+        {
             "name": "doctrine/common",
             "version": "2.3.x-dev",
             "source": {
@@ -96,14 +155,13 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/bb0aebbf234db52df476a2b473d434745b34221c",
+                "url": "https://github.com/doctrine/common/zipball/bb0aebbf234db52df476a2b473d434745b34221c",
                 "reference": "bb0aebbf234db52df476a2b473d434745b34221c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "2012-09-20 05:55:18",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -115,7 +173,6 @@
                     "Doctrine\\Common": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -127,8 +184,7 @@
                 },
                 {
                     "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com",
-                    "homepage": "http://www.instaclick.com"
+                    "email": "guilhermeblanco@gmail.com"
                 },
                 {
                     "name": "Roman Borschel",
@@ -141,7 +197,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -153,7 +209,8 @@
                 "eventmanager",
                 "annotations",
                 "persistence"
-            ]
+            ],
+            "time": "2012-09-20 05:55:18"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -220,7 +277,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fd45c6f6baa618d871f3201fabe76df5043abb1e",
+                "url": "https://github.com/doctrine/dbal/archive/fd45c6f6baa618d871f3201fabe76df5043abb1e.zip",
                 "reference": "fd45c6f6baa618d871f3201fabe76df5043abb1e",
                 "shasum": ""
             },
@@ -240,7 +297,6 @@
                     "Doctrine\\DBAL": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -411,7 +467,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/fdd0af34e6fced967b8751bc3e4792c11ef86d57",
+                "url": "https://github.com/doctrine/doctrine2/archive/fdd0af34e6fced967b8751bc3e4792c11ef86d57.zip",
                 "reference": "fdd0af34e6fced967b8751bc3e4792c11ef86d57",
                 "shasum": ""
             },
@@ -440,7 +496,6 @@
                     "Doctrine\\ORM": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -744,7 +799,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSAopBundle/zipball/7018357f5bedf204979a88867a9da05973744422",
+                "url": "https://github.com/schmittjoh/JMSAopBundle/archive/7018357f5bedf204979a88867a9da05973744422.zip",
                 "reference": "7018357f5bedf204979a88867a9da05973744422",
                 "shasum": ""
             },
@@ -764,7 +819,6 @@
                     "JMS\\AopBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache"
             ],
@@ -792,7 +846,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/cg-library/zipball/8f3441497215434c95512200fa56f168d1972e47",
+                "url": "https://github.com/schmittjoh/cg-library/archive/8f3441497215434c95512200fa56f168d1972e47.zip",
                 "reference": "8f3441497215434c95512200fa56f168d1972e47",
                 "shasum": ""
             },
@@ -811,7 +865,6 @@
                     "CG\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache2"
             ],
@@ -905,7 +958,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/metadata/zipball/f2ab7883f6f915d40bfc38a70e0ead5f130610dc",
+                "url": "https://github.com/schmittjoh/metadata/archive/f2ab7883f6f915d40bfc38a70e0ead5f130610dc.zip",
                 "reference": "f2ab7883f6f915d40bfc38a70e0ead5f130610dc",
                 "shasum": ""
             },
@@ -930,7 +983,6 @@
                     "Metadata\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache"
             ],
@@ -960,7 +1012,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/parser-lib/zipball/4d469a70c6dd03f921cbdeadafbcb261bb23e8b0",
+                "url": "https://github.com/schmittjoh/parser-lib/archive/4d469a70c6dd03f921cbdeadafbcb261bb23e8b0.zip",
                 "reference": "4d469a70c6dd03f921cbdeadafbcb261bb23e8b0",
                 "shasum": ""
             },
@@ -979,7 +1031,6 @@
                     "JMS\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache2"
             ],
@@ -1118,6 +1169,65 @@
             ]
         },
         {
+            "name": "knplabs/knp-markdown-bundle",
+            "version": "dev-master",
+            "target-dir": "Knp/Bundle/MarkdownBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpMarkdownBundle.git",
+                "reference": "1a31848de5aad77b32d2b152bdce51cfbc9edcca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMarkdownBundle/zipball/1a31848de5aad77b32d2b152bdce51cfbc9edcca",
+                "reference": "1a31848de5aad77b32d2b152bdce51cfbc9edcca",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": ">=2.0,<2.3-dev",
+                "dflydev/markdown": "1.0.*@dev"
+            },
+            "suggest": {
+                "symfony/twig-bundle": "to use the Twig markdown filter",
+                "ext-sundown": "to use optional support for php-sundown extension instead of php implementation"
+            },
+            "time": "2012-10-17 19:09:15",
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Bundle\\MarkdownBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/KnpMarkdownBundle/contributors"
+                }
+            ],
+            "description": "Knplabs markdown bundle transforms markdown into html",
+            "homepage": "http://github.com/KnpLabs/KnpMarkdownBundle",
+            "keywords": [
+                "markdown",
+                "knp",
+                "knplabs",
+                "bundle"
+            ]
+        },
+        {
             "name": "knplabs/knp-menu",
             "version": "1.1.x-dev",
             "source": {
@@ -1127,7 +1237,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/v1.1.2",
+                "url": "https://github.com/KnpLabs/KnpMenu/archive/v1.1.2.zip",
                 "reference": "v1.1.2",
                 "shasum": ""
             },
@@ -1156,7 +1266,6 @@
                     "Knp\\Menu\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1192,7 +1301,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/520d4d923c5a542f4aebeafe4b1301dddc8689c8",
+                "url": "https://github.com/KnpLabs/KnpMenuBundle/archive/520d4d923c5a542f4aebeafe4b1301dddc8689c8.zip",
                 "reference": "520d4d923c5a542f4aebeafe4b1301dddc8689c8",
                 "shasum": ""
             },
@@ -1207,7 +1316,6 @@
                     "Knp\\Bundle\\MenuBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1432,7 +1540,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/c899903cbc4cadc2b6fb7ab74a1470d59e4c2d27",
+                "url": "https://github.com/schmittjoh/php-option/archive/c899903cbc4cadc2b6fb7ab74a1470d59e4c2d27.zip",
                 "reference": "c899903cbc4cadc2b6fb7ab74a1470d59e4c2d27",
                 "shasum": ""
             },
@@ -1451,7 +1559,6 @@
                     "PhpOption\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache2"
             ],
@@ -1492,7 +1599,6 @@
                     "Psr\\Log\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1565,7 +1671,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/raulfraile/LadybugBundle/zipball/60c62e7dcee195b919ee5fa2fcf4cd928e8cda50",
+                "url": "https://github.com/raulfraile/LadybugBundle/archive/60c62e7dcee195b919ee5fa2fcf4cd928e8cda50.zip",
                 "reference": "60c62e7dcee195b919ee5fa2fcf4cd928e8cda50",
                 "shasum": ""
             },
@@ -1584,7 +1690,6 @@
                     "RaulFraile\\Bundle\\LadybugBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1882,7 +1987,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/sonata-doctrine-extensions/zipball/d2cd67a25602fecab6067290536f163ea54f1c8c",
+                "url": "https://github.com/sonata-project/sonata-doctrine-extensions/archive/d2cd67a25602fecab6067290536f163ea54f1c8c.zip",
                 "reference": "d2cd67a25602fecab6067290536f163ea54f1c8c",
                 "shasum": ""
             },
@@ -1897,7 +2002,6 @@
                     "Sonata\\Doctrine\\Types": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1983,7 +2087,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/33d9dced64afc785976828cbc3edf141061fedee",
+                "url": "https://github.com/sonata-project/SonataEasyExtendsBundle/archive/33d9dced64afc785976828cbc3edf141061fedee.zip",
                 "reference": "33d9dced64afc785976828cbc3edf141061fedee",
                 "shasum": ""
             },
@@ -2000,7 +2104,6 @@
                     "Sonata\\EasyExtendsBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2085,7 +2188,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/GoogleAuthenticator/zipball/181c8341e38cf7b2f82697ef38c91fe65af1f409",
+                "url": "https://github.com/sonata-project/GoogleAuthenticator/archive/181c8341e38cf7b2f82697ef38c91fe65af1f409.zip",
                 "reference": "181c8341e38cf7b2f82697ef38c91fe65af1f409",
                 "shasum": ""
             },
@@ -2099,7 +2202,6 @@
                     "Google\\Authenticator": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2135,7 +2237,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonatajQueryBundle/zipball/5f87a761302e6c78304e071416f75d41eb1fb3c2",
+                "url": "https://github.com/sonata-project/SonatajQueryBundle/archive/5f87a761302e6c78304e071416f75d41eb1fb3c2.zip",
                 "reference": "5f87a761302e6c78304e071416f75d41eb1fb3c2",
                 "shasum": ""
             },
@@ -2150,7 +2252,6 @@
                     "Sonata\\jQueryBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2242,7 +2343,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/4a17550d8b101c5aafc56c9950149aa189b8402d",
+                "url": "https://github.com/stof/StofDoctrineExtensionsBundle/archive/4a17550d8b101c5aafc56c9950149aa189b8402d.zip",
                 "reference": "4a17550d8b101c5aafc56c9950149aa189b8402d",
                 "shasum": ""
             },
@@ -2267,7 +2368,6 @@
                     "Stof\\DoctrineExtensionsBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2474,7 +2574,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.2.0-BETA2",
+                "url": "https://github.com/symfony/SwiftmailerBundle/archive/v2.2.0-BETA2.zip",
                 "reference": "v2.2.0-BETA2",
                 "shasum": ""
             },
@@ -2501,7 +2601,6 @@
                     "Symfony\\Bundle\\SwiftmailerBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2627,7 +2726,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/5c2d515d4624bdd588226d688173cf0399a4d8cf",
+                "url": "https://github.com/fabpot/Twig-extensions/archive/5c2d515d4624bdd588226d688173cf0399a4d8cf.zip",
                 "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf",
                 "shasum": ""
             },
@@ -2646,7 +2745,6 @@
                     "Twig_Extensions_": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2727,7 +2825,6 @@
         "sonata-project/user-bundle": 20,
         "knplabs/knp-paginator-bundle": 20,
         "raulfraile/ladybug-bundle": 20,
-        "amaury/wikirenderer": 20,
-        "amaury/skrivmarkup": 20
+        "knplabs/knp-markdown-bundle": 20
     }
 }

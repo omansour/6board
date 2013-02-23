@@ -27,8 +27,8 @@
         "sonata-project/user-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "dev-master",
         "raulfraile/ladybug-bundle": "dev-master",
-        "amaury/wikirenderer": "dev-master",
-        "amaury/skrivmarkup": "dev-master"
+
+        "knplabs/knp-markdown-bundle": "1.2.*@dev"
     },
     "scripts": {
         "post-install-cmd": [
