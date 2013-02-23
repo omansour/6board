@@ -6,11 +6,30 @@
             <p><span class="label">{{ story.readableStatus }}</span></p>
             <h1>#{{ story.id }} {{ story.title}}</h1>
             <p>{% autoescape false %}{{ story.description|skriv_render }}{% endautoescape %}</p>
-            <p>type : {{ story.getReadableTypes }}
-            </p>
-            <p>status : {{ story.getReadableStatus }}</p>
-            <a href="{{ path('story_edit', { 'id' : story.id }) }}" class="btn btn-info">Edit</a>
         </div>
+        <div class="row">
+            <div class="span6">
+                <p>type : {{ story.getReadableTypes }}</p>
+                <p>status : {{ story.getReadableStatus }}</p>
+            </div>
+            <div class="span6">
+                <p>
+                    Milestone(s) :
+                    <ul>
+                        {% for storyMilestone in story.storyMilestones %}
+                        {#% if storyMilestone.milestone.id != milestoneId %#}
+                        <li>{{ storyMilestone.getReadableRank }} - {{ storyMilestone.milestone }}
+                            {% if storyMilestone.prioritized %}<i class="icon-hand-left" title="This story was manually prioritized"></i>{% endif %}
+                        </li>
+                        {#% endif %#}
+                        {% endfor %}
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <p>
+        <a href="{{ path('story_edit', { 'id' : story.id }) }}" class="btn btn-info">Edit</a></p>
+
 
         {{ render(controller('M6SixBoardBundle:Note:storyNotes', { 'id': story.id })) }}
     </div>
