@@ -92,6 +92,16 @@ class StoryMilestone
     }
 
     /**
+     * Get rank but first is first (not zero)
+     *
+     * @return integer
+     */
+    public function getReadableRank()
+    {
+        return $this->rank + 1;
+    }
+
+    /**
      * Is prioritized
      *
      * @return boolean

@@ -25,7 +25,7 @@
                 <td>
                     {% for storyMilestone in story.storyMilestones %}
                         {% if storyMilestone.milestone.id == milestoneId %}
-                            {{ storyMilestone.rank }}
+                            {{ storyMilestone.getReadableRank }}
                             {% if storyMilestone.prioritized %}<i class="icon-hand-left" title="This story was manually prioritized"></i>{% endif %}
                         {% endif %}
                     {% endfor %}
@@ -39,7 +39,9 @@
                     <ul>
                     {% for storyMilestone in story.storyMilestones %}
                         {#% if storyMilestone.milestone.id != milestoneId %#}
-                        <li>{{ storyMilestone.rank }} - {{ storyMilestone.milestone }}</li>
+                        <li>{{ storyMilestone.getReadableRank }} - {{ storyMilestone.milestone }}
+                            {% if storyMilestone.prioritized %}<i class="icon-hand-left" title="This story was manually prioritized"></i>{% endif %}
+                        </li>
                         {#% endif %#}
                     {% endfor %}
                     </ul>
