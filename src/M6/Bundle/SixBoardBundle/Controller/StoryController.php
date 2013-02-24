@@ -82,8 +82,7 @@ class StoryController extends Controller
 
         $form = $this->createForm(new StoryType, $story);
 
-        $prevCollections = $story->getStoryMilestones();
-        $prevCollections = $prevCollections->toArray();
+        $prevCollections = $story->getStoryMilestones()->toArray();
 
         if ($request->getMethod() == "POST") {
             $form->bind($request);

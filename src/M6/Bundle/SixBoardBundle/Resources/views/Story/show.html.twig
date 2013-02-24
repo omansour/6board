@@ -18,7 +18,7 @@
                     <ul>
                         {% for storyMilestone in story.storyMilestones %}
                         {#% if storyMilestone.milestone.id != milestoneId %#}
-                        <li>{{ storyMilestone.getReadableRank }} - {{ storyMilestone.milestone }}
+                        <li>r{{ storyMilestone.getReadableRank }} - {{ storyMilestone.milestone }}
                             {% if storyMilestone.prioritized %}<i class="icon-hand-left" title="This story was manually prioritized"></i>{% endif %}
                         </li>
                         {#% endif %#}
