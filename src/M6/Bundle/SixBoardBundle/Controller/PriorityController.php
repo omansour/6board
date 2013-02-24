@@ -37,7 +37,7 @@ class PriorityController extends Controller
 
             if ($form->isValid()) {
                 $data    = $form->getData();
-                $results = $this->getRepository("M6SixBoardBundle:Story")->fecthStoryViaMilestone($data['milestone']);
+                $results = $this->getRepository("M6SixBoardBundle:Story")->fecthStoryNotClosedViaMilestone($data['milestone']);
             }
         }
 

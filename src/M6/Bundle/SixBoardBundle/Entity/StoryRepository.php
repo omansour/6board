@@ -102,12 +102,13 @@ class StoryRepository extends EntityRepository
      *
      * @return array
      */
-    public function fecthStoryViaMilestone($milestone)
+    public function fecthStoryNotClosedViaMilestone($milestone)
     {
         $queryBuilder = $this->createQueryBuilder("s")
             ->leftJoin('s.storyMilestones', 'sm')
             ->leftJoin('sm.milestone', 'm')
             ->where('m.id = :milestone_id')
+            ->andWhere('s.status != '.Story::STATUS_CLOSED)
             ->orderBy('sm.rank', 'ASC')
             ->setParameter('milestone_id', $milestone->getId());
 
