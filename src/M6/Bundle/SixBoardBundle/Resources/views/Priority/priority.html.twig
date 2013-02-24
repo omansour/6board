@@ -34,13 +34,20 @@
                 revert: true,
                 update: function (event, ui) {
                     var position = ui.item.index();
-                    var id = $(this).find('tr').attr('data-story-id');
+                    var id = ui.item.attr('data-story-id');
                     var orderRoute = "{{ path('reorder_story', { 'id' : milestoneId}) }}";
+                    var milestoneId = "{{ milestoneId }}";
 
-                    $.get(orderRoute, {
+                    $.get(orderRoute,
+                        {
                         'storyId': id,
                         'position': position
-                    });
+                        },
+                        function (data) {
+                            $('#prio-'+id+'-'+milestoneId).show();
+                        }
+                    );
+                    //
                 }
             }).disableSelection();
 
@@ -57,11 +64,15 @@
 
                 var id = $(this).closest('tr').attr('data-story-id');
                 var orderRoute = "{{ path('reorder_story', { 'id' : milestoneId}) }}";
-
+                var milestoneId = "{{ milestoneId }}";
                 $.get(orderRoute, {
                     'storyId': id,
                     'position': 0
-                });
+                },
+                function (data) {
+                    $('#prio-'+id+'-'+milestoneId).show();
+                }
+                );
             });
         });
     </script>

@@ -26,7 +26,11 @@
                     {% for storyMilestone in story.storyMilestones %}
                         {% if storyMilestone.milestone.id == milestoneId %}
                             {{ storyMilestone.getReadableRank }}
-                            {% if storyMilestone.prioritized %}<i class="icon-hand-left" title="This story was manually prioritized"></i>{% endif %}
+                            {% if storyMilestone.prioritized %}
+                                <i id="prio-{{ story.id }}-{{ milestoneId }}" class="icon-hand-left" title="This story was manually prioritized"></i>
+                            {% else %}
+                                <i id="prio-{{ story.id }}-{{ milestoneId }}" class="icon-hand-left" title="This story was manually prioritized" style="display:none;"></i>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                     <a href="#" class="toReveal"><i class="icon-arrow-up"></i></a>
@@ -40,7 +44,11 @@
                     {% for storyMilestone in story.storyMilestones %}
                         {#% if storyMilestone.milestone.id != milestoneId %#}
                         <li>{{ storyMilestone.getReadableRank }} - {{ storyMilestone.milestone }}
-                            {% if storyMilestone.prioritized %}<i class="icon-hand-left" title="This story was manually prioritized"></i>{% endif %}
+                            {% if storyMilestone.prioritized %}
+                                <i id="prio-{{ story.id }}-{{ milestoneId }}" class="icon-hand-left" title="This story was manually prioritized"></i>
+                            {% else %}
+                                <i id="prio-{{ story.id }}-{{ milestoneId }}" class="icon-hand-left" title="This story was manually prioritized" style="display:none;"></i>
+                            {% endif %}
                         </li>
                         {#% endif %#}
                     {% endfor %}
