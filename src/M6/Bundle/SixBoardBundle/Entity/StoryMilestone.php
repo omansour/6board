@@ -82,6 +82,21 @@ class StoryMilestone
     }
 
     /**
+     * unsort a StoryMilestone
+     *
+     * @return StoryMilestone
+     */
+    public function unsort()
+    {
+        if (!is_null($this->id))
+        {
+            $this->prioritized = true;
+            $this->rank = null;
+        }
+        return $this;
+    }
+
+    /**
      * Get rank
      *
      * @return integer

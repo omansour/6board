@@ -95,6 +95,18 @@ class StoryController extends Controller
 
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($story);
+
+                // re set rank and proritized value ?
+
+                // if status is
+                if ($story->getStatus() == Story::STATUS_CLOSED)
+                {
+                    foreach ($story->getStoryMilestones() as  $StoryMilestone) {
+                        $StoryMilestone->unsort();
+                        $em->persist($StoryMilestone);
+                    }
+                }
+
                 $em->flush();
 
                 $this->get('event_dispatcher')->dispatch(Events::SUBSCRIBE, new GenericEvent($story, array('user' => $this->getUser(), 'type' => Follow::STORY)));
