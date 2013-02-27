@@ -11,7 +11,7 @@
                 <th class="">Reporter</th>
                 <th class="">Assigned to</th>
                 <th class="">Status</th>
-                <th class="">Milestone</th>
+                <th class="">Milestone(s)</th>
                 <th class="">Due date</th>
             </tr>
         </thead>
@@ -25,7 +25,7 @@
                 <td>
                     {% for storyMilestone in story.storyMilestones %}
                         {% if storyMilestone.milestone.id == milestoneId %}
-                            r{{ storyMilestone.getReadableRank }}
+                            rank {{ storyMilestone.getReadableRank }}
                             {% if storyMilestone.prioritized %}
                                 <i id="prio-{{ story.id }}-{{ milestoneId }}" class="icon-hand-left" title="This story was manually prioritized"></i>
                             {% else %}
@@ -43,7 +43,7 @@
                     <ul>
                     {% for storyMilestone in story.storyMilestones %}
                         {#% if storyMilestone.milestone.id != milestoneId %#}
-                        <li>r{{ storyMilestone.getReadableRank }} - {{ storyMilestone.milestone }}
+                        <li>rank {{ storyMilestone.getReadableRank }} - {{ storyMilestone.milestone }}
                             {% if storyMilestone.prioritized %}
                                 <i id="prio-{{ story.id }}-{{ milestoneId }}" class="icon-hand-left" title="This story was manually prioritized"></i>
                             {% else %}
