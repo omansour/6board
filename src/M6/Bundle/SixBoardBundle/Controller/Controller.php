@@ -48,6 +48,17 @@ class Controller extends BaseController
     }
 
     /**
+     * [setPrefMilestone description]
+     * @param [type] $id [description]
+     */
+    public function setPrefMilestone($id)
+    {
+        $this->getRequest()->getSession()->set(
+                'pref_milestone',
+                $id);
+    }
+
+    /**
      * Get Filters
      *
      * @param array $filters Filters
@@ -101,6 +112,7 @@ class Controller extends BaseController
             // Transform entities objects into a pair of class/id
             if (is_object($value)) {
                 if ($value instanceof ArrayCollection) {
+                    //ladybug_dump($value);
                     if (count($value)) {
                         $filters[$key] = array(
                             'class' => get_class($value->first()),

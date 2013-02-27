@@ -35,8 +35,12 @@ class SearchController extends Controller
              }
         }
 
+            // ladybug_dump_die($this->getUser());
         if (true === $emptyFilters) {
-            $filters = array('devUser' => new ArrayCollection(array($this->getUser())));
+            $filters = array(
+                'devUser' => new ArrayCollection(array($this->getUser())),
+                // 'status' => new ArrayCollection(Story::getUnclosedStatus())
+                );
             $this->setFilters('m6_search_board', $filters);
             $filters = $this->getFilters('m6_search_board');
         }
@@ -62,11 +66,17 @@ class SearchController extends Controller
 
         $saveSearchForm = $this->createForm(new SavedSearchType, new Search());
 
+        $uniqueMilestone = (array_key_exists('milestone', $filters) && count($filters['milestone']) == 1) ? $filters['milestone'][0] : false;
+        // ladybug_dump_die($filters['milestone'][0]->getId());
+        if ($uniqueMilestone) {
+            $this->setPrefMilestone($filters['milestone'][0]->getId());
+        }
+
         return array(
             'form'       => $form->createView(),
             'pagination' => $results,
             'save_search_form' => $saveSearchForm->createView(),
-            'unique_milestone' => (array_key_exists('milestone', $filters) && count($filters['milestone']) == 1) ? $filters['milestone'][0] : false,
+            'unique_milestone' => $uniqueMilestone,
             'milestoneId' => 0
         );
     }
