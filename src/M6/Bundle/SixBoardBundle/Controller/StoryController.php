@@ -83,27 +83,21 @@ class StoryController extends Controller
         $form = $this->createForm(new StoryType, $story);
 
         $prevCollections = $story->getStoryMilestones()->toArray();
+        $story->setPreviousStoryMilestones($prevCollections);
 
         if ($request->getMethod() == "POST") {
             $form->bind($request);
-
-            foreach($prevCollections as $sm) {
-                $story->removeStoryMilestone($sm);
-            }
 
             if ($form->isValid()) {
 
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($story);
 
-                // re set rank and proritized value ?
-
                 // if status is
-                if ($story->getStatus() == Story::STATUS_CLOSED)
-                {
-                    foreach ($story->getStoryMilestones() as  $StoryMilestone) {
-                        $StoryMilestone->unsort();
-                        $em->persist($StoryMilestone);
+                if ($story->getStatus() == Story::STATUS_CLOSED) {
+                    foreach ($story->getStoryMilestones() as  $storyMilestone) {
+                        $storyMilestone->unsort();
+                        $em->persist($storyMilestone);
                     }
                 }
 

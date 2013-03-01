@@ -129,6 +129,7 @@ class Story
     private $storyMilestones;
 
     private $milestones;
+    private $previousStoryMilestones;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -586,9 +587,9 @@ class Story
         return $this->storyMilestones;
     }
 
-    public function addStoryMilestone(StoryMilestone $m)
+    public function addStoryMilestone(StoryMilestone $sm)
     {
-        $this->storyMilestones->add($m);
+        $this->storyMilestones->add($sm);
     }
 
     public function removeStoryMilestone(StoryMilestone $m)
@@ -609,17 +610,31 @@ class Story
 
     public function setMilestones($milestones)
     {
-        if(is_a($milestones, "M6\Bundle\SixBoardBundle\Entity\Milestone"))
-        {
+        if (is_a($milestones, "M6\Bundle\SixBoardBundle\Entity\Milestone")) {
             $milestones = new ArrayCollection(array($milestones));
         }
 
+        foreach ($this->getStoryMilestones() as $sm) {
+            $temp[$sm->getMilestone()->getId()] = array(
+                'rank' => $sm->getRank(),
+                'prioritized' => $sm->isPrioritized()
+            );
+        }
+
+        $this->getStoryMilestones()->clear();
+
+        // on parcrours toutes les milestones detectées sur la story
         foreach ($milestones as $m) {
 
             $sm = new StoryMilestone();
 
             $sm->setStory($this);
             $sm->setMilestone($m);
+
+            if (array_key_exists($m->getId(), $temp)) {
+                $sm->setRank($temp[$m->getId()]['rank']);
+                $sm->setPrioritized($temp[$m->getId()]['prioritized']);
+            }
 
             $this->addStoryMilestone($sm);
         }
@@ -658,5 +673,15 @@ class Story
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    public function setPreviousStoryMilestones($previousSM)
+    {
+        $this->previousStoryMilestones = $previousSM;
+    }
+
+    public function getPreviousStoryMilestones()
+    {
+        return $this->previousStoryMilestones;
     }
 }
