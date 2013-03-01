@@ -182,4 +182,9 @@ class StoryMilestone
     {
         return (string) $this->getMilestone();
     }
+
+    public function setPrioritized($prioritized)
+    {
+        $this->prioritized = $prioritized;
+    }
 }
