@@ -71,8 +71,7 @@ class StoryMilestone
      */
     public function setRank($rank)
     {
-        if($this->id != null && $this->rank != $rank)
-        {
+        if($this->id != null && $this->rank != $rank) {
             $this->prioritized = true;
         }
 
@@ -88,11 +87,11 @@ class StoryMilestone
      */
     public function unsort()
     {
-        if (!is_null($this->id))
-        {
-            $this->prioritized = true;
-            $this->rank = null;
+        if (!is_null($this->getId())) {
+            $this->setPrioritized(true);
+            $this->setRank(null);
         }
+
         return $this;
     }
 
