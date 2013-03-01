@@ -28,7 +28,7 @@ class StoryType extends AbstractType
                 'required' => true,
             ))
             ->add('dueDate', 'genemu_jquerydate', array(
-                'widget' => 'single_text',
+                'widget'   => 'single_text',
                 'required' => false,
             ))
             ->add('complexity')
@@ -39,10 +39,10 @@ class StoryType extends AbstractType
                 'required' => true,
             ))
             ->add('milestones', 'genemu_jqueryselect2_entity', array(
-                'class'    => 'M6\Bundle\SixBoardBundle\Entity\Milestone',
-                'multiple' => $options['data']->getId() !== null,
-                'expanded' => false,
-                'required' => true,
+                'class'        => 'M6\Bundle\SixBoardBundle\Entity\Milestone',
+                'multiple'     => $options['data']->getId() !== null,
+                'expanded'     => false,
+                'required'     => true,
                 'by_reference' => false
             ))
             ->add('tags', 'genemu_jqueryselect2_entity', array(
